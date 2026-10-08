@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เข้าสู่ระบบ & สมัครสมาชิก | SUPERCAR P</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Unified Master Stylesheet -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="main-header" id="navbar">
+    <div class="container header-container">
+      <a href="../index.html" class="brand-logo">
+        <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+        <div class="logo-text">
+          <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+          <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="../index.html" class="nav-link">หน้าแรก</a>
+        <a href="../cars.html" class="nav-link">คลังรถทั้งหมด</a>
+        <a href="../sell.html" class="nav-link">ลงขายรถ</a>
+        <a href="../contact.html" class="nav-link">ติดต่อเรา</a>
+      </nav>
+
+      <div class="header-tools">
+        <a href="../cars.html?view=wishlist" class="wishlist-btn" id="wishlistToggle" title="รถที่ถูกใจ">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge" id="wishlistCount">0</span>
+        </a>
+        <div id="navbarAuth"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Login Card -->
+  <main class="auth-wrapper">
+    <div class="auth-card glass-panel">
+      <div style="text-align:center; margin-bottom:24px;">
+        <span class="logo-mark" style="margin:0 auto 12px; width:52px; height:52px; font-size:1.6rem;">
+          <i class="fa-solid fa-crown"></i>
+        </span>
+        <h1 style="font-size:1.6rem; margin-bottom:4px; color:#fff;">ยินดีต้อนรับสู่ SUPERCAR P</h1>
+        <p style="font-size:0.85rem; color:var(--text-muted);">เข้าสู่ระบบเพื่อจัดการรายการรถที่ถูกใจและนัดหมาย</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab-btn active" id="tabSignInBtn" onclick="switchAuthTab('signin')">
+          <i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบ
+        </button>
+        <button type="button" class="auth-tab-btn" id="tabSignUpBtn" onclick="switchAuthTab('signup')">
+          <i class="fa-solid fa-user-plus"></i> สมัครสมาชิก
+        </button>
+      </div>
+
+      <!-- Sign In -->
+      <form id="signInForm" onsubmit="handleSignInSubmit(event)">
+        <div class="form-group">
+          <label for="loginEmail">อีเมล (Email)</label>
+          <div class="input-with-icon">
+            <i class="fa-regular fa-envelope"></i>
+            <input type="email" id="loginEmail" class="custom-input" placeholder="name@email.com" required value="vip.collector@supercarp.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <label for="loginPassword" style="margin:0;">รหัสผ่าน (Password)</label>
+            <a href="javascript:void(0)" onclick="handleForgotPassword()" style="font-size:0.8rem; color:var(--color-gold);">ลืมรหัสผ่าน?</a>
+          </div>
+          <div class="input-with-icon" style="position:relative;">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="loginPassword" class="custom-input" placeholder="••••••••" required value="12345678">
+            <button type="button" onclick="togglePasswordVisibility('loginPassword', this)" style="position:absolute; right:14px; background:none; border:none; color:var(--text-dim); cursor:pointer;">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-lg" style="width:100%; margin-top:12px;">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          <span>เข้าสู่ระบบ</span>
+        </button>
+      </form>
+
+      <!-- Sign Up -->
+      <form id="signUpForm" onsubmit="handleSignUpSubmit(event)" style="display:none;">
+        <div class="form-group">
+          <label for="signupName">ชื่อ-นามสกุล</label>
+          <div class="input-with-icon">
+            <i class="fa-regular fa-user"></i>
+            <input type="text" id="signupName" class="custom-input" placeholder="ระบุชื่อจริงและนามสกุล" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="signupEmail">อีเมล</label>
+          <div class="input-with-icon">
+            <i class="fa-regular fa-envelope"></i>
+            <input type="email" id="signupEmail" class="custom-input" placeholder="name@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="signupPassword">รหัสผ่าน</label>
+          <div class="input-with-icon" style="position:relative;">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="signupPassword" class="custom-input" placeholder="กำหนดรหัสผ่าน" required minlength="6">
+            <button type="button" onclick="togglePasswordVisibility('signupPassword', this)" style="position:absolute; right:14px; background:none; border:none; color:var(--text-dim); cursor:pointer;">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">ยืนยันรหัสผ่าน</label>
+          <div class="input-with-icon" style="position:relative;">
+            <i class="fa-solid fa-shield-halved"></i>
+            <input type="password" id="confirmPassword" class="custom-input" placeholder="กรอกรหัสผ่านอีกครั้ง" required minlength="6">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-lg" style="width:100%; margin-top:12px;">
+          <i class="fa-solid fa-user-check"></i>
+          <span>สร้างบัญชีผู้ใช้ใหม่</span>
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container" style="text-align:center; font-size:0.85rem; color:var(--text-dim);">
+      © 2026 SUPERCAR P. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="../js/cars-data.js"></script>
+  <script>
+    function switchAuthTab(tab) {
+      const signInForm = document.getElementById("signInForm");
+      const signUpForm = document.getElementById("signUpForm");
+      const tabSignInBtn = document.getElementById("tabSignInBtn");
+      const tabSignUpBtn = document.getElementById("tabSignUpBtn");
+
+      if (tab === "signin") {
+        signInForm.style.display = "block";
+        signUpForm.style.display = "none";
+        tabSignInBtn.classList.add("active");
+        tabSignUpBtn.classList.remove("active");
+      } else {
+        signInForm.style.display = "none";
+        signUpForm.style.display = "block";
+        tabSignUpBtn.classList.add("active");
+        tabSignInBtn.classList.remove("active");
+      }
+    }
+
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon = btn.querySelector("i");
+      if (input.type === "password") {
+        input.type = "text";
+        icon.className = "fa-regular fa-eye-slash";
+      } else {
+        input.type = "password";
+        icon.className = "fa-regular fa-eye";
+      }
+    }
+
+    function handleForgotPassword() {
+      const email = prompt("กรุณาระบุอีเมลที่ใช้ลงทะเบียนเพื่อรับลิงก์รีเซ็ตรหัสผ่าน:");
+      if (email) {
+        showToast(`ระบบได้ส่งลิงก์ตั้งรหัสผ่านใหม่ไปยัง ${email} เรียบร้อยแล้ว`, "success", 5000);
+      }
+    }
+
+    function handleSignInSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value.trim();
+      const name = email.split("@")[0];
+
+      loginUser({ name: name.charAt(0).toUpperCase() + name.slice(1), email: email });
+      showToast(`เข้าสู่ระบบสำเร็จ ยินดีต้อนรับคุณ ${name}!`, "success", 3000);
+
+      setTimeout(() => {
+        window.location.href = "../index.html";
+      }, 1000);
+    }
+
+    function handleSignUpSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById("signupName").value.trim();
+      const email = document.getElementById("signupEmail").value.trim();
+      const pass = document.getElementById("signupPassword").value;
+      const confirmPass = document.getElementById("confirmPassword").value;
+
+      if (pass !== confirmPass) {
+        showToast("รหัสผ่านไม่ตรงกัน กรุณาตรวจสอบอีกครั้ง", "error");
+        return;
+      }
+
+      loginUser({ name: name, email: email });
+      showToast(`สมัครสมาชิกสำเร็จ ยินดีต้อนรับคุณ ${name}!`, "success", 3000);
+
+      setTimeout(() => {
+        window.location.href = "../index.html";
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

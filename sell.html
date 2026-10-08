@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ลงขายรถยนต์ | SUPERCAR P</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Unified Master Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= 1. HEADER / NAVIGATION ================= -->
+  <header class="main-header" id="navbar">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+        <div class="logo-text">
+          <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+          <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">หน้าแรก</a>
+        <a href="cars.html" class="nav-link">คลังรถทั้งหมด</a>
+        <a href="sell.html" class="nav-link active">ลงขายรถ</a>
+        <a href="contact.html" class="nav-link">ติดต่อเรา</a>
+      </nav>
+
+      <!-- Header Tools -->
+      <div class="header-tools">
+        <a href="cars.html?view=wishlist" class="wishlist-btn" id="wishlistToggle" title="รถที่ถูกใจ (Wishlist)">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge" id="wishlistCount">0</span>
+        </a>
+
+        <!-- User Authentication State Button -->
+        <div id="navbarAuth"></div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 2. SELL SECTION ================= -->
+  <main class="sell-section">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header text-center" style="text-align:center;">
+        <span class="sub-heading">PRESTIGE CONSIGNMENT PORTAL</span>
+        <h1 class="main-heading">ลงประกาศขายรถของคุณ</h1>
+        <p class="section-desc">เข้าถึงเครือข่ายผู้ซื้อและนักสะสมรถหรูชั้นนำทั่วประเทศ อัปโหลดข้อมูลและแสดงผลในโชว์รูมทันที</p>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div class="sell-layout">
+        
+        <!-- LEFT: SUBMISSION FORM -->
+        <div class="glass-panel" style="padding: 34px;">
+          <h2 style="font-size:1.4rem; color:#fff; margin-bottom:20px; display:flex; align-items:center; gap:10px;">
+            <i class="fa-solid fa-file-pen" style="color:var(--color-gold);"></i>
+            <span>ข้อมูลรถยนต์ที่ต้องการลงขาย</span>
+          </h2>
+
+          <form id="sellCarForm" onsubmit="handleSellCarSubmit(event)">
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="carBrand">ยี่ห้อ (Brand) *</label>
+                <select id="carBrand" class="custom-select" required onchange="updateLivePreview()">
+                  <option value="Ferrari">Ferrari (เฟอร์รารี่)</option>
+                  <option value="Porsche" selected>Porsche (ปอร์เช่)</option>
+                  <option value="Nissan">Nissan (นิสสัน)</option>
+                  <option value="Koenigsegg">Koenigsegg (เคอนิกเสกข์)</option>
+                  <option value="Lamborghini">Lamborghini (ลัมโบร์กินี)</option>
+                  <option value="McLaren">McLaren (แมคลาเรน)</option>
+                  <option value="Rolls-Royce">Rolls-Royce (โรลส์-รอยซ์)</option>
+                  <option value="Aston Martin">Aston Martin (แอสตัน มาร์ติน)</option>
+                  <option value="Honda">Honda (ฮอนด้า)</option>
+                  <option value="BMW">BMW (บีเอ็มดับเบิลยู)</option>
+                  <option value="Mercedes-Benz">Mercedes-Benz (เบนซ์)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="carType">ประเภทตัวถัง (Body Type) *</label>
+                <select id="carType" class="custom-select" required onchange="updateLivePreview()">
+                  <option value="Supercar" selected>Supercar</option>
+                  <option value="Hypercar">Hypercar</option>
+                  <option value="Track-Focused">Track-Focused</option>
+                  <option value="Ultra-Luxury">Ultra-Luxury</option>
+                  <option value="GT">Grand Tourer</option>
+                  <option value="Sedan">Sedan</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="carName">ชื่อรุ่น / รุ่นย่อย (Model Name) *</label>
+                <input type="text" id="carName" class="custom-input" placeholder="เช่น 911 Turbo S Cabriolet" value="Porsche 911 Turbo S" required oninput="updateLivePreview()">
+              </div>
+
+              <div class="form-group">
+                <label for="carYear">ปีที่ผลิต (Year) *</label>
+                <input type="number" id="carYear" class="custom-input" min="1990" max="2026" value="2024" required oninput="updateLivePreview()">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="carPrice">ราคาขาย (บาท) *</label>
+                <input type="number" id="carPrice" class="custom-input" placeholder="เช่น 24500000" value="24500000" required oninput="updateLivePreview()">
+              </div>
+
+              <div class="form-group">
+                <label for="carMileage">ระยะทางวิ่ง (กม.) *</label>
+                <input type="text" id="carMileage" class="custom-input" placeholder="เช่น 2,400 km" value="2,400 km" required oninput="updateLivePreview()">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="carHp">กำลังสูงสุด (แรงม้า HP) *</label>
+                <input type="number" id="carHp" class="custom-input" placeholder="เช่น 650" value="650" required oninput="updateLivePreview()">
+              </div>
+
+              <div class="form-group">
+                <label for="carAcc">อัตราเร่ง 0-100 km/h</label>
+                <input type="text" id="carAcc" class="custom-input" placeholder="เช่น 2.7s" value="2.7s" oninput="updateLivePreview()">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="carTopSpeed">ความเร็วสูงสุด</label>
+                <input type="text" id="carTopSpeed" class="custom-input" placeholder="เช่น 330 km/h" value="330 km/h" oninput="updateLivePreview()">
+              </div>
+
+              <div class="form-group">
+                <label for="carEngine">เครื่องยนต์</label>
+                <input type="text" id="carEngine" class="custom-input" placeholder="เช่น 3.8L Twin-Turbo Boxer-6" value="3.8L Twin-Turbo Boxer-6">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="carTransmission">ระบบเกียร์</label>
+                <input type="text" id="carTransmission" class="custom-input" placeholder="เช่น 8-Speed PDK" value="8-Speed PDK">
+              </div>
+
+              <div class="form-group">
+                <label for="carColor">สีตัวถังภายนอก</label>
+                <input type="text" id="carColor" class="custom-input" placeholder="เช่น Crayon Grey / Black Leather" value="Crayon Grey">
+              </div>
+            </div>
+
+            <!-- Image Choice -->
+            <div class="form-group">
+              <label for="carImage">รูปรถยนต์ (URL หรือเลือกภาพมาตรฐาน)</label>
+              <input type="text" id="carImage" class="custom-input" placeholder="ใส่ลิงก์ URL รูปภาพ เช่น https://images.unsplash.com/..." value="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=80" oninput="updateLivePreview()">
+              
+              <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;">
+                <button type="button" class="btn btn-outline btn-sm" onclick="setPresetImage('pic/F80.png')">รูป Ferrari F80</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="setPresetImage('pic/GT3-911.png')">รูป Porsche GT3</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="setPresetImage('pic/GTR-R35.png')">รูป Nissan GT-R</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="setPresetImage('https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1200&q=80')">รูป Koenigsegg</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="carDesc">รายละเอียดเพิ่มเติม / ออปชันเด่น</label>
+              <textarea id="carDesc" class="custom-textarea" placeholder="ระบุประวัติรถ ออปชันพิเศษ การตรวจเช็กศูนย์ หรือเงื่อนไขเพิ่มเติม...">รถมือเดียว สภาพป้ายแดง ออปชันเต็มคาร์บอนเซรามิก ลิฟต์ยกหน้ารถ เบาะปรับไฟฟ้า 18 ทิศทาง พวงมาลัย Alcantara ไม่เคยทำสี วิ่งน้อย พร้อมส่งมอบทันที</textarea>
+            </div>
+
+            <div style="padding-top:16px; border-top:1px solid rgba(255,255,255,0.08); margin-top:20px;">
+              <h3 style="font-size:1.1rem; color:#fff; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+                <i class="fa-solid fa-user-check" style="color:var(--color-gold);"></i>
+                <span>ข้อมูลผู้ขาย / ติดต่อ</span>
+              </h3>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sellerName">ชื่อผู้ขาย / สมาชิก *</label>
+                  <input type="text" id="sellerName" class="custom-input" placeholder="ระบุชื่อของคุณ" value="คุณกิตติธัช" required>
+                </div>
+                <div class="form-group">
+                  <label for="sellerPhone">เบอร์โทรศัพท์ติดต่อ *</label>
+                  <input type="tel" id="sellerPhone" class="custom-input" placeholder="08X-XXX-XXXX" value="082-999-5555" required>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-gold btn-lg" style="width:100%; margin-top:18px;">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>บันทึกและลงประกาศในโชว์รูมทันที</span>
+            </button>
+
+          </form>
+        </div>
+
+        <!-- RIGHT: LIVE PREVIEW CARD -->
+        <div>
+          <div style="position:sticky; top:100px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+              <h3 style="font-size:1.2rem; color:#fff;">ตัวอย่างการแสดงผล (Live Preview)</h3>
+              <span style="font-size:0.75rem; color:var(--color-gold); background:rgba(212,175,55,0.1); padding:3px 10px; border-radius:12px; border:1px solid var(--border-gold);">
+                อัปเดตแบบเรียลไทม์
+              </span>
+            </div>
+
+            <div class="car-card" id="previewCard">
+              <div class="car-img-wrapper">
+                <img id="prevImg" src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=80" alt="Preview Car Image">
+                
+                <div class="car-card-badges">
+                  <span class="badge-pill gold" id="prevBadge1">ประกาศใหม่</span>
+                  <span class="badge-pill dark" id="prevBadge2">รถบ้านสภาพแท้</span>
+                </div>
+
+                <div class="card-fav-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+
+              <div class="car-info">
+                <div class="car-meta-top">
+                  <span class="car-brand-name" id="prevBrand">Porsche</span>
+                  <span class="car-year" id="prevYearMileage">2024 • 2,400 km</span>
+                </div>
+
+                <h3 class="car-title" id="prevName">Porsche 911 Turbo S</h3>
+
+                <div class="car-specs-grid">
+                  <div class="spec-cell">
+                    <span class="spec-cell-label"><i class="fa-solid fa-gauge-high"></i> กำลัง</span>
+                    <span class="spec-cell-val" id="prevHp">650 HP</span>
+                  </div>
+                  <div class="spec-cell">
+                    <span class="spec-cell-label"><i class="fa-solid fa-stopwatch"></i> 0-100</span>
+                    <span class="spec-cell-val" id="prevAcc">2.7s</span>
+                  </div>
+                  <div class="spec-cell">
+                    <span class="spec-cell-label"><i class="fa-solid fa-tachograph-digital"></i> ความเร็ว</span>
+                    <span class="spec-cell-val" id="prevTopSpeed">330 km/h</span>
+                  </div>
+                </div>
+
+                <div class="car-price-row">
+                  <span class="price-caption">ราคาจำหน่ายพิเศษ</span>
+                  <span class="price-number" id="prevPrice">฿ 24,500,000</span>
+                </div>
+
+                <div class="car-actions">
+                  <button class="btn btn-outline btn-sm" disabled style="opacity:0.8;">
+                    <i class="fa-solid fa-circle-info"></i> สเปกรถ
+                  </button>
+                  <button class="btn btn-gold btn-sm" disabled style="opacity:0.8;">
+                    <i class="fa-solid fa-phone"></i> สอบถามคันนี้
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Guarantee Notice -->
+            <div class="glass-panel" style="padding:18px; margin-top:20px; font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
+              <i class="fa-solid fa-shield-check" style="color:#2ed573; margin-right:6px;"></i>
+              ทุกคันที่ลงประกาศผ่านระบบจะได้รับการบันทึกและแสดงผลทันทีในหน้าคลังรถยนต์ (Showroom) พร้อมระบบติดต่อและรับจองออนไลน์
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= 3. FOOTER ================= -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo" style="margin-bottom:18px;">
+            <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+            <div class="logo-text">
+              <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+              <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+            </div>
+          </div>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.7;">
+            ศูนย์รวมซื้อขายซูเปอร์คาร์และยนตรกรรมหรูระดับพรีเมียม
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">เมนูลัด</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="cars.html">คลังรถทั้งหมด</a></li>
+            <li><a href="sell.html">ลงขายรถ</a></li>
+            <li><a href="contact.html">ติดต่อเรา</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">การช่วยเหลือ</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">ขั้นตอนการลงขาย</a></li>
+            <li><a href="contact.html">เกณฑ์การตรวจสภาพรถ</a></li>
+            <li><a href="contact.html">ค่าธรรมเนียมและบริการ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">ติดต่อทีมรับซื้อ</h4>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:8px;">
+            <i class="fa-solid fa-phone" style="color:var(--color-gold); width:20px;"></i> 02-999-8888 (ฝ่ายจัดซื้อ VIP)
+          </p>
+          <p style="color:var(--text-muted); font-size:0.88rem;">
+            <i class="fa-solid fa-envelope" style="color:var(--color-gold); width:20px;"></i> purchase@supercarp.com
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 SUPERCAR P. All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/cars-data.js"></script>
+  <script>
+    function updateLivePreview() {
+      const brand = document.getElementById("carBrand").value;
+      const name = document.getElementById("carName").value || "ชื่อรุ่นรถยนต์";
+      const year = document.getElementById("carYear").value || "2024";
+      const price = parseInt(document.getElementById("carPrice").value) || 0;
+      const mileage = document.getElementById("carMileage").value || "0 km";
+      const hp = document.getElementById("carHp").value || "0";
+      const acc = document.getElementById("carAcc").value || "-";
+      const topSpeed = document.getElementById("carTopSpeed").value || "-";
+      const img = document.getElementById("carImage").value;
+
+      document.getElementById("prevBrand").textContent = brand;
+      document.getElementById("prevName").textContent = name;
+      document.getElementById("prevYearMileage").textContent = `${year} • ${mileage}`;
+      document.getElementById("prevPrice").textContent = `฿ ${price.toLocaleString()}`;
+      document.getElementById("prevHp").textContent = `${hp} HP`;
+      document.getElementById("prevAcc").textContent = acc;
+      document.getElementById("prevTopSpeed").textContent = topSpeed;
+
+      if (img) {
+        document.getElementById("prevImg").src = img;
+      }
+    }
+
+    function setPresetImage(url) {
+      document.getElementById("carImage").value = url;
+      updateLivePreview();
+    }
+
+    function handleSellCarSubmit(e) {
+      e.preventDefault();
+
+      const carData = {
+        name: document.getElementById("carName").value.trim(),
+        brand: document.getElementById("carBrand").value,
+        type: document.getElementById("carType").value,
+        year: document.getElementById("carYear").value,
+        price: document.getElementById("carPrice").value,
+        mileage: document.getElementById("carMileage").value.trim(),
+        hp: document.getElementById("carHp").value,
+        acceleration: document.getElementById("carAcc").value.trim(),
+        topSpeed: document.getElementById("carTopSpeed").value.trim(),
+        engine: document.getElementById("carEngine").value.trim(),
+        transmission: document.getElementById("carTransmission").value.trim(),
+        color: document.getElementById("carColor").value.trim(),
+        image: document.getElementById("carImage").value.trim(),
+        description: document.getElementById("carDesc").value.trim(),
+        sellerName: document.getElementById("sellerName").value.trim(),
+        sellerPhone: document.getElementById("sellerPhone").value.trim()
+      };
+
+      const saved = saveNewCar(carData);
+      if (saved) {
+        showToast("ลงประกาศขายรถสำเร็จ! ระบบได้เพิ่มรถยนต์เข้าสู่โชว์รูมแล้ว", "success", 4000);
+        setTimeout(() => {
+          window.location.href = `car_details.html?id=${saved.id}`;
+        }, 1200);
+      } else {
+        showToast("เกิดข้อผิดพลาดในการบันทึกข้อมูล กรุณาลองใหม่อีกครั้ง", "error");
+      }
+    }
+  </script>
+</body>
+</html>

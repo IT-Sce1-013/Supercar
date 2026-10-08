@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUPERCAR P | คลังรายการรถหรู & ซูเปอร์คาร์</title>
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header" id="navbar">
+    <div class="container header-container">
+      <a href="../index.html" class="brand-logo">
+        <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+        <div class="logo-text">
+          <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+          <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="../index.html" class="nav-link">หน้าแรก</a>
+        <a href="../cars.html" class="nav-link active">คลังรถทั้งหมด</a>
+        <a href="../sell.html" class="nav-link">ลงขายรถ</a>
+        <a href="../contact.html" class="nav-link">ติดต่อเรา</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="header-tools">
+        <a href="../sell.html" class="btn btn-outline btn-sm" style="display:none; @media(min-width:768px){display:inline-flex;}">
+          <i class="fa-solid fa-plus"></i>
+          <span>ลงขายรถ</span>
+        </a>
+
+        <button class="wishlist-btn" id="wishlistToggle" title="รถที่ถูกใจ (Favorites)">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge" id="wishlistCount">0</span>
+        </button>
+
+        <!-- User Authentication State Button -->
+        <div id="navbarAuth"></div>
+
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Showroom / Car Listings Section -->
+  <main class="showroom-section" id="showroom">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header text-center" style="text-align:center;">
+        <span class="sub-heading">EXCLUSIVE COLLECTION</span>
+        <h1 class="main-heading">รายการซูเปอร์คาร์และรถยนต์หรู</h1>
+        <p class="section-desc">คัดสรรยนตรกรรมระดับพรีเมียม สภาพสมบูรณ์แบบ พร้อมส่งมอบทันที</p>
+        <div class="gold-divider"></div>
+      </div>
+
+      <!-- Search & Filters Container -->
+      <div class="filter-wrapper glass-panel">
+        <!-- Search bar & Sort -->
+        <div class="filter-top-row">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="ค้นหาชื่อรุ่น, แบรนด์ เช่น Ferrari, Porsche, GT-R, Koenigsegg...">
+            <button class="clear-search-btn" id="clearSearch" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <label for="sortSelect" style="font-size:0.85rem; color:var(--text-muted); font-weight:600;"><i class="fa-solid fa-arrow-down-short-wide"></i> เรียงตาม:</label>
+              <select id="sortSelect" class="custom-select" style="width:auto; padding:8px 14px;">
+                <option value="featured">แนะนำ (Featured)</option>
+                <option value="price-desc">ราคา: สูงไปต่ำ</option>
+                <option value="price-asc">ราคา: ต่ำไปสูง</option>
+                <option value="hp-desc">แรงม้า: สูงสุด</option>
+                <option value="year-desc">ปีใหม่ล่าสุด</option>
+              </select>
+            </div>
+
+            <div class="view-mode-buttons">
+              <button class="view-btn active" id="viewGrid" title="มุมมองตาราง"><i class="fa-solid fa-grip"></i></button>
+              <button class="view-btn" id="viewList" title="มุมมองรายการ"><i class="fa-solid fa-list"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brand Category Filter Pills -->
+        <div class="filter-pills-row">
+          <span class="filter-label"><i class="fa-solid fa-tags"></i> แบรนด์:</span>
+          <div class="filter-pills" id="brandPills">
+            <button class="pill-btn active" data-brand="all">ทั้งหมด (All)</button>
+            <button class="pill-btn" data-brand="Ferrari">Ferrari</button>
+            <button class="pill-btn" data-brand="Porsche">Porsche</button>
+            <button class="pill-btn" data-brand="Nissan">Nissan</button>
+            <button class="pill-btn" data-brand="Koenigsegg">Koenigsegg</button>
+            <button class="pill-btn" data-brand="Lamborghini">Lamborghini</button>
+            <button class="pill-btn" data-brand="McLaren">McLaren</button>
+            <button class="pill-btn" data-brand="Rolls-Royce">Rolls-Royce</button>
+            <button class="pill-btn" data-brand="Aston Martin">Aston Martin</button>
+            <button class="pill-btn" data-brand="Honda">Honda</button>
+          </div>
+        </div>
+
+        <!-- Body Type Filter Pills -->
+        <div class="filter-pills-row">
+          <span class="filter-label"><i class="fa-solid fa-car-side"></i> ประเภท:</span>
+          <div class="filter-pills" id="typePills">
+            <button class="pill-btn active" data-type="all">ทุกประเภท</button>
+            <button class="pill-btn" data-type="Hypercar">Hypercar</button>
+            <button class="pill-btn" data-type="Supercar">Supercar</button>
+            <button class="pill-btn" data-type="Track-Focused">Track-Focused</button>
+            <button class="pill-btn" data-type="Ultra-Luxury">Ultra-Luxury</button>
+            <button class="pill-btn" data-type="GT">Grand Tourer</button>
+            <button class="pill-btn" data-type="Sedan">Sedan</button>
+          </div>
+        </div>
+
+        <!-- Active Results Meta -->
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid rgba(255,255,255,0.06); font-size:0.88rem;">
+          <span style="color:var(--text-muted);">
+            พบยนตรกรรมทั้งหมด <strong id="carCount" style="color:var(--color-gold-light);">0</strong> คัน
+          </span>
+          <button id="resetFiltersBtn" class="text-button" style="background:none; border:none; color:var(--text-dim); cursor:pointer; font-size:0.85rem;">
+            <i class="fa-solid fa-rotate-left"></i> ล้างตัวกรองทั้งหมด
+          </button>
+        </div>
+      </div>
+
+      <!-- Car Grid Showcase -->
+      <div class="cars-grid" id="carsContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- No Results Placeholder -->
+      <div class="no-results glass-panel" id="noResults" style="display: none; text-align:center; padding:50px 20px;">
+        <i class="fa-solid fa-car-burst" style="font-size:3rem; color:var(--text-dim); margin-bottom:16px;"></i>
+        <h3 style="font-size:1.4rem; margin-bottom:8px;">ไม่พบรายการรถที่ตรงกับเงื่อนไขการค้นหา</h3>
+        <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:20px;">กรุณาลองเปลี่ยนคำค้นหา หรือรีเซ็ตตัวกรองเพื่อค้นหาใหม่อีกครั้ง</p>
+        <button class="btn btn-gold" onclick="document.getElementById('resetFiltersBtn').click()">ล้างตัวกรองและดูรถทั้งหมด</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="carModal">
+    <div class="modal-box" style="max-width:850px;">
+      <button class="modal-close-btn" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+      <div id="modalBody">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Unified Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo" style="margin-bottom:18px;">
+            <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+            <div class="logo-text">
+              <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+              <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+            </div>
+          </div>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.7;">
+            ศูนย์รวมซื้อขายซูเปอร์คาร์และยนตรกรรมหรูระดับพรีเมียม
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">เมนูลัด</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">หน้าแรก</a></li>
+            <li><a href="../cars.html">คลังรถทั้งหมด</a></li>
+            <li><a href="../sell.html">ลงขายรถ</a></li>
+            <li><a href="../contact.html">ติดต่อเรา</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">บริการของเรา</h4>
+          <ul class="footer-links">
+            <li><a href="../cars.html">ซื้อรถซูเปอร์คาร์</a></li>
+            <li><a href="../sell.html">รับซื้อและฝากขาย</a></li>
+            <li><a href="../contact.html">จัดไฟแนนซ์รถยนต์</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">ติดต่อโชว์รูม</h4>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:8px;">
+            <i class="fa-solid fa-phone" style="color:var(--color-gold); width:20px;"></i> 02-999-8888
+          </p>
+          <p style="color:var(--text-muted); font-size:0.88rem;">
+            <i class="fa-solid fa-envelope" style="color:var(--color-gold); width:20px;"></i> contact@supercarp.com
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 SUPERCAR P. All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/cars-data.js"></script>
+  <script src="list.js"></script>
+</body>
+</html>

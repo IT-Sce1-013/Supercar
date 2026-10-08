@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รายละเอียดรถยนต์ | SUPERCAR P</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Unified Master Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="padding-bottom: 90px;">
+
+  <!-- ================= 1. HEADER / NAVIGATION ================= -->
+  <header class="main-header" id="navbar">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+        <div class="logo-text">
+          <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+          <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">หน้าแรก</a>
+        <a href="cars.html" class="nav-link active">คลังรถทั้งหมด</a>
+        <a href="sell.html" class="nav-link">ลงขายรถ</a>
+        <a href="contact.html" class="nav-link">ติดต่อเรา</a>
+      </nav>
+
+      <!-- Header Tools -->
+      <div class="header-tools">
+        <a href="sell.html" class="btn btn-outline btn-sm" style="display:none; @media(min-width:768px){display:inline-flex;}">
+          <i class="fa-solid fa-plus"></i>
+          <span>ลงขายรถ</span>
+        </a>
+
+        <a href="cars.html?view=wishlist" class="wishlist-btn" id="wishlistToggle" title="รถที่ถูกใจ (Wishlist)">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge" id="wishlistCount">0</span>
+        </a>
+
+        <!-- User Authentication State Button -->
+        <div id="navbarAuth"></div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 2. BREADCRUMB ================= -->
+  <div class="container" style="padding-top: 24px;">
+    <div class="breadcrumb-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i> หน้าแรก</a>
+      <span>/</span>
+      <a href="cars.html">คลังรถยนต์</a>
+      <span>/</span>
+      <span id="breadcrumbCarName" style="color:var(--color-gold);">กำลังโหลด...</span>
+    </div>
+  </div>
+
+  <!-- ================= 3. CAR DETAILS MAIN SECTION ================= -->
+  <main class="container detail-main">
+    <div class="detail-grid">
+
+      <!-- LEFT COLUMN: IMAGE GALLERY & CALCULATOR -->
+      <div>
+        <div class="gallery-container">
+          <div class="main-image-viewport">
+            <img id="mainImage" src="" alt="Car Image">
+            
+            <button class="gallery-nav-btn prev" onclick="prevImage()" aria-label="Previous Image">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="gallery-nav-btn next" onclick="nextImage()" aria-label="Next Image">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <div style="position:absolute; bottom:14px; right:14px; background:rgba(0,0,0,0.75); color:#fff; font-size:0.75rem; padding:4px 10px; border-radius:20px; backdrop-filter:blur(6px);">
+              <span id="currentImgIdx">1</span> / <span id="totalImgCount">5</span>
+            </div>
+          </div>
+
+          <!-- Thumbnails -->
+          <div class="thumbnails-row" id="thumbnailsContainer">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+
+        <!-- Loan & Installment Calculator -->
+        <div class="calculator-card glass-panel">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <h3 style="font-size:1.25rem; display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-calculator" style="color:var(--color-gold);"></i>
+              <span>โปรแกรมคำนวณค่างวดสินเชื่อเบื้องต้น</span>
+            </h3>
+            <span style="font-size:0.78rem; color:var(--text-dim);">ดอกเบี้ยเริ่มต้น 2.79% ต่อปี</span>
+          </div>
+
+          <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.6;">
+            ประเมินยอดผ่อนต่อเดือนโดยประมาณ สามารถปรับเปลี่ยนเงินดาวน์และระยะเวลาผ่อนได้ตามต้องการ
+          </p>
+
+          <div class="calc-inputs-grid">
+            <div class="form-group">
+              <label>เงินดาวน์ (%)</label>
+              <select id="calcDownPercent" class="custom-select" onchange="calculateInstallment()">
+                <option value="0.15">15%</option>
+                <option value="0.20" selected>20% (แนะนำ)</option>
+                <option value="0.25">25%</option>
+                <option value="0.30">30%</option>
+                <option value="0.40">40%</option>
+                <option value="0.50">50%</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>ระยะเวลาผ่อน (เดือน)</label>
+              <select id="calcPeriodMonths" class="custom-select" onchange="calculateInstallment()">
+                <option value="36">36 เดือน (3 ปี)</option>
+                <option value="48" selected>48 เดือน (4 ปี)</option>
+                <option value="60">60 เดือน (5 ปี)</option>
+                <option value="72">72 เดือน (6 ปี)</option>
+                <option value="84">84 เดือน (7 ปี)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>อัตราดอกเบี้ยต่อปี (%)</label>
+              <select id="calcInterestRate" class="custom-select" onchange="calculateInstallment()">
+                <option value="0.0259">2.59% (พิเศษ)</option>
+                <option value="0.0279" selected>2.79% (มาตรฐาน)</option>
+                <option value="0.0299">2.99%</option>
+                <option value="0.0329">3.29%</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="calc-result-box">
+            <span style="font-size:0.82rem; color:var(--text-muted); display:block; margin-bottom:4px;">
+              ค่างวดผ่อนชำระโดยประมาณ
+            </span>
+            <div class="calc-result-amount" id="calcMonthlyPayment">฿ 0</div>
+            <span style="font-size:0.75rem; color:var(--text-dim); display:block; margin-top:4px;">
+              * ยอดผ่อนจริงขึ้นอยู่กับการพิจารณาและเงื่อนไขของสถาบันการเงินผู้ปล่อยสินเชื่อ
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: SPECS, PRICING & SELLER INFO -->
+      <div class="detail-info-card">
+        
+        <!-- Header & Wishlist -->
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+            <div>
+              <span class="sub-heading" id="carBrandTypeBadge">FERRARI • HYPERCAR</span>
+              <h1 id="carNameTitle" style="font-size:2.2rem; margin:6px 0 10px; line-height:1.2;">Ferrari F80</h1>
+            </div>
+            
+            <button class="card-fav-btn" id="detailFavBtn" style="position:static; width:48px; height:48px;" onclick="toggleDetailFav()">
+              <i class="fa-regular fa-heart" style="font-size:1.3rem;"></i>
+            </button>
+          </div>
+
+          <div style="display:flex; align-items:baseline; gap:12px; margin:10px 0 16px;">
+            <span style="font-size:0.85rem; color:var(--text-dim);">ราคาจำหน่าย:</span>
+            <span id="carPriceNumber" class="price-number" style="font-size:2.4rem;">฿ 135,000,000</span>
+          </div>
+
+          <!-- Quick Badges -->
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px;" id="carBadgesContainer">
+            <!-- Badges -->
+          </div>
+
+          <p id="carDescriptionText" style="color:var(--text-muted); font-size:0.95rem; line-height:1.7;">
+            ม้าลำพองตัวท็อปเจเนอเรชันใหม่ล่าสุด ถ่ายทอดดีเอ็นเอแชมป์เลอม็องส์ 24 ชั่วโมง 499P สู่รถถนนที่แรงและล้ำสมัยที่สุด
+          </p>
+        </div>
+
+        <!-- 4 Key Performance Highlights -->
+        <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; background:rgba(255,255,255,0.02); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-glass);">
+          <div style="text-align:center;">
+            <small style="color:var(--text-muted); font-size:0.75rem; display:block;">กำลังสูงสุด</small>
+            <b id="specHp" style="color:var(--color-gold-light); font-size:1.2rem;">1,200 HP</b>
+          </div>
+          <div style="text-align:center;">
+            <small style="color:var(--text-muted); font-size:0.75rem; display:block;">0-100 km/h</small>
+            <b id="specAcc" style="color:#fff; font-size:1.2rem;">2.15s</b>
+          </div>
+          <div style="text-align:center;">
+            <small style="color:var(--text-muted); font-size:0.75rem; display:block;">ความเร็วสูงสุด</small>
+            <b id="specTopSpeed" style="color:#fff; font-size:1.2rem;">350 km/h</b>
+          </div>
+          <div style="text-align:center;">
+            <small style="color:var(--text-muted); font-size:0.75rem; display:block;">ระยะทางวิ่ง</small>
+            <b id="specMileage" style="color:var(--color-gold-light); font-size:1.2rem;">50 km</b>
+          </div>
+        </div>
+
+        <!-- Technical Specs Table -->
+        <div class="glass-panel" style="padding:22px;">
+          <h3 style="font-size:1.15rem; color:#fff; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+            <i class="fa-solid fa-list-check" style="color:var(--color-gold);"></i>
+            <span>ข้อมูลจำเพาะเชิงลึก (Specifications)</span>
+          </h3>
+          <table class="detail-specs-table">
+            <tr><td>ยี่ห้อ / รุ่น</td><td id="tableModel">-</td></tr>
+            <tr><td>ปีที่ผลิต</td><td id="tableYear">-</td></tr>
+            <tr><td>เครื่องยนต์</td><td id="tableEngine">-</td></tr>
+            <tr><td>ระบบเกียร์</td><td id="tableTransmission">-</td></tr>
+            <tr><td>สีตัวถังภายนอก</td><td id="tableColor">-</td></tr>
+            <tr><td>สถานะตัวรถ</td><td id="tableStatus" style="color:#2ed573;">-</td></tr>
+            <tr><td>การตรวจเช็กมาตรฐาน</td><td style="color:var(--color-gold-light);"><i class="fa-solid fa-circle-check"></i> ผ่านการตรวจ 300+ จุด</td></tr>
+          </table>
+        </div>
+
+        <!-- Seller Card -->
+        <div class="seller-card">
+          <div class="seller-header">
+            <img id="sellerAvatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80" alt="Seller" class="seller-avatar">
+            <div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <h4 id="sellerName" style="font-size:1.05rem; color:#fff;">Supercar P Official</h4>
+                <span style="background:rgba(46,213,115,0.15); color:#2ed573; font-size:0.72rem; padding:2px 8px; border-radius:10px; font-weight:700;">
+                  <i class="fa-solid fa-shield-check"></i> ยืนยันตัวตนแล้ว
+                </span>
+              </div>
+              <p style="font-size:0.8rem; color:var(--text-dim); margin-top:2px;">ผู้จำหน่ายระดับ VVIP • โชว์รูมพร้อมส่งมอบ</p>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <button onclick="openModal('contactModal')" class="btn btn-outline btn-sm">
+              <i class="fa-regular fa-comment-dots"></i> ส่งข้อความ
+            </button>
+            <a id="sellerPhoneLink" href="tel:029998888" class="btn btn-gold btn-sm">
+              <i class="fa-solid fa-phone"></i> โทรติดต่อ
+            </a>
+          </div>
+        </div>
+
+        <!-- Action CTAs -->
+        <div style="display:flex; gap:14px; margin-top:10px;">
+          <button onclick="openModal('appointmentModal')" class="btn btn-outline" style="flex:1;">
+            <i class="fa-regular fa-calendar-check"></i> นัดดูรถ / ทดลองขับ
+          </button>
+          <button onclick="openModal('bookingModal')" class="btn btn-gold" style="flex:1.2;">
+            <i class="fa-solid fa-car"></i> จองรถยนต์ออนไลน์
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Related Vehicles Carousel -->
+    <div style="margin-top:70px;">
+      <div class="section-header">
+        <span class="sub-heading">SIMILAR EXCLUSIVES</span>
+        <h2 style="font-size:1.8rem;">ยนตรกรรมที่คุณอาจสนใจ</h2>
+        <div class="gold-divider" style="margin-left:0;"></div>
+      </div>
+
+      <div class="cars-grid" id="relatedCarsContainer">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= 4. STICKY BOTTOM ACTION BAR ================= -->
+  <div class="sticky-bottom-bar">
+    <div class="sticky-bar-inner">
+      <div>
+        <div id="stickyCarTitle" style="font-size:0.95rem; font-weight:700; color:#fff;">Ferrari F80</div>
+        <div id="stickyCarPrice" style="font-family:var(--font-en); font-size:1.4rem; font-weight:800; color:var(--color-gold-light);">฿ 135,000,000</div>
+      </div>
+
+      <div style="display:flex; gap:12px;">
+        <button onclick="openModal('appointmentModal')" class="btn btn-outline btn-sm">
+          <i class="fa-regular fa-calendar-check"></i> นัดดูรถ
+        </button>
+        <button onclick="openModal('bookingModal')" class="btn btn-gold btn-sm">
+          <i class="fa-solid fa-car"></i> จองรถคันนี้
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 5. MODALS ================= -->
+
+  <!-- Modal 1: Appointment (นัดดูรถ / ทดลองขับ) -->
+  <div class="modal-overlay" id="appointmentModal">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="closeModal('appointmentModal')"><i class="fa-solid fa-xmark"></i></button>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+        <div style="width:44px; height:44px; border-radius:12px; background:var(--gold-gradient); display:flex; align-items:center; justify-content:center; color:#000; font-size:1.3rem;">
+          <i class="fa-regular fa-calendar-check"></i>
+        </div>
+        <div>
+          <h3 style="font-size:1.3rem; color:#fff;">นัดหมายดูรถยนต์ / ทดลองขับ</h3>
+          <p id="modalCarSubtitle1" style="font-size:0.82rem; color:var(--text-muted);">-</p>
+        </div>
+      </div>
+
+      <form onsubmit="handleAppointmentSubmit(event)">
+        <div class="form-group">
+          <label>ชื่อ-นามสกุลของคุณ</label>
+          <input type="text" id="appUserName" class="custom-input" placeholder="ระบุชื่อจริงและนามสกุล" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>เบอร์โทรศัพท์ติดต่อ</label>
+            <input type="tel" id="appUserPhone" class="custom-input" placeholder="08X-XXX-XXXX" required>
+          </div>
+          <div class="form-group">
+            <label>LINE ID (ถ้ามี)</label>
+            <input type="text" id="appUserLine" class="custom-input" placeholder="@yourline">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>วันที่ต้องการนัดหมาย</label>
+            <input type="date" id="appDate" class="custom-input" required>
+          </div>
+          <div class="form-group">
+            <label>ช่วงเวลาที่สะดวก</label>
+            <select id="appTime" class="custom-select">
+              <option>ช่วงเช้า (09:30 - 12:00 น.)</option>
+              <option selected>ช่วงบ่าย (13:00 - 16:00 น.)</option>
+              <option>ช่วงเย็น (16:00 - 18:30 น.)</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%; margin-top:10px;">
+          <i class="fa-solid fa-check"></i> ยืนยันการนัดหมาย
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Booking (จองรถยนต์ออนไลน์) -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="closeModal('bookingModal')"><i class="fa-solid fa-xmark"></i></button>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+        <div style="width:44px; height:44px; border-radius:12px; background:var(--gold-gradient); display:flex; align-items:center; justify-content:center; color:#000; font-size:1.3rem;">
+          <i class="fa-solid fa-car"></i>
+        </div>
+        <div>
+          <h3 style="font-size:1.3rem; color:#fff;">จองรถยนต์ออนไลน์ (Online Booking)</h3>
+          <p style="font-size:0.82rem; color:var(--color-gold-light);">การันตีคืนเงินมัดจำ 100% หากไม่ผ่านไฟแนนซ์</p>
+        </div>
+      </div>
+
+      <div style="background:rgba(212,175,55,0.08); border:1px solid var(--border-gold); padding:16px; border-radius:12px; margin-bottom:18px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.9rem;">
+          <span style="color:var(--text-muted);">รถยนต์ที่จอง:</span>
+          <span id="bookingCarName" style="font-weight:700; color:#fff;">-</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.9rem;">
+          <span style="color:var(--text-muted);">ราคาจำหน่าย:</span>
+          <span id="bookingCarPrice" style="font-weight:700; color:var(--color-gold);">-</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding-top:8px; border-top:1px solid rgba(255,255,255,0.08); font-size:1.05rem;">
+          <span style="color:#fff; font-weight:600;">ค่ามัดจำจองสิทธิ์:</span>
+          <span style="font-weight:800; color:#2ed573;">฿ 50,000</span>
+        </div>
+      </div>
+
+      <form onsubmit="handleBookingSubmit(event)">
+        <div class="form-group">
+          <label>ชื่อ-นามสกุล (ตรงตามบัตรประชาชน)</label>
+          <input type="text" class="custom-input" placeholder="ระบุชื่อ-นามสกุล" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>เบอร์โทรศัพท์</label>
+            <input type="tel" class="custom-input" placeholder="08X-XXX-XXXX" required>
+          </div>
+          <div class="form-group">
+            <label>อีเมล</label>
+            <input type="email" class="custom-input" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%; margin-top:10px;">
+          <i class="fa-solid fa-lock"></i> ดำเนินการชำระมัดจำจองสิทธิ์
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: Contact Seller (ติดต่อผู้ขาย) -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="closeModal('contactModal')"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="font-size:1.3rem; color:#fff; margin-bottom:6px;">ส่งข้อความสอบถามผู้ขาย</h3>
+      <p id="contactCarSubtitle" style="font-size:0.85rem; color:var(--text-muted); margin-bottom:18px;">-</p>
+
+      <form onsubmit="handleContactSubmit(event)">
+        <div class="form-group">
+          <label>ชื่อของคุณ</label>
+          <input type="text" class="custom-input" placeholder="ระบุชื่อของคุณ" required>
+        </div>
+        <div class="form-group">
+          <label>เบอร์โทรศัพท์</label>
+          <input type="tel" class="custom-input" placeholder="08X-XXX-XXXX" required>
+        </div>
+        <div class="form-group">
+          <label>ข้อความสอบถาม</label>
+          <textarea id="contactMessageInput" class="custom-textarea" placeholder="ระบุข้อความสอบถาม..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%;">
+          <i class="fa-solid fa-paper-plane"></i> ส่งข้อความทันที
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/cars-data.js"></script>
+  <script>
+    let currentCar = null;
+    let currentGallery = [];
+    let currentImgIdx = 0;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Get car ID from URL parameter ?id=...
+      const params = new URLSearchParams(window.location.search);
+      const carId = parseInt(params.get("id")) || 1;
+
+      currentCar = CAR_DATABASE.find(c => c.id === carId) || CAR_DATABASE[0];
+      currentGallery = currentCar.gallery && currentCar.gallery.length > 0 ? currentCar.gallery : [currentCar.image];
+
+      populateCarDetails();
+      renderThumbnails();
+      calculateInstallment();
+      renderRelatedCars();
+
+      // Check if URL has ?action=booking
+      if (params.get("action") === "booking") {
+        openModal("bookingModal");
+      }
+    });
+
+    function populateCarDetails() {
+      if (!currentCar) return;
+
+      document.title = `${currentCar.name} (${currentCar.year}) | SUPERCAR P`;
+      document.getElementById("breadcrumbCarName").textContent = currentCar.name;
+      document.getElementById("carBrandTypeBadge").textContent = `${currentCar.brand.toUpperCase()} • ${currentCar.type.toUpperCase()}`;
+      document.getElementById("carNameTitle").textContent = currentCar.name;
+      document.getElementById("carPriceNumber").textContent = `฿ ${currentCar.priceDisplay}`;
+      document.getElementById("carDescriptionText").textContent = currentCar.description;
+
+      document.getElementById("specHp").textContent = `${currentCar.hp} HP`;
+      document.getElementById("specAcc").textContent = currentCar.acceleration;
+      document.getElementById("specTopSpeed").textContent = currentCar.topSpeed;
+      document.getElementById("specMileage").textContent = currentCar.mileage;
+
+      document.getElementById("tableModel").textContent = currentCar.name;
+      document.getElementById("tableYear").textContent = currentCar.year;
+      document.getElementById("tableEngine").textContent = currentCar.engine;
+      document.getElementById("tableTransmission").textContent = currentCar.transmission;
+      document.getElementById("tableColor").textContent = currentCar.color;
+      document.getElementById("tableStatus").textContent = currentCar.status;
+
+      // Badges
+      const badgesContainer = document.getElementById("carBadgesContainer");
+      badgesContainer.innerHTML = currentCar.badges.map((b, i) => `
+        <span class="badge-pill ${i === 0 ? 'gold' : 'dark'}">${b}</span>
+      `).join('');
+
+      // Sticky Bar
+      document.getElementById("stickyCarTitle").textContent = currentCar.name;
+      document.getElementById("stickyCarPrice").textContent = `฿ ${currentCar.priceDisplay}`;
+
+      // Seller
+      if (currentCar.seller) {
+        document.getElementById("sellerName").textContent = currentCar.seller.name;
+        document.getElementById("sellerAvatar").src = currentCar.seller.avatar;
+        document.getElementById("sellerPhoneLink").href = `tel:${currentCar.seller.phone.replace(/[^0-9]/g, '')}`;
+        document.getElementById("sellerPhoneLink").innerHTML = `<i class="fa-solid fa-phone"></i> ${currentCar.seller.phone}`;
+      }
+
+      // Modals text
+      document.getElementById("modalCarSubtitle1").textContent = `${currentCar.name} (฿ ${currentCar.priceDisplay})`;
+      document.getElementById("bookingCarName").textContent = currentCar.name;
+      document.getElementById("bookingCarPrice").textContent = `฿ ${currentCar.priceDisplay}`;
+      document.getElementById("contactCarSubtitle").textContent = `สนใจรถยนต์: ${currentCar.name}`;
+      document.getElementById("contactMessageInput").value = `สวัสดีครับ สนใจสอบถามข้อมูลรถยนต์ ${currentCar.name} (รหัส #${currentCar.id}) ครับ`;
+
+      // Main image
+      setImage(0);
+
+      // Wishlist button state
+      updateDetailFavBtn();
+    }
+
+    function renderThumbnails() {
+      const container = document.getElementById("thumbnailsContainer");
+      container.innerHTML = currentGallery.map((imgSrc, idx) => `
+        <div class="thumb-item ${idx === 0 ? 'active' : ''}" onclick="setImage(${idx})">
+          <img src="${imgSrc}" alt="Thumbnail ${idx + 1}">
+        </div>
+      `).join('');
+    }
+
+    function setImage(idx) {
+      currentImgIdx = idx;
+      const mainImg = document.getElementById("mainImage");
+      mainImg.style.opacity = '0.3';
+      setTimeout(() => {
+        mainImg.src = currentGallery[currentImgIdx];
+        mainImg.style.opacity = '1';
+      }, 150);
+
+      document.getElementById("currentImgIdx").textContent = currentImgIdx + 1;
+      document.getElementById("totalImgCount").textContent = currentGallery.length;
+
+      document.querySelectorAll(".thumb-item").forEach((thumb, i) => {
+        thumb.classList.toggle("active", i === currentImgIdx);
+      });
+    }
+
+    function nextImage() {
+      let nextIdx = (currentImgIdx + 1) % currentGallery.length;
+      setImage(nextIdx);
+    }
+
+    function prevImage() {
+      let prevIdx = (currentImgIdx - 1 + currentGallery.length) % currentGallery.length;
+      setImage(prevIdx);
+    }
+
+    // Installment Calculator
+    function calculateInstallment() {
+      if (!currentCar) return;
+
+      const price = currentCar.price;
+      const downPercent = parseFloat(document.getElementById("calcDownPercent").value);
+      const months = parseInt(document.getElementById("calcPeriodMonths").value);
+      const annualRate = parseFloat(document.getElementById("calcInterestRate").value);
+
+      const downPayment = price * downPercent;
+      const loanAmount = price - downPayment;
+      const years = months / 12;
+      const totalInterest = loanAmount * annualRate * years;
+      const totalLoanWithInterest = loanAmount + totalInterest;
+      const monthlyPayment = Math.round(totalLoanWithInterest / months);
+
+      document.getElementById("calcMonthlyPayment").textContent = `฿ ${monthlyPayment.toLocaleString()} / เดือน`;
+    }
+
+    // Wishlist Toggle for detail page
+    function toggleDetailFav() {
+      if (!currentCar) return;
+      toggleWishlist(currentCar.id);
+      updateDetailFavBtn();
+    }
+
+    function updateDetailFavBtn() {
+      const btn = document.getElementById("detailFavBtn");
+      const wishlist = getWishlist();
+      const isFav = wishlist.includes(currentCar.id);
+      btn.classList.toggle("active", isFav);
+      const icon = btn.querySelector("i");
+      if (icon) {
+        icon.className = isFav ? "fa-solid fa-heart" : "fa-regular fa-heart";
+        icon.style.color = isFav ? "#ff4757" : "";
+      }
+    }
+
+    // Related Cars
+    function renderRelatedCars() {
+      const container = document.getElementById("relatedCarsContainer");
+      const related = CAR_DATABASE.filter(c => c.id !== currentCar.id).slice(0, 3);
+      const wishlist = getWishlist();
+
+      container.innerHTML = related.map(car => {
+        const isFav = wishlist.includes(car.id);
+        return `
+          <div class="car-card">
+            <div class="car-img-wrapper">
+              <img src="${car.image}" alt="${car.name}">
+              <div class="car-card-badges">
+                <span class="badge-pill gold">${car.brand}</span>
+              </div>
+              <button class="card-fav-btn ${isFav ? 'active' : ''}" 
+                      data-wishlist-id="${car.id}"
+                      onclick="toggleWishlist(${car.id}, event)">
+                <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart" ${isFav ? 'style="color:#ff4757;"' : ''}></i>
+              </button>
+            </div>
+            <div class="car-info">
+              <span class="car-brand-name">${car.brand} • ${car.year}</span>
+              <h3 class="car-title">${car.name}</h3>
+              <div class="car-price-row">
+                <span class="price-caption">ราคาจำหน่าย</span>
+                <span class="price-number">฿ ${car.priceDisplay}</span>
+              </div>
+              <div class="car-actions">
+                <a href="car_details.html?id=${car.id}" class="btn btn-outline btn-sm" style="flex:1;">
+                  ดูรายละเอียด
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Modal Handlers
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    function handleAppointmentSubmit(e) {
+      e.preventDefault();
+      closeModal('appointmentModal');
+      showToast("ส่งคำขอนัดหมายเรียบร้อยแล้ว ทีมงาน VIP Concierge จะติดต่อกลับเพื่อยืนยันเวลา", "success", 5000);
+    }
+
+    function handleBookingSubmit(e) {
+      e.preventDefault();
+      closeModal('bookingModal');
+      showToast("ระบบบันทึกการจองสิทธิ์เรียบร้อยแล้ว! เจ้าหน้าที่จะติดต่อเพื่อดำเนินการด้านเอกสารและใบเสร็จ", "success", 6000);
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      closeModal('contactModal');
+      showToast("ส่งข้อความถึงผู้ขายเรียบร้อยแล้ว จะได้รับการตอบกลับโดยเร็วที่สุด", "success", 5000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUPERCAR P | ศูนย์รวมซื้อขายซูเปอร์คาร์และรถยนต์หรูระดับพรีเมียม</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Unified Master Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= 1. HEADER / NAVIGATION ================= -->
+  <header class="main-header" id="navbar">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+        <div class="logo-text">
+          <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+          <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link active">หน้าแรก</a>
+        <a href="cars.html" class="nav-link">คลังรถทั้งหมด</a>
+        <a href="sell.html" class="nav-link">ลงขายรถ</a>
+        <a href="contact.html" class="nav-link">ติดต่อเรา</a>
+      </nav>
+
+      <!-- Header Tools -->
+      <div class="header-tools">
+        <a href="sell.html" class="btn btn-outline btn-sm" style="display:none; @media(min-width:768px){display:inline-flex;}">
+          <i class="fa-solid fa-plus"></i>
+          <span>ลงขายรถ</span>
+        </a>
+
+        <a href="cars.html?view=wishlist" class="wishlist-btn" id="wishlistToggle" title="รถที่ถูกใจ (Wishlist)">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge" id="wishlistCount">0</span>
+        </a>
+
+        <!-- User Authentication State Button -->
+        <div id="navbarAuth"></div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 2. HERO SHOWCASE SECTION ================= -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <i class="fa-solid fa-sparkles"></i>
+            <span>EXOTIC & PRESTIGE CAR DEALERSHIP</span>
+          </div>
+
+          <h1 class="hero-title">
+            นิยามใหม่แห่ง<br>
+            <span class="accent-gold">ยนตรกรรมระดับโลก</span>
+          </h1>
+
+          <p class="hero-desc">
+            ศูนย์รวมซื้อขาย แลกเปลี่ยนซูเปอร์คาร์และรถยนต์หรูมือสองสภาพสมบูรณ์แบบ คัดสรรเฉพาะรถประวัติแท้ ตรวจสอบเข้มงวดกว่า 300 จุด พร้อมส่งมอบความเหนือระดับถึงมือคุณ
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="cars.html" class="btn btn-gold btn-lg">
+              <i class="fa-solid fa-compass"></i>
+              <span>ค้นหาคลังรถทั้งหมด</span>
+            </a>
+            <a href="sell.html" class="btn btn-outline btn-lg">
+              <i class="fa-solid fa-hand-holding-dollar"></i>
+              <span>ประเมินราคา / ขายรถ</span>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat-item">
+              <div class="hero-stat-val">100%</div>
+              <div class="hero-stat-label">รับประกันประวัติแท้</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-val">300+</div>
+              <div class="hero-stat-label">จุดตรวจเช็กมาตรฐาน</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-val">24/7</div>
+              <div class="hero-stat-label">บริการดูแลฉุกเฉิน VIP</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-img-box">
+            <img src="pic/F80.png" alt="Ferrari F80 Hero Showcase" id="heroCarImage">
+          </div>
+          <div class="hero-float-card">
+            <span class="hero-float-title">HIGHLIGHT OF THE MONTH</span>
+            <div style="font-weight:700; font-size:1.1rem; color:#fff; margin:2px 0;">Ferrari F80 Limited</div>
+            <div class="hero-float-price">฿ 135,000,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3. FAST SEARCH & FILTER WIDGET ================= -->
+  <section class="search-widget-section">
+    <div class="container">
+      <div class="search-widget glass-panel">
+        <form onsubmit="handleFastSearch(event)" class="search-form-grid">
+          
+          <div class="input-with-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="quickSearchQuery" class="custom-input" placeholder="พิมพ์ชื่อรุ่น, เครื่องยนต์ หรือคำค้นหา เช่น F80, GT3, R35...">
+          </div>
+
+          <div class="input-with-icon">
+            <i class="fa-solid fa-tag"></i>
+            <select id="quickBrandSelect" class="custom-select">
+              <option value="all">เลือกแบรนด์รถยนต์ทั้งหมด</option>
+              <option value="Ferrari">Ferrari (เฟอร์รารี่)</option>
+              <option value="Porsche">Porsche (ปอร์เช่)</option>
+              <option value="Nissan">Nissan GT-R (นิสสัน)</option>
+              <option value="Koenigsegg">Koenigsegg (เคอนิกเสกข์)</option>
+              <option value="Lamborghini">Lamborghini (ลัมโบร์กินี)</option>
+              <option value="McLaren">McLaren (แมคลาเรน)</option>
+              <option value="Rolls-Royce">Rolls-Royce (โรลส์-รอยซ์)</option>
+              <option value="Aston Martin">Aston Martin (แอสตัน มาร์ติน)</option>
+              <option value="Honda">Honda (ฮอนด้า)</option>
+            </select>
+          </div>
+
+          <div class="input-with-icon">
+            <i class="fa-solid fa-coins"></i>
+            <select id="quickPriceSelect" class="custom-select">
+              <option value="all">ช่วงราคาทั้งหมด</option>
+              <option value="under-1m">ไม่เกิน 1 ล้านบาท</option>
+              <option value="1m-20m">1,000,000 - 20,000,000 บาท</option>
+              <option value="20m-50m">20,000,000 - 50,000,000 บาท</option>
+              <option value="50m-plus">50,000,000 บาทขึ้นไป</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-gold" style="white-space:nowrap; padding:13px 28px;">
+            <i class="fa-solid fa-sliders"></i>
+            <span>ค้นหารถทันที</span>
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. FEATURED EXOTIC COLLECTION ================= -->
+  <section class="showroom-section" style="padding-top: 10px;">
+    <div class="container">
+      <div class="section-header text-center" style="text-align:center;">
+        <span class="sub-heading">CURATED SELECTION</span>
+        <h2 class="main-heading">ซูเปอร์คาร์และยนตรกรรมแนะนำ</h2>
+        <p class="section-desc">สัมผัสยนตรกรรมระดับมาสเตอร์พีซ สภาพยอดเยี่ยม พร้อมส่งมอบทันที</p>
+        <div class="gold-divider"></div>
+      </div>
+
+      <!-- Featured Cars Grid -->
+      <div class="cars-grid" id="featuredCarsContainer">
+        <!-- Rendered via JS -->
+      </div>
+
+      <div style="text-align:center; margin-top:40px;">
+        <a href="cars.html" class="btn btn-outline btn-lg">
+          <span>ดูรถยนต์ทั้งหมดในคลัง (${CAR_DATABASE.length} คัน)</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. SELL YOUR CAR PROMO BANNER ================= -->
+  <section style="padding: 70px 0; background: linear-gradient(180deg, rgba(14,18,26,0.6) 0%, rgba(10,12,16,0.95) 100%);">
+    <div class="container">
+      <div class="glass-panel" style="padding: 45px; border: 1.5px solid var(--border-gold); background: radial-gradient(circle at 80% 50%, rgba(212,175,55,0.1) 0%, rgba(18,22,31,0.95) 70%);">
+        <div style="display:grid; grid-template-columns: 1.3fr 1fr; gap:36px; align-items:center;">
+          <div>
+            <span class="sub-heading">PRESTIGE CONSIGNMENT & BUY-BACK</span>
+            <h2 style="font-size:2.2rem; margin:10px 0 16px; line-height:1.2;">
+              ต้องการส่งต่อรถหรู หรือลงขายรถของคุณ?
+            </h2>
+            <p style="color:var(--text-muted); font-size:1.02rem; line-height:1.7; margin-bottom:26px;">
+              SUPERCAR P ให้บริการรับซื้อ รับฝากขาย และประเมินราคาซูเปอร์คาร์อย่างโปร่งใส ให้ราคาสูงที่สุดตามสภาพจริง ปิดการขายรวดเร็ว พร้อมสัญญาและบริการด้านเอกสารครบวงจร
+            </p>
+            <div style="display:flex; gap:16px; flex-wrap:wrap;">
+              <a href="sell.html" class="btn btn-gold">
+                <i class="fa-solid fa-car-on"></i>
+                <span>ลงประกาศขายรถของคุณ</span>
+              </a>
+              <a href="contact.html" class="btn btn-outline">
+                <i class="fa-solid fa-phone"></i>
+                <span>ปรึกษาทีมผู้เชี่ยวชาญ</span>
+              </a>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="display:flex; gap:14px; align-items:center; background:rgba(255,255,255,0.03); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.06);">
+              <div style="width:42px; height:42px; border-radius:50%; background:var(--gold-gradient); color:#000; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div>
+                <h4 style="font-size:1rem; color:#fff;">ประเมินราคาไว ภายใน 1 ชั่วโมง</h4>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">ทราบราคาเบื้องต้นทันทีโดยทีมงานผู้เชี่ยวชาญเฉพาะทาง</p>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:14px; align-items:center; background:rgba(255,255,255,0.03); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.06);">
+              <div style="width:42px; height:42px; border-radius:50%; background:var(--gold-gradient); color:#000; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <h4 style="font-size:1rem; color:#fff;">การันตีเงินสด ปลอดภัย 100%</h4>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">จ่ายเงินสดทันทีหลังตรวจสภาพและโอนกรรมสิทธิ์ถูกต้อง</p>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:14px; align-items:center; background:rgba(255,255,255,0.03); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.06);">
+              <div style="width:42px; height:42px; border-radius:50%; background:var(--gold-gradient); color:#000; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <div>
+                <h4 style="font-size:1rem; color:#fff;">เข้าถึงกลุ่มผู้ซื้อระดับ VVIP</h4>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">เครือข่ายนักสะสมและผู้หลงใหลยนตรกรรมทั่วประเทศ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6. WHY CHOOSE SUPERCAR P ================= -->
+  <section style="padding: 70px 0;">
+    <div class="container">
+      <div class="section-header text-center" style="text-align:center;">
+        <span class="sub-heading">PRESTIGE STANDARDS</span>
+        <h2 class="main-heading">ทำไมต้องเลือก SUPERCAR P</h2>
+        <p class="section-desc">มาตรฐานการบริการที่เหนือระดับ มั่นใจได้ในทุกขั้นตอนการซื้อขาย</p>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:24px; margin-top:40px;">
+        <div class="glass-panel" style="padding: 28px; text-align:center;">
+          <div style="width:60px; height:60px; border-radius:50%; background:rgba(212,175,55,0.1); border:1.5px solid var(--border-gold); margin:0 auto 18px; display:flex; align-items:center; justify-content:center; color:var(--color-gold); font-size:1.6rem;">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <h3 style="font-size:1.2rem; margin-bottom:10px;">การันตีคุณภาพ 100%</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">ไม่เคยชนหนัก ไม่เคยจมน้ำ ประวัติและเลขไมล์แท้ทุกคัน มีใบรับรอง Certificate ตรวจสอบได้</p>
+        </div>
+
+        <div class="glass-panel" style="padding: 28px; text-align:center;">
+          <div style="width:60px; height:60px; border-radius:50%; background:rgba(212,175,55,0.1); border:1.5px solid var(--border-gold); margin:0 auto 18px; display:flex; align-items:center; justify-content:center; color:var(--color-gold); font-size:1.6rem;">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+          </div>
+          <h3 style="font-size:1.2rem; margin-bottom:10px;">สินเชื่อดอกเบี้ยพิเศษ</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">ร่วมมือกับสถาบันการเงินชั้นนำ อนุมัติไว เงื่อนไขยืดหยุ่น ดาวน์ต่ำ ผ่อนได้สูงสุดถึง 84 เดือน</p>
+        </div>
+
+        <div class="glass-panel" style="padding: 28px; text-align:center;">
+          <div style="width:60px; height:60px; border-radius:50%; background:rgba(212,175,55,0.1); border:1.5px solid var(--border-gold); margin:0 auto 18px; display:flex; align-items:center; justify-content:center; color:var(--color-gold); font-size:1.6rem;">
+            <i class="fa-solid fa-truck-ramp-box"></i>
+          </div>
+          <h3 style="font-size:1.2rem; margin-bottom:10px;">ส่งมอบรถระดับ White-Glove</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">บริการรถสไลด์ปิดทึบส่งมอบรถถึงหน้าประตูบ้านทั่วประเทศไทย ปลอดภัย ไร้รอยขีดข่วน</p>
+        </div>
+
+        <div class="glass-panel" style="padding: 28px; text-align:center;">
+          <div style="width:60px; height:60px; border-radius:50%; background:rgba(212,175,55,0.1); border:1.5px solid var(--border-gold); margin:0 auto 18px; display:flex; align-items:center; justify-content:center; color:var(--color-gold); font-size:1.6rem;">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <h3 style="font-size:1.2rem; margin-bottom:10px;">บริการหลังการขาย VIP</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">รับประกันเครื่องยนต์และเกียร์ 1 ปีเต็ม พร้อมบริการช่วยเหลือฉุกเฉินตลอด 24 ชั่วโมง</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 7. FOOTER ================= -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo" style="margin-bottom:18px;">
+            <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+            <div class="logo-text">
+              <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+              <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+            </div>
+          </div>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.7; margin-bottom:20px;">
+            โชว์รูมและศูนย์รวมซื้อขายซูเปอร์คาร์ ไฮเปอร์คาร์ และยนตรกรรมระดับพรีเมียมอันดับหนึ่งของประเทศไทย มาตรฐานสากลระดับโลก
+          </p>
+          <div style="display:flex; gap:12px;">
+            <a href="#" style="width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; color:var(--color-gold);"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" style="width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; color:var(--color-gold);"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" style="width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; color:var(--color-gold);"><i class="fa-brands fa-line"></i></a>
+            <a href="#" style="width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; color:var(--color-gold);"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">ลิงก์ด่วน (Quick Links)</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">หน้าแรก (Home)</a></li>
+            <li><a href="cars.html">คลังรถทั้งหมด (Showroom)</a></li>
+            <li><a href="sell.html">ลงขายรถของคุณ (Sell Car)</a></li>
+            <li><a href="contact.html">เกี่ยวกับเรา & ติดต่อเรา (Contact)</a></li>
+            <li><a href="login.html">เข้าสู่ระบบ / สมัครสมาชิก (Account)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">แบรนด์ยอดนิยม</h4>
+          <ul class="footer-links">
+            <li><a href="cars.html?brand=Ferrari">Ferrari</a></li>
+            <li><a href="cars.html?brand=Porsche">Porsche</a></li>
+            <li><a href="cars.html?brand=Nissan">Nissan GT-R</a></li>
+            <li><a href="cars.html?brand=Koenigsegg">Koenigsegg</a></li>
+            <li><a href="cars.html?brand=Lamborghini">Lamborghini</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">ติดต่อโชว์รูม</h4>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:8px;">
+            <i class="fa-solid fa-location-dot" style="color:var(--color-gold); width:20px;"></i>
+            ถนนประดิษฐ์มนูธรรม แขวงคลองจั่น เขตบางกะปิ กรุงเทพฯ
+          </p>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:8px;">
+            <i class="fa-solid fa-phone" style="color:var(--color-gold); width:20px;"></i>
+            02-999-8888, 08X-XXX-XXXX
+          </p>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:8px;">
+            <i class="fa-solid fa-envelope" style="color:var(--color-gold); width:20px;"></i>
+            contact@supercarp.com
+          </p>
+          <p style="color:var(--text-muted); font-size:0.88rem;">
+            <i class="fa-solid fa-clock" style="color:var(--color-gold); width:20px;"></i>
+            เปิดทุกวัน: 09:00 - 19:00 น.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 SUPERCAR P. สงวนลิขสิทธิ์ทุกประการ (All Rights Reserved)</div>
+        <div style="display:flex; gap:20px;">
+          <a href="#" style="color:var(--text-dim);">นโยบายความเป็นส่วนตัว</a>
+          <a href="#" style="color:var(--text-dim);">ข้อกำหนดและเงื่อนไข</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/cars-data.js"></script>
+  <script>
+    // Render Featured Cars
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("featuredCarsContainer");
+      if (!container) return;
+
+      const wishlist = getWishlist();
+      const featuredCars = CAR_DATABASE.slice(0, 6);
+
+      container.innerHTML = featuredCars.map(car => {
+        const isFav = wishlist.includes(car.id);
+        return `
+          <div class="car-card">
+            <div class="car-img-wrapper">
+              <img src="${car.image}" alt="${car.name}" loading="lazy">
+              
+              <div class="car-card-badges">
+                ${car.badges.map((b, i) => `
+                  <span class="badge-pill ${i === 0 ? 'gold' : 'dark'}">${b}</span>
+                `).join('')}
+              </div>
+
+              <button class="card-fav-btn ${isFav ? 'active' : ''}" 
+                      data-wishlist-id="${car.id}"
+                      onclick="toggleWishlist(${car.id}, event)" 
+                      title="ถูกใจ">
+                <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart" ${isFav ? 'style="color:#ff4757;"' : ''}></i>
+              </button>
+            </div>
+
+            <div class="car-info">
+              <div class="car-meta-top">
+                <span class="car-brand-name">${car.brand}</span>
+                <span class="car-year">${car.year} • ${car.mileage}</span>
+              </div>
+
+              <h3 class="car-title">${car.name}</h3>
+
+              <div class="car-specs-grid">
+                <div class="spec-cell">
+                  <span class="spec-cell-label"><i class="fa-solid fa-gauge-high"></i> กำลัง</span>
+                  <span class="spec-cell-val">${car.hp} HP</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-cell-label"><i class="fa-solid fa-stopwatch"></i> 0-100</span>
+                  <span class="spec-cell-val">${car.acceleration}</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-cell-label"><i class="fa-solid fa-tachograph-digital"></i> ความเร็ว</span>
+                  <span class="spec-cell-val">${car.topSpeed}</span>
+                </div>
+              </div>
+
+              <div class="car-price-row">
+                <span class="price-caption">ราคาจำหน่าย</span>
+                <span class="price-number">฿ ${car.priceDisplay}</span>
+              </div>
+
+              <div class="car-actions">
+                <a href="car_details.html?id=${car.id}" class="btn btn-outline btn-sm">
+                  <i class="fa-solid fa-circle-info"></i> รายละเอียด
+                </a>
+                <a href="car_details.html?id=${car.id}&action=booking" class="btn btn-gold btn-sm">
+                  <i class="fa-solid fa-car"></i> จอง / นัดดูรถ
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    });
+
+    // Fast Search Handler
+    function handleFastSearch(e) {
+      e.preventDefault();
+      const q = document.getElementById("quickSearchQuery").value.trim();
+      const brand = document.getElementById("quickBrandSelect").value;
+      const price = document.getElementById("quickPriceSelect").value;
+
+      const params = new URLSearchParams();
+      if (q) params.set("q", q);
+      if (brand && brand !== "all") params.set("brand", brand);
+      if (price && price !== "all") params.set("price", price);
+
+      window.location.href = `cars.html?${params.toString()}`;
+    }
+  </script>
+</body>
+</html>

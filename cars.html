@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUPERCAR P | คลังรายการซูเปอร์คาร์และรถยนต์หรู</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Unified Master Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= 1. HEADER / NAVIGATION ================= -->
+  <header class="main-header" id="navbar">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+        <div class="logo-text">
+          <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+          <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">หน้าแรก</a>
+        <a href="cars.html" class="nav-link active">คลังรถทั้งหมด</a>
+        <a href="sell.html" class="nav-link">ลงขายรถ</a>
+        <a href="contact.html" class="nav-link">ติดต่อเรา</a>
+      </nav>
+
+      <!-- Header Tools -->
+      <div class="header-tools">
+        <a href="sell.html" class="btn btn-outline btn-sm" style="display:none; @media(min-width:768px){display:inline-flex;}">
+          <i class="fa-solid fa-plus"></i>
+          <span>ลงขายรถ</span>
+        </a>
+
+        <button class="wishlist-btn" id="wishlistToggle" title="รถที่ถูกใจ (Wishlist)">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge" id="wishlistCount">0</span>
+        </button>
+
+        <!-- User Authentication State Button -->
+        <div id="navbarAuth"></div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 2. MAIN SHOWROOM LISTINGS ================= -->
+  <main class="showroom-section" id="showroom">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header text-center" style="text-align:center;">
+        <span class="sub-heading">EXCLUSIVE SHOWROOM INVENTORY</span>
+        <h1 class="main-heading">รายการซูเปอร์คาร์และรถยนต์หรูทั้งหมด</h1>
+        <p class="section-desc">คัดสรรเฉพาะยนตรกรรมระดับไฮเอนด์ สภาพสมบูรณ์แบบ ผ่านการตรวจเช็กมาตรฐาน พร้อมส่งมอบ</p>
+        <div class="gold-divider"></div>
+      </div>
+
+      <!-- Search & Filters Container -->
+      <div class="filter-wrapper glass-panel">
+        
+        <!-- Search bar & Sort -->
+        <div class="filter-top-row">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="ค้นหาชื่อรุ่น, แบรนด์ เช่น Ferrari, Porsche, GT-R, Koenigsegg...">
+            <button class="clear-search-btn" id="clearSearch" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <label for="sortSelect" style="font-size:0.85rem; color:var(--text-muted); font-weight:600;">
+                <i class="fa-solid fa-arrow-down-short-wide"></i> เรียงตาม:
+              </label>
+              <select id="sortSelect" class="custom-select" style="width:auto; padding:8px 14px;">
+                <option value="featured">แนะนำ (Featured)</option>
+                <option value="price-desc">ราคา: สูงไปต่ำ</option>
+                <option value="price-asc">ราคา: ต่ำไปสูง</option>
+                <option value="hp-desc">แรงม้า: สูงสุด</option>
+                <option value="year-desc">ปีใหม่ล่าสุด</option>
+              </select>
+            </div>
+
+            <div class="view-mode-buttons">
+              <button class="view-btn active" id="viewGrid" title="มุมมองตาราง"><i class="fa-solid fa-grip"></i></button>
+              <button class="view-btn" id="viewList" title="มุมมองรายการ"><i class="fa-solid fa-list"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brand Category Filter Pills -->
+        <div class="filter-pills-row">
+          <span class="filter-label"><i class="fa-solid fa-tags"></i> แบรนด์:</span>
+          <div class="filter-pills" id="brandPills">
+            <button class="pill-btn active" data-brand="all">ทั้งหมด (All)</button>
+            <button class="pill-btn" data-brand="Ferrari">Ferrari</button>
+            <button class="pill-btn" data-brand="Porsche">Porsche</button>
+            <button class="pill-btn" data-brand="Nissan">Nissan</button>
+            <button class="pill-btn" data-brand="Koenigsegg">Koenigsegg</button>
+            <button class="pill-btn" data-brand="Lamborghini">Lamborghini</button>
+            <button class="pill-btn" data-brand="McLaren">McLaren</button>
+            <button class="pill-btn" data-brand="Rolls-Royce">Rolls-Royce</button>
+            <button class="pill-btn" data-brand="Aston Martin">Aston Martin</button>
+            <button class="pill-btn" data-brand="Honda">Honda</button>
+          </div>
+        </div>
+
+        <!-- Body Type Filter Pills -->
+        <div class="filter-pills-row">
+          <span class="filter-label"><i class="fa-solid fa-car-side"></i> ประเภท:</span>
+          <div class="filter-pills" id="typePills">
+            <button class="pill-btn active" data-type="all">ทุกประเภท</button>
+            <button class="pill-btn" data-type="Hypercar">Hypercar</button>
+            <button class="pill-btn" data-type="Supercar">Supercar</button>
+            <button class="pill-btn" data-type="Track-Focused">Track-Focused</button>
+            <button class="pill-btn" data-type="Ultra-Luxury">Ultra-Luxury</button>
+            <button class="pill-btn" data-type="GT">Grand Tourer</button>
+            <button class="pill-btn" data-type="Sedan">Sedan</button>
+          </div>
+        </div>
+
+        <!-- Active Results Meta -->
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid rgba(255,255,255,0.06); font-size:0.88rem;">
+          <span style="color:var(--text-muted);">
+            พบยนตรกรรมทั้งหมด <strong id="carCount" style="color:var(--color-gold-light);">0</strong> คัน
+          </span>
+          <button id="resetFiltersBtn" class="text-button" style="background:none; border:none; color:var(--text-dim); cursor:pointer; font-size:0.85rem;">
+            <i class="fa-solid fa-rotate-left"></i> ล้างตัวกรองทั้งหมด
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Car Grid Showcase -->
+      <div class="cars-grid" id="carsContainer">
+        <!-- Rendered via list.js / cars-data.js -->
+      </div>
+
+      <!-- No Results Placeholder -->
+      <div id="noResults" class="glass-panel" style="display:none; text-align:center; padding:50px 20px; margin-top:20px;">
+        <i class="fa-solid fa-car-burst" style="font-size:3rem; color:var(--text-dim); margin-bottom:16px;"></i>
+        <h3 style="font-size:1.4rem; margin-bottom:8px;">ไม่พบรถยนต์ที่ตรงกับเงื่อนไขการค้นหา</h3>
+        <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:20px;">ลองปรับคำค้นหา หรือคลิกเพื่อดูรถทั้งหมด</p>
+        <button class="btn btn-gold" onclick="resetAllFilters()">ดูรถทั้งหมดในคลัง</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= 3. QUICK VIEW MODAL ================= -->
+  <div class="modal-overlay" id="carModal">
+    <div class="modal-box" style="max-width:850px;">
+      <button class="modal-close-btn" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+      <div id="modalBody">
+        <!-- Dynamic Content -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 4. FOOTER ================= -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo" style="margin-bottom:18px;">
+            <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+            <div class="logo-text">
+              <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+              <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+            </div>
+          </div>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.7;">
+            ศูนย์รวมซื้อขายซูเปอร์คาร์และยนตรกรรมหรูระดับท็อปของไทย
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">เมนูลัด</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="cars.html">คลังรถทั้งหมด</a></li>
+            <li><a href="sell.html">ลงขายรถ</a></li>
+            <li><a href="contact.html">ติดต่อเรา</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">บริการของเรา</h4>
+          <ul class="footer-links">
+            <li><a href="cars.html">ซื้อรถซูเปอร์คาร์</a></li>
+            <li><a href="sell.html">รับซื้อและฝากขาย</a></li>
+            <li><a href="contact.html">จัดไฟแนนซ์รถยนต์</a></li>
+            <li><a href="contact.html">บริการตรวจสภาพรถ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">ติดต่อโชว์รูม</h4>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:8px;">
+            <i class="fa-solid fa-phone" style="color:var(--color-gold); width:20px;"></i> 02-999-8888
+          </p>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:8px;">
+            <i class="fa-solid fa-envelope" style="color:var(--color-gold); width:20px;"></i> contact@supercarp.com
+          </p>
+          <p style="color:var(--text-muted); font-size:0.88rem;">
+            <i class="fa-solid fa-clock" style="color:var(--color-gold); width:20px;"></i> เปิดทุกวัน 09:00 - 19:00 น.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 SUPERCAR P. All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/cars-data.js"></script>
+  <script>
+    // State management
+    let currentBrandFilter = "all";
+    let currentTypeFilter = "all";
+    let currentSearchQuery = "";
+    let currentPriceFilter = "all";
+    let currentSort = "featured";
+    let currentViewMode = "grid";
+    let wishlistOnly = false;
+
+    const carsContainer = document.getElementById("carsContainer");
+    const carCountElem = document.getElementById("carCount");
+    const noResultsElem = document.getElementById("noResults");
+    const searchInput = document.getElementById("searchInput");
+    const clearSearchBtn = document.getElementById("clearSearch");
+    const sortSelect = document.getElementById("sortSelect");
+    const brandPills = document.getElementById("brandPills");
+    const typePills = document.getElementById("typePills");
+    const viewGridBtn = document.getElementById("viewGrid");
+    const viewListBtn = document.getElementById("viewList");
+    const resetFiltersBtn = document.getElementById("resetFiltersBtn");
+    const carModal = document.getElementById("carModal");
+    const modalBody = document.getElementById("modalBody");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Check query params
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("q")) {
+        currentSearchQuery = params.get("q");
+        if (searchInput) {
+          searchInput.value = currentSearchQuery;
+          clearSearchBtn.style.display = "block";
+        }
+      }
+      if (params.get("brand")) {
+        currentBrandFilter = params.get("brand");
+      }
+      if (params.get("price")) {
+        currentPriceFilter = params.get("price");
+      }
+      if (params.get("view") === "wishlist") {
+        wishlistOnly = true;
+      }
+
+      // Update pills active states
+      if (brandPills && currentBrandFilter !== "all") {
+        brandPills.querySelectorAll(".pill-btn").forEach(btn => {
+          btn.classList.toggle("active", btn.getAttribute("data-brand").toLowerCase() === currentBrandFilter.toLowerCase());
+        });
+      }
+
+      setupFilterEvents();
+      renderCars();
+    });
+
+    function filterCars() {
+      const wishlist = getWishlist();
+      return CAR_DATABASE.filter(car => {
+        if (wishlistOnly && !wishlist.includes(car.id)) return false;
+
+        const matchBrand = currentBrandFilter === "all" || car.brand.toLowerCase() === currentBrandFilter.toLowerCase();
+        const matchType = currentTypeFilter === "all" || car.type.toLowerCase() === currentTypeFilter.toLowerCase();
+
+        const query = currentSearchQuery.trim().toLowerCase();
+        const matchQuery = !query || 
+          car.name.toLowerCase().includes(query) || 
+          car.brand.toLowerCase().includes(query) ||
+          car.engine.toLowerCase().includes(query);
+
+        let matchPrice = true;
+        if (currentPriceFilter === "under-1m") matchPrice = car.price < 1000000;
+        else if (currentPriceFilter === "1m-20m") matchPrice = car.price >= 1000000 && car.price <= 20000000;
+        else if (currentPriceFilter === "20m-50m") matchPrice = car.price > 20000000 && car.price <= 50000000;
+        else if (currentPriceFilter === "50m-plus") matchPrice = car.price > 50000000;
+
+        return matchBrand && matchType && matchQuery && matchPrice;
+      }).sort((a, b) => {
+        if (currentSort === "price-desc") return b.price - a.price;
+        if (currentSort === "price-asc") return a.price - b.price;
+        if (currentSort === "hp-desc") return b.hp - a.hp;
+        if (currentSort === "year-desc") return b.year - a.year;
+        return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+      });
+    }
+
+    function renderCars() {
+      const filtered = filterCars();
+      const wishlist = getWishlist();
+
+      if (carCountElem) carCountElem.textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        carsContainer.style.display = "none";
+        noResultsElem.style.display = "block";
+        return;
+      }
+
+      carsContainer.style.display = "grid";
+      noResultsElem.style.display = "none";
+
+      carsContainer.innerHTML = filtered.map(car => {
+        const isFav = wishlist.includes(car.id);
+        return `
+          <div class="car-card">
+            <div class="car-img-wrapper">
+              <img src="${car.image}" alt="${car.name}" loading="lazy">
+              
+              <div class="car-card-badges">
+                ${car.badges.map((b, i) => `
+                  <span class="badge-pill ${i === 0 ? 'gold' : 'dark'}">${b}</span>
+                `).join('')}
+              </div>
+
+              <button class="card-fav-btn ${isFav ? 'active' : ''}" 
+                      data-wishlist-id="${car.id}"
+                      onclick="toggleWishlist(${car.id}, event)" 
+                      title="ถูกใจ">
+                <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart" ${isFav ? 'style="color:#ff4757;"' : ''}></i>
+              </button>
+            </div>
+
+            <div class="car-info">
+              <div class="car-meta-top">
+                <span class="car-brand-name">${car.brand}</span>
+                <span class="car-year">${car.year} • ${car.mileage}</span>
+              </div>
+
+              <h3 class="car-title">${car.name}</h3>
+
+              <div class="car-specs-grid">
+                <div class="spec-cell">
+                  <span class="spec-cell-label"><i class="fa-solid fa-gauge-high"></i> กำลัง</span>
+                  <span class="spec-cell-val">${car.hp} HP</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-cell-label"><i class="fa-solid fa-stopwatch"></i> 0-100</span>
+                  <span class="spec-cell-val">${car.acceleration}</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-cell-label"><i class="fa-solid fa-tachograph-digital"></i> ความเร็ว</span>
+                  <span class="spec-cell-val">${car.topSpeed}</span>
+                </div>
+              </div>
+
+              <div class="car-price-row">
+                <span class="price-caption">ราคาจำหน่ายพิเศษ</span>
+                <span class="price-number">฿ ${car.priceDisplay}</span>
+              </div>
+
+              <div class="car-actions">
+                <a href="car_details.html?id=${car.id}" class="btn btn-outline btn-sm">
+                  <i class="fa-solid fa-circle-info"></i> สเปกรถ
+                </a>
+                <button class="btn btn-gold btn-sm" onclick="viewQuickDetail(${car.id})">
+                  <i class="fa-solid fa-eye"></i> ดูด่วน
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setupFilterEvents() {
+      if (brandPills) {
+        brandPills.addEventListener("click", e => {
+          if (e.target.classList.contains("pill-btn")) {
+            brandPills.querySelectorAll(".pill-btn").forEach(btn => btn.classList.remove("active"));
+            e.target.classList.add("active");
+            currentBrandFilter = e.target.getAttribute("data-brand");
+            wishlistOnly = false;
+            renderCars();
+          }
+        });
+      }
+
+      if (typePills) {
+        typePills.addEventListener("click", e => {
+          if (e.target.classList.contains("pill-btn")) {
+            typePills.querySelectorAll(".pill-btn").forEach(btn => btn.classList.remove("active"));
+            e.target.classList.add("active");
+            currentTypeFilter = e.target.getAttribute("data-type");
+            wishlistOnly = false;
+            renderCars();
+          }
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener("input", e => {
+          currentSearchQuery = e.target.value;
+          if (clearSearchBtn) clearSearchBtn.style.display = currentSearchQuery ? "block" : "none";
+          wishlistOnly = false;
+          renderCars();
+        });
+      }
+
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener("click", () => {
+          searchInput.value = "";
+          currentSearchQuery = "";
+          clearSearchBtn.style.display = "none";
+          renderCars();
+          searchInput.focus();
+        });
+      }
+
+      if (sortSelect) {
+        sortSelect.addEventListener("change", e => {
+          currentSort = e.target.value;
+          renderCars();
+        });
+      }
+
+      if (viewGridBtn && viewListBtn) {
+        viewGridBtn.addEventListener("click", () => {
+          viewGridBtn.classList.add("active");
+          viewListBtn.classList.remove("active");
+          carsContainer.classList.remove("list-view");
+        });
+
+        viewListBtn.addEventListener("click", () => {
+          viewListBtn.classList.add("active");
+          viewGridBtn.classList.remove("active");
+          carsContainer.classList.add("list-view");
+        });
+      }
+
+      if (resetFiltersBtn) {
+        resetFiltersBtn.addEventListener("click", resetAllFilters);
+      }
+
+      const wishlistBtnNav = document.getElementById("wishlistToggle");
+      if (wishlistBtnNav) {
+        wishlistBtnNav.addEventListener("click", () => {
+          const list = getWishlist();
+          if (list.length === 0) {
+            showToast("ยังไม่มีรถในรายการโปรด คลิกที่ไอคอนหัวใจบนการ์ดรถเพื่อบันทึก", "info");
+            return;
+          }
+          wishlistOnly = !wishlistOnly;
+          if (wishlistOnly) {
+            showToast("แสดงเฉพาะรถที่คุณถูกใจ", "success");
+          }
+          renderCars();
+        });
+      }
+
+      if (modalCloseBtn) modalCloseBtn.addEventListener("click", closeQuickModal);
+      if (carModal) {
+        carModal.addEventListener("click", e => {
+          if (e.target === carModal) closeQuickModal();
+        });
+      }
+    }
+
+    function resetAllFilters() {
+      currentBrandFilter = "all";
+      currentTypeFilter = "all";
+      currentSearchQuery = "";
+      currentPriceFilter = "all";
+      currentSort = "featured";
+      wishlistOnly = false;
+
+      if (searchInput) searchInput.value = "";
+      if (clearSearchBtn) clearSearchBtn.style.display = "none";
+      if (sortSelect) sortSelect.value = "featured";
+
+      if (brandPills) {
+        brandPills.querySelectorAll(".pill-btn").forEach(btn => {
+          btn.classList.toggle("active", btn.getAttribute("data-brand") === "all");
+        });
+      }
+      if (typePills) {
+        typePills.querySelectorAll(".pill-btn").forEach(btn => {
+          btn.classList.toggle("active", btn.getAttribute("data-type") === "all");
+        });
+      }
+
+      renderCars();
+    }
+
+    // Quick Detail Modal
+    function viewQuickDetail(carId) {
+      const car = CAR_DATABASE.find(c => c.id === carId);
+      if (!car) return;
+
+      modalBody.innerHTML = `
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:26px;">
+          <div style="background:#141822; border-radius:12px; padding:16px; display:flex; align-items:center; justify-content:center;">
+            <img src="${car.image}" alt="${car.name}" style="max-width:100%; max-height:260px; object-fit:contain; filter:drop-shadow(0 15px 30px rgba(0,0,0,0.8));">
+          </div>
+          <div>
+            <span class="sub-heading">${car.brand} • ${car.type}</span>
+            <h2 style="font-size:1.6rem; margin:4px 0 10px;">${car.name}</h2>
+            <div style="font-size:1.6rem; font-weight:800; color:var(--color-gold-light); margin-bottom:14px;">
+              ฿ ${car.priceDisplay}
+            </div>
+            <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.6; margin-bottom:18px;">
+              ${car.description}
+            </p>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; font-size:0.85rem;">
+              <div style="background:rgba(255,255,255,0.03); padding:8px 12px; border-radius:6px; border:1px solid rgba(255,255,255,0.06);">
+                <span style="color:var(--text-muted); font-size:0.75rem;">เครื่องยนต์</span>
+                <div style="font-weight:700; color:#fff;">${car.engine}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03); padding:8px 12px; border-radius:6px; border:1px solid rgba(255,255,255,0.06);">
+                <span style="color:var(--text-muted); font-size:0.75rem;">กำลังสูงสุด</span>
+                <div style="font-weight:700; color:var(--color-gold);">${car.hp} HP</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03); padding:8px 12px; border-radius:6px; border:1px solid rgba(255,255,255,0.06);">
+                <span style="color:var(--text-muted); font-size:0.75rem;">0-100 km/h</span>
+                <div style="font-weight:700; color:#fff;">${car.acceleration}</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03); padding:8px 12px; border-radius:6px; border:1px solid rgba(255,255,255,0.06);">
+                <span style="color:var(--text-muted); font-size:0.75rem;">ความเร็วสูงสุด</span>
+                <div style="font-weight:700; color:#fff;">${car.topSpeed}</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <a href="car_details.html?id=${car.id}" class="btn btn-gold" style="flex:1;">
+                <i class="fa-solid fa-up-right-from-square"></i> ดูหน้าข้อมูลเต็ม & จอง
+              </a>
+              <button class="btn btn-outline" onclick="closeQuickModal()">ปิด</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      carModal.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeQuickModal() {
+      if (carModal) carModal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koenigsegg Agera RS | SUPERCAR P</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Unified Master Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="main-header" id="navbar">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+        <div class="logo-text">
+          <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+          <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">หน้าแรก</a>
+        <a href="cars.html" class="nav-link active">คลังรถทั้งหมด</a>
+        <a href="sell.html" class="nav-link">ลงขายรถ</a>
+        <a href="contact.html" class="nav-link">ติดต่อเรา</a>
+      </nav>
+
+      <div class="header-tools">
+        <a href="cars.html?view=wishlist" class="wishlist-btn" id="wishlistToggle" title="รถที่ถูกใจ">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge" id="wishlistCount">0</span>
+        </a>
+        <div id="navbarAuth"></div>
+        <button class="mobile-toggle" id="mobileMenuBtn">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" style="min-height:450px; background:linear-gradient(180deg, rgba(14,18,26,0.85) 0%, rgba(10,12,16,0.98) 100%), url('https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1400&q=80') center/cover;">
+    <div class="container">
+      <div>
+        <span class="sub-heading">WORLD RECORD HYPERCAR</span>
+        <h1 class="hero-title" style="font-size:3.2rem; margin-bottom:12px;">Koenigsegg Agera RS</h1>
+        <p style="font-size:1.15rem; color:#f2f2f2; max-width:640px; margin-bottom:20px;">
+          ไฮเปอร์คาร์สีดำตกแต่งทอง สมรรถนะสุดขั้ว งานคาร์บอนไฟเบอร์ทั้งคัน สถิติความเร็วระดับโลก 440 กม./ชม.
+        </p>
+        <div style="font-size:2.4rem; font-weight:800; color:var(--color-gold-light); margin-bottom:26px;">
+          ฿ 150,000,000
+        </div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="car_details.html?id=4" class="btn btn-gold btn-lg">
+            <i class="fa-solid fa-circle-info"></i> ดูรายละเอียดเต็ม & คำนวณค่างวด
+          </a>
+          <a href="car_details.html?id=4&action=booking" class="btn btn-outline btn-lg">
+            <i class="fa-solid fa-car"></i> นัดดูรถ / จองรถคันนี้
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase Content -->
+  <main class="container" style="padding: 50px 24px 80px; max-width:1050px; display:grid; gap:28px;">
+    
+    <!-- Specs Box -->
+    <div class="glass-panel" style="padding:30px; border:1.5px solid var(--border-gold);">
+      <h2 style="color:var(--color-gold); font-size:1.4rem; margin-bottom:18px;">
+        <i class="fa-solid fa-gauge-high"></i> สมรรถนะขีดสุด
+      </h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:16px;">
+        <div style="background:#090b0f; border-radius:12px; padding:18px; text-align:center; border:1px solid rgba(255,255,255,0.06);">
+          <small style="color:var(--text-muted); display:block; font-size:0.8rem;">กำลังสูงสุด</small>
+          <b style="color:var(--color-gold-light); font-size:1.4rem;">1,160 แรงม้า</b>
+        </div>
+        <div style="background:#090b0f; border-radius:12px; padding:18px; text-align:center; border:1px solid rgba(255,255,255,0.06);">
+          <small style="color:var(--text-muted); display:block; font-size:0.8rem;">0-100 กม./ชม.</small>
+          <b style="color:#fff; font-size:1.4rem;">2.8 วินาที</b>
+        </div>
+        <div style="background:#090b0f; border-radius:12px; padding:18px; text-align:center; border:1px solid rgba(255,255,255,0.06);">
+          <small style="color:var(--text-muted); display:block; font-size:0.8rem;">ความเร็วสูงสุด</small>
+          <b style="color:#fff; font-size:1.4rem;">440 กม./ชม.</b>
+        </div>
+        <div style="background:#090b0f; border-radius:12px; padding:18px; text-align:center; border:1px solid rgba(255,255,255,0.06);">
+          <small style="color:var(--text-muted); display:block; font-size:0.8rem;">เครื่องยนต์</small>
+          <b style="color:var(--color-gold-light); font-size:1.4rem;">V8 ทวินเทอร์โบ</b>
+        </div>
+      </div>
+    </div>
+
+    <!-- Specs Table -->
+    <div class="glass-panel" style="padding:30px; border:1.5px solid var(--border-gold);">
+      <h2 style="color:var(--color-gold); font-size:1.4rem; margin-bottom:18px;">
+        <i class="fa-solid fa-list-check"></i> ข้อมูลจำเพาะ
+      </h2>
+      <table class="detail-specs-table">
+        <tr><td>ยี่ห้อ / รุ่น</td><td>Koenigsegg Agera RS</td></tr>
+        <tr><td>ปีผลิต</td><td>2018</td></tr>
+        <tr><td>ระบบเกียร์</td><td>อัตโนมัติ 7 สปีด</td></tr>
+        <tr><td>เครื่องยนต์</td><td>5.0 ลิตร V8 ทวินเทอร์โบ</td></tr>
+        <tr><td>ระบบขับเคลื่อน</td><td>ล้อหลัง (RWD)</td></tr>
+        <tr><td>สีตัวถัง</td><td>ดำ / ทอง (Carbon Black & Gold)</td></tr>
+        <tr><td>เลขไมล์</td><td>1,200 กม.</td></tr>
+      </table>
+    </div>
+
+    <!-- Features -->
+    <div class="glass-panel" style="padding:30px; border:1.5px solid var(--border-gold);">
+      <h2 style="color:var(--color-gold); font-size:1.4rem; margin-bottom:18px;">
+        <i class="fa-solid fa-star"></i> ออพชันเด่นระดับไฮเอนด์
+      </h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div style="display:flex; align-items:center; gap:8px; color:#fff;"><i class="fa-solid fa-diamond" style="color:var(--color-gold);"></i> ตัวถังคาร์บอนไฟเบอร์น้ำหนักเบาทั้งคัน</div>
+        <div style="display:flex; align-items:center; gap:8px; color:#fff;"><i class="fa-solid fa-diamond" style="color:var(--color-gold);"></i> ระบบเบรกคาร์บอนเซรามิกประสิทธิภาพสูง</div>
+        <div style="display:flex; align-items:center; gap:8px; color:#fff;"><i class="fa-solid fa-diamond" style="color:var(--color-gold);"></i> ภายในหนังแท้คัดพิเศษเย็บด้ายทองคำแท้</div>
+        <div style="display:flex; align-items:center; gap:8px; color:#fff;"><i class="fa-solid fa-diamond" style="color:var(--color-gold);"></i> ระบบเสียงพรีเมียมระดับสตูดิโอ</div>
+      </div>
+    </div>
+
+    <!-- Contact & Booking -->
+    <div class="glass-panel" style="padding:30px; border:1.5px solid var(--border-gold); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <div>
+        <h2 style="color:var(--color-gold); font-size:1.4rem; margin-bottom:6px;">สนใจเป็นเจ้าของ Koenigsegg Agera RS คันนี้</h2>
+        <p style="color:var(--text-muted); font-size:0.95rem;">ติดต่อเจ้าหน้าที่ฝ่ายบริหารงานลูกค้าพิเศษ VIP Concierge ตลอด 24 ชม.</p>
+      </div>
+      <div style="display:flex; gap:12px;">
+        <a href="tel:029998888" class="btn btn-outline"><i class="fa-solid fa-phone"></i> 02-999-8888</a>
+        <a href="car_details.html?id=4" class="btn btn-gold"><i class="fa-solid fa-calendar-check"></i> นัดดูรถคันจริง</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container" style="text-align:center; font-size:0.85rem; color:var(--text-dim);">
+      © 2026 SUPERCAR P. สงวนลิขสิทธิ์ทุกประการ
+    </div>
+  </footer>
+
+  <script src="js/cars-data.js"></script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ติดต่อเรา | SUPERCAR P</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Unified Master Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= 1. HEADER / NAVIGATION ================= -->
+  <header class="main-header" id="navbar">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+        <div class="logo-text">
+          <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+          <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">หน้าแรก</a>
+        <a href="cars.html" class="nav-link">คลังรถทั้งหมด</a>
+        <a href="sell.html" class="nav-link">ลงขายรถ</a>
+        <a href="contact.html" class="nav-link active">ติดต่อเรา</a>
+      </nav>
+
+      <!-- Header Tools -->
+      <div class="header-tools">
+        <a href="sell.html" class="btn btn-outline btn-sm" style="display:none; @media(min-width:768px){display:inline-flex;}">
+          <i class="fa-solid fa-plus"></i>
+          <span>ลงขายรถ</span>
+        </a>
+
+        <a href="cars.html?view=wishlist" class="wishlist-btn" id="wishlistToggle" title="รถที่ถูกใจ (Wishlist)">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge" id="wishlistCount">0</span>
+        </a>
+
+        <!-- User Authentication State Button -->
+        <div id="navbarAuth"></div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 2. CONTACT US SECTION ================= -->
+  <main class="contact-section">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header text-center" style="text-align:center;">
+        <span class="sub-heading">GET IN TOUCH</span>
+        <h1 class="main-heading">ติดต่อโชว์รูมและทีมงาน</h1>
+        <p class="section-desc">ยินดีต้อนรับสู่ SUPERCAR P Gallery ยินดีให้คำปรึกษาด้านการซื้อขาย แลกเปลี่ยน และจัดไฟแนนซ์รถยนต์หรู</p>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div class="contact-layout">
+
+        <!-- LEFT: SHOWROOM INFORMATION -->
+        <div>
+          <div class="glass-panel" style="padding: 34px; margin-bottom: 24px;">
+            <h2 style="font-size:1.4rem; color:#fff; margin-bottom:20px; display:flex; align-items:center; gap:10px;">
+              <i class="fa-solid fa-building-columns" style="color:var(--color-gold);"></i>
+              <span>ข้อมูลโชว์รูม SUPERCAR P</span>
+            </h2>
+
+            <div class="contact-info-list">
+              <a href="tel:029998888" class="contact-item">
+                <div class="contact-icon">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                  <span style="font-size:0.8rem; color:var(--text-muted); display:block;">สายด่วนโชว์รูม (Hotline)</span>
+                  <span style="font-size:1.25rem; font-weight:700; color:var(--color-gold-light);">02-999-8888, 08X-XXX-XXXX</span>
+                </div>
+              </a>
+
+              <a href="mailto:contact@supercarp.com" class="contact-item">
+                <div class="contact-icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <span style="font-size:0.8rem; color:var(--text-muted); display:block;">อีเมลสอบถาม (Email)</span>
+                  <span style="font-size:1.15rem; font-weight:700; color:var(--color-gold-light);">contact@supercarp.com</span>
+                </div>
+              </a>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fa-brands fa-line"></i>
+                </div>
+                <div>
+                  <span style="font-size:0.8rem; color:var(--text-muted); display:block;">LINE Official Account</span>
+                  <span style="font-size:1.15rem; font-weight:700; color:var(--color-gold-light);">@supercarp</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <span style="font-size:0.8rem; color:var(--text-muted); display:block;">สถานที่ตั้งโชว์รูม</span>
+                  <span style="font-size:0.95rem; font-weight:600; color:#fff; line-height:1.5;">
+                    88/9 อาคารเพรสทีจ แกลเลอรี ถนนประดิษฐ์มนูธรรม แขวงคลองจั่น เขตบางกะปิ กรุงเทพฯ 10240
+                  </span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <span style="font-size:0.8rem; color:var(--text-muted); display:block;">เวลาทำการ (Opening Hours)</span>
+                  <span style="font-size:0.95rem; font-weight:600; color:#fff;">
+                    เปิดให้บริการทุกวัน: 09:00 - 19:00 น. (ยินดีต้อนรับนัดหมายล่วงหน้า)
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service Highlights -->
+          <div class="glass-panel" style="padding:24px;">
+            <h3 style="font-size:1.1rem; color:#fff; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-circle-check" style="color:#2ed573;"></i>
+              <span>บริการอำนวยความสะดวกสำหรับลูกค้า VIP</span>
+            </h3>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.88rem; color:var(--text-muted);">
+              <li><i class="fa-solid fa-check" style="color:var(--color-gold); margin-right:8px;"></i> มีที่จอดรถ VIP รองรับกว่า 50 คัน</li>
+              <li><i class="fa-solid fa-check" style="color:var(--color-gold); margin-right:8px;"></i> ห้องรับรอง VIP Lounge พร้อมเครื่องดื่มและกาแฟพรีเมียม</li>
+              <li><i class="fa-solid fa-check" style="color:var(--color-gold); margin-right:8px;"></i> บริการรับ-ส่งลูกค้า ณ สนามบินสุวรรณภูมิและดอนเมือง</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- RIGHT: INQUIRY FORM -->
+        <div class="glass-panel" style="padding: 34px;">
+          <h2 style="font-size:1.4rem; color:#fff; margin-bottom:16px; display:flex; align-items:center; gap:10px;">
+            <i class="fa-solid fa-envelope-open-text" style="color:var(--color-gold);"></i>
+            <span>ส่งข้อความถึงเรา (Inquiry Form)</span>
+          </h2>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:24px;">
+            กรอกข้อมูลด้านล่าง ทีมงานที่ปรึกษาการขายจะติดต่อกลับภายใน 30 นาที
+          </p>
+
+          <form id="contactForm" onsubmit="handleContactSubmit(event)">
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactName">ชื่อ-นามสกุลของคุณ *</label>
+                <input type="text" id="contactName" class="custom-input" placeholder="ระบุชื่อจริงและนามสกุล" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactPhone">เบอร์โทรศัพท์ติดต่อ *</label>
+                <input type="tel" id="contactPhone" class="custom-input" placeholder="08X-XXX-XXXX" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactEmail">อีเมล (Email) *</label>
+                <input type="email" id="contactEmail" class="custom-input" placeholder="name@email.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactTopic">หัวข้อที่ต้องการติดต่อ</label>
+                <select id="contactTopic" class="custom-select">
+                  <option value="buy">สนใจซื้อรถยนต์ในโชว์รูม</option>
+                  <option value="sell">ต้องการประเมินราคา / ลงขายรถ</option>
+                  <option value="finance">สอบถามเงื่อนไขสินเชื่อ / จัดไฟแนนซ์</option>
+                  <option value="service">บริการหลังการขายและการรับประกัน</option>
+                  <option value="other">เรื่องอื่นๆ</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactCarModel">ระบุรุ่นรถที่สนใจ (ถ้ามี)</label>
+              <input type="text" id="contactCarModel" class="custom-input" placeholder="เช่น Ferrari F80, Porsche 911 GT3 RS, Koenigsegg...">
+            </div>
+
+            <div class="form-group">
+              <label for="contactMsg">รายละเอียดข้อความ *</label>
+              <textarea id="contactMsg" class="custom-textarea" placeholder="ระบุข้อความหรือคำถามที่ต้องการให้เราช่วยเหลือ..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-gold btn-lg" style="width:100%; margin-top:14px;">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>ส่งข้อความสอบถามทันที</span>
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= 3. FOOTER ================= -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo" style="margin-bottom:18px;">
+            <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+            <div class="logo-text">
+              <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+              <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+            </div>
+          </div>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.7;">
+            ศูนย์รวมซื้อขายซูเปอร์คาร์และยนตรกรรมหรูระดับพรีเมียม
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">เมนูลัด</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="cars.html">คลังรถทั้งหมด</a></li>
+            <li><a href="sell.html">ลงขายรถ</a></li>
+            <li><a href="contact.html">ติดต่อเรา</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">ติดต่อด่วน</h4>
+          <ul class="footer-links">
+            <li><a href="tel:029998888">โทร 02-999-8888</a></li>
+            <li><a href="mailto:contact@supercarp.com">contact@supercarp.com</a></li>
+            <li><a href="#">LINE: @supercarp</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">ที่อยู่โชว์รูม</h4>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.6;">
+            ถนนประดิษฐ์มนูธรรม แขวงคลองจั่น เขตบางกะปิ กรุงเทพมหานคร 10240
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 SUPERCAR P. All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/cars-data.js"></script>
+  <script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById("contactName").value.trim();
+      const phone = document.getElementById("contactPhone").value.trim();
+      
+      showToast(`ขอบคุณคุณ ${name}! ทีมงานได้รับข้อความแล้วและจะติดต่อกลับที่เบอร์ ${phone} โดยเร็วที่สุด`, "success", 5000);
+      document.getElementById("contactForm").reset();
+    }
+  </script>
+</body>
+</html>
