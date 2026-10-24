@@ -1,0 +1,133 @@
+/* ===================================================================
+   SUPERCAR P - Koenigsegg Agera RS Showcase Page Stylesheet
+   =================================================================== */
+
+.agera-hero-section {
+  min-height: 450px;
+  background: linear-gradient(180deg, rgba(14, 18, 26, 0.85) 0%, rgba(10, 12, 16, 0.98) 100%),
+              url('https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1400&q=80') center/cover;
+}
+
+.agera-hero-title {
+  font-size: 3.2rem;
+  margin-bottom: 12px;
+}
+
+.agera-hero-desc {
+  font-size: 1.15rem;
+  color: #f2f2f2;
+  max-width: 640px;
+  margin-bottom: 20px;
+}
+
+.agera-hero-price {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--color-gold-light);
+  margin-bottom: 26px;
+}
+
+.agera-btn-group {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.agera-main-content {
+  padding: 50px 24px 80px;
+  max-width: 1050px;
+  display: grid;
+  gap: 28px;
+}
+
+.agera-glass-card {
+  padding: 30px;
+  border: 1.5px solid var(--border-gold);
+}
+
+.agera-card-title {
+  color: var(--color-gold);
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+}
+
+.agera-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.agera-spec-cell {
+  background: #090b0f;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.agera-spec-label {
+  color: var(--text-muted);
+  display: block;
+  font-size: 0.8rem;
+}
+
+.agera-spec-val-gold {
+  color: var(--color-gold-light);
+  font-size: 1.4rem;
+}
+
+.agera-spec-val-white {
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.agera-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .agera-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.agera-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+}
+
+.agera-contact-box {
+  padding: 30px;
+  border: 1.5px solid var(--border-gold);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.agera-contact-title {
+  color: var(--color-gold);
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+
+.agera-contact-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.agera-contact-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-copy-text {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}

@@ -1,0 +1,122 @@
+/* ===================================================================
+   SUPERCAR P - Contact Us Page Stylesheet
+   =================================================================== */
+
+.header-sell-btn {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header-sell-btn {
+    display: inline-flex;
+  }
+}
+
+.section-header-center {
+  text-align: center;
+}
+
+.contact-card-main {
+  padding: 34px;
+  margin-bottom: 24px;
+}
+
+.contact-card-title {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.accent-gold-icon {
+  color: var(--color-gold);
+}
+
+.contact-item-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.contact-item-value-highlight {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-gold-light);
+}
+
+.contact-item-value-gold {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-gold-light);
+}
+
+.contact-item-value-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.5;
+}
+
+.contact-service-card {
+  padding: 24px;
+}
+
+.service-title {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.check-green-icon {
+  color: #2ed573;
+}
+
+.service-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.service-list-icon {
+  color: var(--color-gold);
+  margin-right: 8px;
+}
+
+.contact-form-panel {
+  padding: 34px;
+}
+
+.contact-form-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.btn-contact-submit {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.footer-brand-logo {
+  margin-bottom: 18px;
+}
+
+.footer-desc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.footer-addr {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}

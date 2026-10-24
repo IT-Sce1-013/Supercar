@@ -287,7 +287,7 @@ function renderCars() {
           <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
         </button>
 
-        <div class="car-img-wrapper" onclick="window.location.href='../car_details.html?id=${car.id}'" style="cursor: pointer;">
+        <div class="car-img-wrapper cursor-pointer" onclick="window.location.href='../car_details.html?id=${car.id}'">
           <img src="${imgSrc}" alt="${car.name}" loading="lazy">
         </div>
 
@@ -297,7 +297,7 @@ function renderCars() {
             <span class="car-year">${car.year}</span>
           </div>
 
-          <h3 class="car-model-name" onclick="window.location.href='../car_details.html?id=${car.id}'" style="cursor: pointer;">
+          <h3 class="car-model-name cursor-pointer" onclick="window.location.href='../car_details.html?id=${car.id}'">
             ${car.name}
           </h3>
 
@@ -480,11 +480,11 @@ window.viewCarDetail = function(carId) {
 
       <div class="modal-car-info">
         <span class="sub-heading">${car.brand} • ${car.type}</span>
-        <h2 style="font-size: 1.8rem; margin: 6px 0 10px;">${car.name}</h2>
-        <div style="font-size: 1.6rem; font-weight: 800; color: var(--color-gold-light); margin-bottom: 14px;">
+        <h2 class="modal-car-title">${car.name}</h2>
+        <div class="modal-car-price">
           ฿ ${car.priceDisplay}
         </div>
-        <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 20px;">
+        <p class="modal-car-desc">
           ${car.description}
         </p>
 
@@ -519,12 +519,12 @@ window.viewCarDetail = function(carId) {
           </div>
           <div class="spec-box">
             <span class="spec-box-label">สถานะ (Status)</span>
-            <div class="spec-box-val" style="color: #2ed573;">${car.status}</div>
+            <div class="spec-box-val text-green">${car.status}</div>
           </div>
         </div>
 
-        <div style="display: flex; gap: 12px; margin-top: 24px;">
-          <button class="btn btn-gold" style="flex: 1;" onclick="contactAboutCar(${car.id})">
+        <div class="modal-action-row">
+          <button class="btn btn-gold flex-1" onclick="contactAboutCar(${car.id})">
             <i class="fa-solid fa-phone"></i> สอบถามข้อมูลคันนี้
           </button>
           <button class="btn btn-outline" onclick="closeModal()">
@@ -614,7 +614,7 @@ if (wishlistToggle) {
         <button class="card-fav-btn active" onclick="toggleWishlist(${car.id}, event)">
           <i class="fa-solid fa-heart"></i>
         </button>
-        <div class="car-img-wrapper" onclick="viewCarDetail(${car.id})" style="cursor: pointer;">
+        <div class="car-img-wrapper cursor-pointer" onclick="viewCarDetail(${car.id})">
           <img src="${car.image}" alt="${car.name}">
         </div>
         <div class="car-card-body">
@@ -622,7 +622,7 @@ if (wishlistToggle) {
             <span class="car-brand-name">${car.brand}</span>
             <span class="car-year">${car.year}</span>
           </div>
-          <h3 class="car-model-name" onclick="viewCarDetail(${car.id})" style="cursor: pointer;">${car.name}</h3>
+          <h3 class="car-model-name cursor-pointer" onclick="viewCarDetail(${car.id})">${car.name}</h3>
           <div class="car-price-row">
             <div class="price-meta">
               <span class="price-caption">ราคาจำหน่าย</span>

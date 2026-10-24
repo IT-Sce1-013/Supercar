@@ -33,10 +33,10 @@ const DEFAULT_CARS = [
     badges: ["Hypercar", "1,200 HP", "New Arrival"],
     description: "ม้าลำพองตัวท็อปเจเนอเรชันใหม่ล่าสุด ถ่ายทอดดีเอ็นเอแชมป์เลอม็องส์ 24 ชั่วโมง 499P สู่รถถนนที่แรงและล้ำสมัยที่สุดของเฟอร์รารี่ พร้อมระบบขับเคลื่อนทุกล้อไฟฟ้า E-4WD",
     seller: {
-      name: "Supercar P Gallery (Official)",
+      name: "อธิราช อินทรประชา (Supercar P Official)",
       phone: "02-999-8888",
       line: "@supercarp",
-      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80",
+      avatar: "pic/Pat.jpg",
       verified: true
     }
   },
@@ -68,10 +68,10 @@ const DEFAULT_CARS = [
     badges: ["Track-Focused", "Weissach Pack", "NA 9,000 RPM"],
     description: "อาวุธสำหรับแทร็กเดย์ที่จดทะเบียนวิ่งบนถนนได้จริง มาพร้อมระบบแอร์โรไดนามิกส์แบบแอคทีฟ DRS และชุดแต่ง Weissach Package คาร์บอนไฟเบอร์รอบคัน",
     seller: {
-      name: "คุณธนินท์ (Prestige Owner)",
+      name: "อธิราช อินทรประชา",
       phone: "081-888-9999",
       line: "@thanin_gt3",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      avatar: "pic/Pat.jpg",
       verified: true
     }
   },
@@ -103,10 +103,10 @@ const DEFAULT_CARS = [
     badges: ["Godzilla", "Nismo Special", "Takumi Engine"],
     description: "ตำนานก๊อดซิลล่ารุ่นสั่งลาที่ประกอบมือโดยช่างทาคูมิ ฝากระโปรงหน้าคาร์บอนเคลือบเงา ล้อเรย์ Forged ขนาด 20 นิ้ว พร้อมเบรกคาร์บอนเซรามิก Brembo",
     seller: {
-      name: "Supercar P Gallery (Official)",
+      name: "อธิราช อินทรประชา (Supercar P Official)",
       phone: "02-999-8888",
       line: "@supercarp",
-      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80",
+      avatar: "pic/Pat.jpg",
       verified: true
     }
   },
@@ -173,10 +173,10 @@ const DEFAULT_CARS = [
     badges: ["V12 HPEV", "1,015 HP", "Bespoke"],
     description: "กระทิงดุสายพันธุ์แรกที่มาพร้อมเครื่องยนต์ V12 ไฮบริด ให้กำลังทะลุ 1,015 แรงม้า เสียงคำรามอันเป็นเอกลักษณ์ ผสานเทคโนโลยีโมโนค็อกคาร์บอนใหม่ล่าสุด",
     seller: {
-      name: "Supercar P Gallery (Official)",
+      name: "อธิราช อินทรประชา (Supercar P Official)",
       phone: "02-999-8888",
       line: "@supercarp",
-      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80",
+      avatar: "pic/Pat.jpg",
       verified: true
     }
   },
@@ -243,10 +243,10 @@ const DEFAULT_CARS = [
     badges: ["Ultra-Luxury", "Starlight Doors", "Pure Electric"],
     description: "คูเป้ไฟฟ้าหรูหราระดับอัลตราลักชัวรีคันแรกของโรลส์-รอยซ์ ความเงียบสงบดุจห้องนั่งเล่นลอยฟ้า พร้อมเพดานและแผงประตูดวงดาว Starlight Doors กว่า 4,796 จุด",
     seller: {
-      name: "Supercar P Gallery (Official)",
+      name: "อธิราช อินทรประชา (Supercar P Official)",
       phone: "02-999-8888",
       line: "@supercarp",
-      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80",
+      avatar: "pic/Pat.jpg",
       verified: true
     }
   },
@@ -313,10 +313,10 @@ const DEFAULT_CARS = [
     badges: ["EV Track Beast", "1,034 HP", "Nürburgring Record"],
     description: "เจ้าของสถิติรถยนต์ไฟฟ้า 4 ประตูที่เร็วที่สุดในสนามนูร์เบิร์กริง มาพร้อมโหมด Attack Mode ชั่วคราวเพิ่มพลังทะลุ 1,100 แรงม้า ควบคุมได้แม่นยำดุจรถแข่ง",
     seller: {
-      name: "Supercar P Gallery (Official)",
+      name: "อธิราช อินทรประชา (Supercar P Official)",
       phone: "02-999-8888",
       line: "@supercarp",
-      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80",
+      avatar: "pic/Pat.jpg",
       verified: true
     }
   },
@@ -447,24 +447,24 @@ function updateNavbarAuth() {
 
   if (user && user.name) {
     authContainer.innerHTML = `
-      <div class="user-profile-badge" style="display:flex; align-items:center; gap:8px;">
-        <div style="width:32px; height:32px; border-radius:50%; background:var(--gold-gradient); display:flex; align-items:center; justify-content:center; color:#0b0c10; font-weight:700; font-size:0.85rem;">
+      <div class="user-profile-badge">
+        <div class="user-profile-avatar">
           ${user.name.charAt(0).toUpperCase()}
         </div>
-        <span style="font-size:0.88rem; font-weight:600; color:var(--text-main); display:none; @media(min-width:640px){display:inline;}">
+        <span class="user-profile-name">
           ${user.name}
         </span>
-        <button onclick="logoutUser()" class="btn btn-outline btn-sm" style="padding:6px 12px; font-size:0.8rem; border-radius:20px; border-color:rgba(255,255,255,0.15);" title="ออกจากระบบ">
+        <button onclick="logoutUser()" class="btn btn-outline btn-sm btn-user-logout" title="ออกจากระบบ">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
         </button>
       </div>
     `;
   } else {
     // Determine relative path based on page location
-    const isSubdir = window.location.pathname.includes('/list/') || window.location.pathname.includes('/login/');
+    const isSubdir = window.location.pathname.includes('/cars/') || window.location.pathname.includes('/list/') || window.location.pathname.includes('/login/');
     const loginHref = isSubdir ? '../login.html' : 'login.html';
     authContainer.innerHTML = `
-      <a href="${loginHref}" class="btn btn-gold btn-sm" style="border-radius:20px; padding:7px 16px; font-size:0.88rem;">
+      <a href="${loginHref}" class="btn btn-gold btn-sm btn-user-login">
         <i class="fa-regular fa-user"></i>
         <span>เข้าสู่ระบบ</span>
       </a>
@@ -554,7 +554,7 @@ function showToast(message, type = "success", duration = 3500) {
 
   toast.innerHTML = `
     ${iconHtml}
-    <span style="font-size:0.92rem; font-weight:500;">${message}</span>
+    <span class="toast-text">${message}</span>
   `;
 
   container.appendChild(toast);

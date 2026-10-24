@@ -1,0 +1,227 @@
+/* ===================================================================
+   SUPERCAR P - Homepage (index.html) Stylesheet
+   =================================================================== */
+
+.header-sell-btn {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header-sell-btn {
+    display: inline-flex;
+  }
+}
+
+.search-field-val {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  margin: 2px 0;
+}
+
+.search-submit-btn {
+  white-space: nowrap;
+  padding: 13px 28px;
+}
+
+.featured-cars-section {
+  padding-top: 10px;
+}
+
+.section-header-center {
+  text-align: center;
+}
+
+.view-all-cars-wrapper {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Consignment Showcase Section */
+.consignment-section {
+  padding: 70px 0;
+  background: linear-gradient(180deg, rgba(14, 18, 26, 0.6) 0%, rgba(10, 12, 16, 0.95) 100%);
+}
+
+.consignment-panel {
+  padding: 45px;
+  border: 1.5px solid var(--border-gold);
+  background: radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.1) 0%, rgba(18, 22, 31, 0.95) 70%);
+}
+
+.consignment-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .consignment-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.consignment-title {
+  font-size: 2.2rem;
+  margin: 10px 0 16px;
+  line-height: 1.2;
+}
+
+.consignment-desc {
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  margin-bottom: 26px;
+}
+
+.consignment-cta-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.consignment-benefit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.consignment-benefit-item {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.consignment-benefit-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.consignment-benefit-title {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.consignment-benefit-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Why Choose Us / Services Section */
+.services-section {
+  padding: 70px 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.service-card {
+  padding: 28px;
+  text-align: center;
+}
+
+.service-card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1.5px solid var(--border-gold);
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  font-size: 1.6rem;
+}
+
+.service-card-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.service-card-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Footer Styling */
+.footer-brand-logo {
+  margin-bottom: 18px;
+}
+
+.footer-desc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.footer-social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  transition: var(--transition-smooth);
+}
+
+.footer-social-btn:hover {
+  background: var(--color-gold);
+  color: #000;
+}
+
+.footer-contact-item {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+}
+
+.footer-contact-icon {
+  color: var(--color-gold);
+  width: 20px;
+}
+
+.footer-extra-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-extra-link {
+  color: var(--text-dim);
+  transition: var(--transition-smooth);
+}
+
+.footer-extra-link:hover {
+  color: var(--color-gold);
+}
+
+.fav-active {
+  color: #ff4757 !important;
+}

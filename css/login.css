@@ -1,0 +1,98 @@
+/* ===================================================================
+   SUPERCAR P - Login & Sign Up Page Stylesheet
+   =================================================================== */
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.auth-logo-mark {
+  margin: 0 auto 12px;
+  width: 52px;
+  height: 52px;
+  font-size: 1.6rem;
+}
+
+.auth-title {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.auth-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.form-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.form-label-row label {
+  margin: 0;
+}
+
+.forgot-link {
+  font-size: 0.8rem;
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+  color: var(--color-gold-light);
+}
+
+.input-relative {
+  position: relative;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.toggle-password-btn:hover {
+  color: var(--color-gold);
+}
+
+.btn-auth-submit {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.form-hidden {
+  display: none;
+}
+
+.auth-terms {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 24px;
+  line-height: 1.5;
+}
+
+.auth-terms-link {
+  color: var(--color-gold);
+}
+
+.footer-copy-text {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}

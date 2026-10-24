@@ -1,0 +1,115 @@
+/* ===================================================================
+   SUPERCAR P - Sell Car Page Stylesheet
+   =================================================================== */
+
+.section-header-center {
+  text-align: center;
+}
+
+.sell-form-panel {
+  padding: 34px;
+}
+
+.sell-form-title {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.accent-gold-icon {
+  color: var(--color-gold);
+}
+
+.preset-btn-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.seller-info-section {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 20px;
+}
+
+.seller-info-title {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-sell-submit {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.preview-sticky-wrap {
+  position: sticky;
+  top: 100px;
+}
+
+.preview-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.preview-header-title {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.preview-realtime-badge {
+  font-size: 0.75rem;
+  color: var(--color-gold);
+  background: rgba(212, 175, 55, 0.1);
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border-gold);
+}
+
+.btn-preview-disabled {
+  opacity: 0.8;
+}
+
+.guarantee-notice-panel {
+  padding: 18px;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.shield-green-icon {
+  color: #2ed573;
+  margin-right: 6px;
+}
+
+.footer-brand-logo {
+  margin-bottom: 18px;
+}
+
+.footer-desc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.footer-contact-item {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+}
+
+.footer-icon-gold {
+  color: var(--color-gold);
+  width: 20px;
+}

@@ -8,10 +8,11 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Unified Master Stylesheet -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/car_details.css">
 </head>
-<body style="padding-bottom: 90px;">
+<body class="details-body">
 
   <!-- ================= 1. HEADER / NAVIGATION ================= -->
   <header class="main-header" id="navbar">
@@ -30,11 +31,12 @@
         <a href="cars.html" class="nav-link active">คลังรถทั้งหมด</a>
         <a href="sell.html" class="nav-link">ลงขายรถ</a>
         <a href="contact.html" class="nav-link">ติดต่อเรา</a>
+        <a href="team.html" class="nav-link">รายชื่อนักศึกษา</a>
       </nav>
 
       <!-- Header Tools -->
       <div class="header-tools">
-        <a href="sell.html" class="btn btn-outline btn-sm" style="display:none; @media(min-width:768px){display:inline-flex;}">
+        <a href="sell.html" class="btn btn-outline btn-sm header-sell-btn">
           <i class="fa-solid fa-plus"></i>
           <span>ลงขายรถ</span>
         </a>
@@ -58,13 +60,13 @@
   </header>
 
   <!-- ================= 2. BREADCRUMB ================= -->
-  <div class="container" style="padding-top: 24px;">
+  <div class="container details-main-section">
     <div class="breadcrumb-nav">
       <a href="index.html"><i class="fa-solid fa-house"></i> หน้าแรก</a>
       <span>/</span>
       <a href="cars.html">คลังรถยนต์</a>
       <span>/</span>
-      <span id="breadcrumbCarName" style="color:var(--color-gold);">กำลังโหลด...</span>
+      <span id="breadcrumbCarName" class="accent-gold-icon">กำลังโหลด...</span>
     </div>
   </div>
 
@@ -85,7 +87,7 @@
               <i class="fa-solid fa-chevron-right"></i>
             </button>
 
-            <div style="position:absolute; bottom:14px; right:14px; background:rgba(0,0,0,0.75); color:#fff; font-size:0.75rem; padding:4px 10px; border-radius:20px; backdrop-filter:blur(6px);">
+            <div class="gallery-counter-badge">
               <span id="currentImgIdx">1</span> / <span id="totalImgCount">5</span>
             </div>
           </div>
@@ -97,23 +99,28 @@
         </div>
 
         <!-- Loan & Installment Calculator -->
-        <div class="calculator-card glass-panel">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-            <h3 style="font-size:1.25rem; display:flex; align-items:center; gap:8px;">
-              <i class="fa-solid fa-calculator" style="color:var(--color-gold);"></i>
+        <div class="calculator-card glass-panel" id="loanCalculator">
+          <div class="calc-card-header">
+            <h3 class="calc-card-title">
+              <i class="fa-solid fa-calculator accent-gold-icon"></i>
               <span>โปรแกรมคำนวณค่างวดสินเชื่อเบื้องต้น</span>
             </h3>
-            <span style="font-size:0.78rem; color:var(--text-dim);">ดอกเบี้ยเริ่มต้น 2.79% ต่อปี</span>
+            <span class="calc-header-badge">
+              <i class="fa-solid fa-shield-halved"></i> ไฟแนนซ์มาตรฐาน
+            </span>
           </div>
 
-          <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.6;">
-            ประเมินยอดผ่อนต่อเดือนโดยประมาณ สามารถปรับเปลี่ยนเงินดาวน์และระยะเวลาผ่อนได้ตามต้องการ
+          <p class="calc-card-desc">
+            ประเมินยอดผ่อนต่อเดือนแบบละเอียด สามารถเลือกเงินดาวน์ ระยะเวลาผ่อน และอัตราดอกเบี้ยได้ตามต้องการ
           </p>
 
           <div class="calc-inputs-grid">
             <div class="form-group">
-              <label>เงินดาวน์ (%)</label>
-              <select id="calcDownPercent" class="custom-select" onchange="calculateInstallment()">
+              <div class="calc-input-label-row">
+                <label for="calcDownPercent">เงินดาวน์ (%)</label>
+                <span id="calcDownAmountText" class="down-amount-badge">฿ 0</span>
+              </div>
+              <select id="calcDownPercent" class="custom-select" onchange="handleDownPercentSelect()">
                 <option value="0.15">15%</option>
                 <option value="0.20" selected>20% (แนะนำ)</option>
                 <option value="0.25">25%</option>
@@ -121,10 +128,19 @@
                 <option value="0.40">40%</option>
                 <option value="0.50">50%</option>
               </select>
+              <!-- Down Payment Quick Select Buttons -->
+              <div class="calc-down-presets" id="downPresets">
+                <button type="button" class="preset-btn" onclick="setDownPreset(0.15)">15%</button>
+                <button type="button" class="preset-btn active" onclick="setDownPreset(0.20)">20%</button>
+                <button type="button" class="preset-btn" onclick="setDownPreset(0.25)">25%</button>
+                <button type="button" class="preset-btn" onclick="setDownPreset(0.30)">30%</button>
+                <button type="button" class="preset-btn" onclick="setDownPreset(0.40)">40%</button>
+                <button type="button" class="preset-btn" onclick="setDownPreset(0.50)">50%</button>
+              </div>
             </div>
 
             <div class="form-group">
-              <label>ระยะเวลาผ่อน (เดือน)</label>
+              <label for="calcPeriodMonths">ระยะเวลาผ่อน (เดือน)</label>
               <select id="calcPeriodMonths" class="custom-select" onchange="calculateInstallment()">
                 <option value="36">36 เดือน (3 ปี)</option>
                 <option value="48" selected>48 เดือน (4 ปี)</option>
@@ -135,25 +151,77 @@
             </div>
 
             <div class="form-group">
-              <label>อัตราดอกเบี้ยต่อปี (%)</label>
+              <label for="calcInterestRate">อัตราดอกเบี้ยต่อปี (%)</label>
               <select id="calcInterestRate" class="custom-select" onchange="calculateInstallment()">
-                <option value="0.0259">2.59% (พิเศษ)</option>
+                <option value="0.0239">2.39% (แคมเปญพิเศษ)</option>
+                <option value="0.0259">2.59% (ดอกเบี้ยพิเศษ)</option>
                 <option value="0.0279" selected>2.79% (มาตรฐาน)</option>
                 <option value="0.0299">2.99%</option>
                 <option value="0.0329">3.29%</option>
+                <option value="0.0359">3.59%</option>
               </select>
             </div>
           </div>
 
+          <!-- VAT Toggle Row -->
+          <div class="vat-toggle-row">
+            <span class="vat-toggle-label">
+              <i class="fa-solid fa-receipt accent-gold-icon"></i>
+              <span>คำนวณภาษีมูลค่าเพิ่ม VAT 7% (สัญญาเช่าซื้อมาตรฐาน)</span>
+            </span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="calcVatToggle" checked onchange="calculateInstallment()">
+              <span class="slider-round"></span>
+            </label>
+          </div>
+
+          <!-- Financial Breakdown Summary Cards -->
+          <div class="calc-breakdown-grid">
+            <div class="breakdown-card">
+              <span class="breakdown-label">ยอดจัดสินเชื่อ (ยอดกู้)</span>
+              <span class="breakdown-val" id="calcLoanAmount">฿ 0</span>
+            </div>
+            <div class="breakdown-card">
+              <span class="breakdown-label">เงินดาวน์</span>
+              <span class="breakdown-val gold" id="calcDownPaymentVal">฿ 0</span>
+            </div>
+            <div class="breakdown-card">
+              <span class="breakdown-label">ดอกเบี้ยรวมตลอดสัญญา</span>
+              <span class="breakdown-val" id="calcTotalInterest">฿ 0</span>
+            </div>
+            <div class="breakdown-card">
+              <span class="breakdown-label">ยอดรวมชำระทั้งสิ้น</span>
+              <span class="breakdown-val" id="calcTotalPayable">฿ 0</span>
+            </div>
+          </div>
+
+          <!-- Main Result Box -->
           <div class="calc-result-box">
-            <span style="font-size:0.82rem; color:var(--text-muted); display:block; margin-bottom:4px;">
-              ค่างวดผ่อนชำระโดยประมาณ
+            <span class="calc-label-meta" id="calcResultLabel">
+              ค่างวดผ่อนชำระโดยประมาณ (รวม VAT 7%)
             </span>
             <div class="calc-result-amount" id="calcMonthlyPayment">฿ 0</div>
-            <span style="font-size:0.75rem; color:var(--text-dim); display:block; margin-top:4px;">
-              * ยอดผ่อนจริงขึ้นอยู่กับการพิจารณาและเงื่อนไขของสถาบันการเงินผู้ปล่อยสินเชื่อ
+            <span class="calc-range-caption">
+              * ข้อมูลเบื้องต้นเพื่อการตัดสินใจ ยอดผ่อนและอัตราดอกเบี้ยจริงขึ้นอยู่กับประวัติและเงื่อนไขของสถาบันการเงิน
             </span>
           </div>
+
+          <!-- Quick Comparison Grid Across Different Terms -->
+          <div class="period-compare-section">
+            <span class="period-compare-title">
+              <i class="fa-solid fa-chart-simple accent-gold-icon"></i>
+              <span>เปรียบเทียบค่างวดตามระยะเวลาผ่อน (คลิกเพื่อเลือกงวด):</span>
+            </span>
+            <div class="period-compare-grid" id="periodCompareGrid">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- CTA to Consultation -->
+          <button type="button" onclick="applyPlanToAppointment()" class="btn btn-gold btn-sm calc-apply-btn">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+            <span>สนใจแผนผ่อนนี้ • ปรึกษาเจ้าหน้าที่สินเชื่อ / นัดดูรถ</span>
+          </button>
         </div>
 
       </div>
@@ -163,56 +231,56 @@
         
         <!-- Header & Wishlist -->
         <div>
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+          <div class="car-detail-title-row">
             <div>
               <span class="sub-heading" id="carBrandTypeBadge">FERRARI • HYPERCAR</span>
-              <h1 id="carNameTitle" style="font-size:2.2rem; margin:6px 0 10px; line-height:1.2;">Ferrari F80</h1>
+              <h1 id="carNameTitle" class="car-detail-main-title">Ferrari F80</h1>
             </div>
             
-            <button class="card-fav-btn" id="detailFavBtn" style="position:static; width:48px; height:48px;" onclick="toggleDetailFav()">
-              <i class="fa-regular fa-heart" style="font-size:1.3rem;"></i>
+            <button class="card-fav-btn fav-btn-static" id="detailFavBtn" onclick="toggleDetailFav()">
+              <i class="fa-regular fa-heart"></i>
             </button>
           </div>
 
-          <div style="display:flex; align-items:baseline; gap:12px; margin:10px 0 16px;">
-            <span style="font-size:0.85rem; color:var(--text-dim);">ราคาจำหน่าย:</span>
-            <span id="carPriceNumber" class="price-number" style="font-size:2.4rem;">฿ 135,000,000</span>
+          <div class="car-detail-price-row">
+            <span class="price-label-dim">ราคาจำหน่าย:</span>
+            <span id="carPriceNumber" class="price-number car-detail-price-main">฿ 135,000,000</span>
           </div>
 
           <!-- Quick Badges -->
-          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px;" id="carBadgesContainer">
+          <div class="car-detail-badge-group" id="carBadgesContainer">
             <!-- Badges -->
           </div>
 
-          <p id="carDescriptionText" style="color:var(--text-muted); font-size:0.95rem; line-height:1.7;">
+          <p id="carDescriptionText" class="car-detail-desc-text">
             ม้าลำพองตัวท็อปเจเนอเรชันใหม่ล่าสุด ถ่ายทอดดีเอ็นเอแชมป์เลอม็องส์ 24 ชั่วโมง 499P สู่รถถนนที่แรงและล้ำสมัยที่สุด
           </p>
         </div>
 
         <!-- 4 Key Performance Highlights -->
-        <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; background:rgba(255,255,255,0.02); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-glass);">
-          <div style="text-align:center;">
-            <small style="color:var(--text-muted); font-size:0.75rem; display:block;">กำลังสูงสุด</small>
-            <b id="specHp" style="color:var(--color-gold-light); font-size:1.2rem;">1,200 HP</b>
+        <div class="quick-specs-bar">
+          <div class="quick-spec-item">
+            <small class="quick-spec-label">กำลังสูงสุด</small>
+            <b id="specHp" class="quick-spec-val-gold">1,200 HP</b>
           </div>
-          <div style="text-align:center;">
-            <small style="color:var(--text-muted); font-size:0.75rem; display:block;">0-100 km/h</small>
-            <b id="specAcc" style="color:#fff; font-size:1.2rem;">2.15s</b>
+          <div class="quick-spec-item">
+            <small class="quick-spec-label">0-100 km/h</small>
+            <b id="specAcc" class="quick-spec-val">2.15s</b>
           </div>
-          <div style="text-align:center;">
-            <small style="color:var(--text-muted); font-size:0.75rem; display:block;">ความเร็วสูงสุด</small>
-            <b id="specTopSpeed" style="color:#fff; font-size:1.2rem;">350 km/h</b>
+          <div class="quick-spec-item">
+            <small class="quick-spec-label">ความเร็วสูงสุด</small>
+            <b id="specTopSpeed" class="quick-spec-val">350 km/h</b>
           </div>
-          <div style="text-align:center;">
-            <small style="color:var(--text-muted); font-size:0.75rem; display:block;">ระยะทางวิ่ง</small>
-            <b id="specMileage" style="color:var(--color-gold-light); font-size:1.2rem;">50 km</b>
+          <div class="quick-spec-item">
+            <small class="quick-spec-label">ระยะทางวิ่ง</small>
+            <b id="specMileage" class="quick-spec-val-gold">50 km</b>
           </div>
         </div>
 
         <!-- Technical Specs Table -->
-        <div class="glass-panel" style="padding:22px;">
-          <h3 style="font-size:1.15rem; color:#fff; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
-            <i class="fa-solid fa-list-check" style="color:var(--color-gold);"></i>
+        <div class="glass-panel inspection-panel">
+          <h3 class="inspection-panel-title">
+            <i class="fa-solid fa-list-check accent-gold-icon"></i>
             <span>ข้อมูลจำเพาะเชิงลึก (Specifications)</span>
           </h3>
           <table class="detail-specs-table">
@@ -221,27 +289,27 @@
             <tr><td>เครื่องยนต์</td><td id="tableEngine">-</td></tr>
             <tr><td>ระบบเกียร์</td><td id="tableTransmission">-</td></tr>
             <tr><td>สีตัวถังภายนอก</td><td id="tableColor">-</td></tr>
-            <tr><td>สถานะตัวรถ</td><td id="tableStatus" style="color:#2ed573;">-</td></tr>
-            <tr><td>การตรวจเช็กมาตรฐาน</td><td style="color:var(--color-gold-light);"><i class="fa-solid fa-circle-check"></i> ผ่านการตรวจ 300+ จุด</td></tr>
+            <tr><td>สถานะตัวรถ</td><td id="tableStatus" class="icon-green">-</td></tr>
+            <tr><td>การตรวจเช็กมาตรฐาน</td><td class="icon-gold"><i class="fa-solid fa-circle-check"></i> ผ่านการตรวจ 300+ จุด</td></tr>
           </table>
         </div>
 
         <!-- Seller Card -->
         <div class="seller-card">
           <div class="seller-header">
-            <img id="sellerAvatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80" alt="Seller" class="seller-avatar">
+            <img id="sellerAvatar" src="pic/Pat.jpg" alt="Seller" class="seller-avatar" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80';">
             <div>
-              <div style="display:flex; align-items:center; gap:8px;">
-                <h4 id="sellerName" style="font-size:1.05rem; color:#fff;">Supercar P Official</h4>
-                <span style="background:rgba(46,213,115,0.15); color:#2ed573; font-size:0.72rem; padding:2px 8px; border-radius:10px; font-weight:700;">
+              <div class="dealer-header-row">
+                <h4 id="sellerName" class="dealer-name-title">อธิราช อินทรประชา</h4>
+                <span class="dealer-badge-verified">
                   <i class="fa-solid fa-shield-check"></i> ยืนยันตัวตนแล้ว
                 </span>
               </div>
-              <p style="font-size:0.8rem; color:var(--text-dim); margin-top:2px;">ผู้จำหน่ายระดับ VVIP • โชว์รูมพร้อมส่งมอบ</p>
+              <p class="dealer-sub-dim">ผู้จำหน่ายระดับ VVIP • โชว์รูมพร้อมส่งมอบ</p>
             </div>
           </div>
 
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div class="dealer-contact-grid">
             <button onclick="openModal('contactModal')" class="btn btn-outline btn-sm">
               <i class="fa-regular fa-comment-dots"></i> ส่งข้อความ
             </button>
@@ -252,11 +320,11 @@
         </div>
 
         <!-- Action CTAs -->
-        <div style="display:flex; gap:14px; margin-top:10px;">
-          <button onclick="openModal('appointmentModal')" class="btn btn-outline" style="flex:1;">
+        <div class="detail-actions-row">
+          <button onclick="openModal('appointmentModal')" class="btn btn-outline detail-action-btn-grow">
             <i class="fa-regular fa-calendar-check"></i> นัดดูรถ / ทดลองขับ
           </button>
-          <button onclick="openModal('bookingModal')" class="btn btn-gold" style="flex:1.2;">
+          <button onclick="openModal('bookingModal')" class="btn btn-gold detail-action-btn-wide">
             <i class="fa-solid fa-car"></i> จองรถยนต์ออนไลน์
           </button>
         </div>
@@ -266,11 +334,11 @@
     </div>
 
     <!-- Related Vehicles Carousel -->
-    <div style="margin-top:70px;">
+    <div class="related-cars-section">
       <div class="section-header">
         <span class="sub-heading">SIMILAR EXCLUSIVES</span>
-        <h2 style="font-size:1.8rem;">ยนตรกรรมที่คุณอาจสนใจ</h2>
-        <div class="gold-divider" style="margin-left:0;"></div>
+        <h2 class="related-cars-title">ยนตรกรรมที่คุณอาจสนใจ</h2>
+        <div class="gold-divider related-cars-divider"></div>
       </div>
 
       <div class="cars-grid" id="relatedCarsContainer">
@@ -283,11 +351,11 @@
   <div class="sticky-bottom-bar">
     <div class="sticky-bar-inner">
       <div>
-        <div id="stickyCarTitle" style="font-size:0.95rem; font-weight:700; color:#fff;">Ferrari F80</div>
-        <div id="stickyCarPrice" style="font-family:var(--font-en); font-size:1.4rem; font-weight:800; color:var(--color-gold-light);">฿ 135,000,000</div>
+        <div id="stickyCarTitle" class="sticky-bar-car-name">Ferrari F80</div>
+        <div id="stickyCarPrice" class="sticky-bar-price">฿ 135,000,000</div>
       </div>
 
-      <div style="display:flex; gap:12px;">
+      <div class="sticky-bar-actions">
         <button onclick="openModal('appointmentModal')" class="btn btn-outline btn-sm">
           <i class="fa-regular fa-calendar-check"></i> นัดดูรถ
         </button>
@@ -304,13 +372,13 @@
   <div class="modal-overlay" id="appointmentModal">
     <div class="modal-box">
       <button class="modal-close-btn" onclick="closeModal('appointmentModal')"><i class="fa-solid fa-xmark"></i></button>
-      <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
-        <div style="width:44px; height:44px; border-radius:12px; background:var(--gold-gradient); display:flex; align-items:center; justify-content:center; color:#000; font-size:1.3rem;">
+      <div class="modal-header-flex">
+        <div class="modal-header-icon-box">
           <i class="fa-regular fa-calendar-check"></i>
         </div>
         <div>
-          <h3 style="font-size:1.3rem; color:#fff;">นัดหมายดูรถยนต์ / ทดลองขับ</h3>
-          <p id="modalCarSubtitle1" style="font-size:0.82rem; color:var(--text-muted);">-</p>
+          <h3 class="modal-header-h3">นัดหมายดูรถยนต์ / ทดลองขับ</h3>
+          <p id="modalCarSubtitle1" class="modal-header-sub">-</p>
         </div>
       </div>
 
@@ -343,7 +411,7 @@
             </select>
           </div>
         </div>
-        <button type="submit" class="btn btn-gold" style="width:100%; margin-top:10px;">
+        <button type="submit" class="btn btn-gold btn-modal-full">
           <i class="fa-solid fa-check"></i> ยืนยันการนัดหมาย
         </button>
       </form>
@@ -354,28 +422,28 @@
   <div class="modal-overlay" id="bookingModal">
     <div class="modal-box">
       <button class="modal-close-btn" onclick="closeModal('bookingModal')"><i class="fa-solid fa-xmark"></i></button>
-      <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
-        <div style="width:44px; height:44px; border-radius:12px; background:var(--gold-gradient); display:flex; align-items:center; justify-content:center; color:#000; font-size:1.3rem;">
+      <div class="modal-header-flex">
+        <div class="modal-header-icon-box">
           <i class="fa-solid fa-car"></i>
         </div>
         <div>
-          <h3 style="font-size:1.3rem; color:#fff;">จองรถยนต์ออนไลน์ (Online Booking)</h3>
-          <p style="font-size:0.82rem; color:var(--color-gold-light);">การันตีคืนเงินมัดจำ 100% หากไม่ผ่านไฟแนนซ์</p>
+          <h3 class="modal-header-h3">จองรถยนต์ออนไลน์ (Online Booking)</h3>
+          <p class="modal-header-sub-gold">การันตีคืนเงินมัดจำ 100% หากไม่ผ่านไฟแนนซ์</p>
         </div>
       </div>
 
-      <div style="background:rgba(212,175,55,0.08); border:1px solid var(--border-gold); padding:16px; border-radius:12px; margin-bottom:18px;">
-        <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.9rem;">
-          <span style="color:var(--text-muted);">รถยนต์ที่จอง:</span>
-          <span id="bookingCarName" style="font-weight:700; color:#fff;">-</span>
+      <div class="booking-summary-box">
+        <div class="booking-summary-row">
+          <span>รถยนต์ที่จอง:</span>
+          <span id="bookingCarName" class="booking-summary-val-white">-</span>
         </div>
-        <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.9rem;">
-          <span style="color:var(--text-muted);">ราคาจำหน่าย:</span>
-          <span id="bookingCarPrice" style="font-weight:700; color:var(--color-gold);">-</span>
+        <div class="booking-summary-row">
+          <span>ราคาจำหน่าย:</span>
+          <span id="bookingCarPrice" class="booking-summary-val-gold">-</span>
         </div>
-        <div style="display:flex; justify-content:space-between; padding-top:8px; border-top:1px solid rgba(255,255,255,0.08); font-size:1.05rem;">
-          <span style="color:#fff; font-weight:600;">ค่ามัดจำจองสิทธิ์:</span>
-          <span style="font-weight:800; color:#2ed573;">฿ 50,000</span>
+        <div class="booking-summary-total">
+          <span>ค่ามัดจำจองสิทธิ์:</span>
+          <span class="booking-summary-total-val">฿ 50,000</span>
         </div>
       </div>
 
@@ -394,7 +462,7 @@
             <input type="email" class="custom-input" placeholder="your@email.com" required>
           </div>
         </div>
-        <button type="submit" class="btn btn-gold" style="width:100%; margin-top:10px;">
+        <button type="submit" class="btn btn-gold btn-modal-full">
           <i class="fa-solid fa-lock"></i> ดำเนินการชำระมัดจำจองสิทธิ์
         </button>
       </form>
@@ -405,8 +473,8 @@
   <div class="modal-overlay" id="contactModal">
     <div class="modal-box">
       <button class="modal-close-btn" onclick="closeModal('contactModal')"><i class="fa-solid fa-xmark"></i></button>
-      <h3 style="font-size:1.3rem; color:#fff; margin-bottom:6px;">ส่งข้อความสอบถามผู้ขาย</h3>
-      <p id="contactCarSubtitle" style="font-size:0.85rem; color:var(--text-muted); margin-bottom:18px;">-</p>
+      <h3 class="success-modal-title">ส่งข้อความสอบถามผู้ขาย</h3>
+      <p id="contactCarSubtitle" class="success-modal-desc">-</p>
 
       <form onsubmit="handleContactSubmit(event)">
         <div class="form-group">
@@ -421,7 +489,7 @@
           <label>ข้อความสอบถาม</label>
           <textarea id="contactMessageInput" class="custom-textarea" placeholder="ระบุข้อความสอบถาม..."></textarea>
         </div>
-        <button type="submit" class="btn btn-gold" style="width:100%;">
+        <button type="submit" class="btn btn-gold btn-full-width">
           <i class="fa-solid fa-paper-plane"></i> ส่งข้อความทันที
         </button>
       </form>
@@ -458,23 +526,49 @@
       if (!currentCar) return;
 
       document.title = `${currentCar.name} (${currentCar.year}) | SUPERCAR P`;
+
+      // Breadcrumb & Title
       document.getElementById("breadcrumbCarName").textContent = currentCar.name;
       document.getElementById("carBrandTypeBadge").textContent = `${currentCar.brand.toUpperCase()} • ${currentCar.type.toUpperCase()}`;
       document.getElementById("carNameTitle").textContent = currentCar.name;
       document.getElementById("carPriceNumber").textContent = `฿ ${currentCar.priceDisplay}`;
       document.getElementById("carDescriptionText").textContent = currentCar.description;
 
+      // Sticky bar
+      document.getElementById("stickyCarTitle").textContent = `${currentCar.brand} ${currentCar.name}`;
+      document.getElementById("stickyCarPrice").textContent = `฿ ${currentCar.priceDisplay}`;
+
+      // Modal car subtitles
+      document.getElementById("modalCarSubtitle1").textContent = `${currentCar.name} (฿ ${currentCar.priceDisplay})`;
+      document.getElementById("bookingCarName").textContent = currentCar.name;
+      document.getElementById("bookingCarPrice").textContent = `฿ ${currentCar.priceDisplay}`;
+      document.getElementById("contactCarSubtitle").textContent = `สนใจสอบถาม: ${currentCar.name}`;
+      document.getElementById("contactMessageInput").value = `สวัสดีครับ ผมสนใจ ${currentCar.name} ราคา ฿ ${currentCar.priceDisplay} ต้องการสอบถามข้อมูลเพิ่มเติม...`;
+
+      // 4 Specs
       document.getElementById("specHp").textContent = `${currentCar.hp} HP`;
       document.getElementById("specAcc").textContent = currentCar.acceleration;
       document.getElementById("specTopSpeed").textContent = currentCar.topSpeed;
       document.getElementById("specMileage").textContent = currentCar.mileage;
 
-      document.getElementById("tableModel").textContent = currentCar.name;
+      // Table
+      document.getElementById("tableModel").textContent = `${currentCar.brand} ${currentCar.name}`;
       document.getElementById("tableYear").textContent = currentCar.year;
       document.getElementById("tableEngine").textContent = currentCar.engine;
       document.getElementById("tableTransmission").textContent = currentCar.transmission;
       document.getElementById("tableColor").textContent = currentCar.color;
       document.getElementById("tableStatus").textContent = currentCar.status;
+
+      // Seller Info
+      if (currentCar.seller) {
+        document.getElementById("sellerName").textContent = currentCar.seller.name || "อธิราช อินทรประชา";
+        if (currentCar.seller.phone) document.getElementById("sellerPhoneLink").href = `tel:${currentCar.seller.phone}`;
+        document.getElementById("sellerAvatar").src = currentCar.seller.avatar || "pic/Pat.jpg";
+      } else {
+        document.getElementById("sellerName").textContent = currentCar.sellerName || "อธิราช อินทรประชา";
+        document.getElementById("sellerAvatar").src = "pic/Pat.jpg";
+        if (currentCar.sellerPhone) document.getElementById("sellerPhoneLink").href = `tel:${currentCar.sellerPhone}`;
+      }
 
       // Badges
       const badgesContainer = document.getElementById("carBadgesContainer");
@@ -482,111 +576,223 @@
         <span class="badge-pill ${i === 0 ? 'gold' : 'dark'}">${b}</span>
       `).join('');
 
-      // Sticky Bar
-      document.getElementById("stickyCarTitle").textContent = currentCar.name;
-      document.getElementById("stickyCarPrice").textContent = `฿ ${currentCar.priceDisplay}`;
-
-      // Seller
-      if (currentCar.seller) {
-        document.getElementById("sellerName").textContent = currentCar.seller.name;
-        document.getElementById("sellerAvatar").src = currentCar.seller.avatar;
-        document.getElementById("sellerPhoneLink").href = `tel:${currentCar.seller.phone.replace(/[^0-9]/g, '')}`;
-        document.getElementById("sellerPhoneLink").innerHTML = `<i class="fa-solid fa-phone"></i> ${currentCar.seller.phone}`;
-      }
-
-      // Modals text
-      document.getElementById("modalCarSubtitle1").textContent = `${currentCar.name} (฿ ${currentCar.priceDisplay})`;
-      document.getElementById("bookingCarName").textContent = currentCar.name;
-      document.getElementById("bookingCarPrice").textContent = `฿ ${currentCar.priceDisplay}`;
-      document.getElementById("contactCarSubtitle").textContent = `สนใจรถยนต์: ${currentCar.name}`;
-      document.getElementById("contactMessageInput").value = `สวัสดีครับ สนใจสอบถามข้อมูลรถยนต์ ${currentCar.name} (รหัส #${currentCar.id}) ครับ`;
+      // Wishlist initial icon state
+      updateDetailFavIcon();
 
       // Main image
-      setImage(0);
-
-      // Wishlist button state
-      updateDetailFavBtn();
+      updateMainImage();
     }
 
     function renderThumbnails() {
       const container = document.getElementById("thumbnailsContainer");
-      container.innerHTML = currentGallery.map((imgSrc, idx) => `
-        <div class="thumb-item ${idx === 0 ? 'active' : ''}" onclick="setImage(${idx})">
-          <img src="${imgSrc}" alt="Thumbnail ${idx + 1}">
+      document.getElementById("totalImgCount").textContent = currentGallery.length;
+
+      container.innerHTML = currentGallery.map((img, i) => `
+        <div class="thumb-item ${i === currentImgIdx ? 'active' : ''}" onclick="selectImage(${i})">
+          <img src="${img}" alt="Thumbnail ${i + 1}">
         </div>
       `).join('');
     }
 
-    function setImage(idx) {
+    function selectImage(idx) {
       currentImgIdx = idx;
-      const mainImg = document.getElementById("mainImage");
-      mainImg.style.opacity = '0.3';
-      setTimeout(() => {
-        mainImg.src = currentGallery[currentImgIdx];
-        mainImg.style.opacity = '1';
-      }, 150);
-
-      document.getElementById("currentImgIdx").textContent = currentImgIdx + 1;
-      document.getElementById("totalImgCount").textContent = currentGallery.length;
-
-      document.querySelectorAll(".thumb-item").forEach((thumb, i) => {
-        thumb.classList.toggle("active", i === currentImgIdx);
-      });
+      updateMainImage();
     }
 
     function nextImage() {
-      let nextIdx = (currentImgIdx + 1) % currentGallery.length;
-      setImage(nextIdx);
+      currentImgIdx = (currentImgIdx + 1) % currentGallery.length;
+      updateMainImage();
     }
 
     function prevImage() {
-      let prevIdx = (currentImgIdx - 1 + currentGallery.length) % currentGallery.length;
-      setImage(prevIdx);
+      currentImgIdx = (currentImgIdx - 1 + currentGallery.length) % currentGallery.length;
+      updateMainImage();
     }
 
-    // Installment Calculator
-    function calculateInstallment() {
-      if (!currentCar) return;
+    function updateMainImage() {
+      const img = document.getElementById("mainImage");
+      img.style.opacity = "0.3";
+      setTimeout(() => {
+        img.src = currentGallery[currentImgIdx];
+        img.style.opacity = "1";
+      }, 120);
+      document.getElementById("currentImgIdx").textContent = currentImgIdx + 1;
 
-      const price = currentCar.price;
-      const downPercent = parseFloat(document.getElementById("calcDownPercent").value);
-      const months = parseInt(document.getElementById("calcPeriodMonths").value);
-      const annualRate = parseFloat(document.getElementById("calcInterestRate").value);
-
-      const downPayment = price * downPercent;
-      const loanAmount = price - downPayment;
-      const years = months / 12;
-      const totalInterest = loanAmount * annualRate * years;
-      const totalLoanWithInterest = loanAmount + totalInterest;
-      const monthlyPayment = Math.round(totalLoanWithInterest / months);
-
-      document.getElementById("calcMonthlyPayment").textContent = `฿ ${monthlyPayment.toLocaleString()} / เดือน`;
+      // Update thumbnail active
+      document.querySelectorAll(".thumb-item, .thumb-box").forEach((box, i) => {
+        box.classList.toggle("active", i === currentImgIdx);
+      });
     }
 
-    // Wishlist Toggle for detail page
+    // Favorite handler
     function toggleDetailFav() {
       if (!currentCar) return;
       toggleWishlist(currentCar.id);
-      updateDetailFavBtn();
+      updateDetailFavIcon();
     }
 
-    function updateDetailFavBtn() {
-      const btn = document.getElementById("detailFavBtn");
+    function updateDetailFavIcon() {
+      if (!currentCar) return;
       const wishlist = getWishlist();
       const isFav = wishlist.includes(currentCar.id);
+      const btn = document.getElementById("detailFavBtn");
       btn.classList.toggle("active", isFav);
-      const icon = btn.querySelector("i");
-      if (icon) {
-        icon.className = isFav ? "fa-solid fa-heart" : "fa-regular fa-heart";
-        icon.style.color = isFav ? "#ff4757" : "";
+      btn.innerHTML = `<i class="${isFav ? 'fa-solid fav-active' : 'fa-regular'} fa-heart"></i>`;
+    }
+
+    // Calculator State & Logic
+    let currentCalcState = {
+      monthlyPayment: 0,
+      downPayment: 0,
+      loanAmount: 0,
+      totalInterest: 0,
+      totalPayable: 0,
+      periodMonths: 48,
+      downPercent: 0.20,
+      interestRate: 0.0279,
+      isVat: true
+    };
+
+    function setDownPreset(percent) {
+      const sel = document.getElementById("calcDownPercent");
+      if (sel) sel.value = percent.toFixed(2);
+      
+      document.querySelectorAll(".preset-btn").forEach(btn => {
+        const btnVal = parseFloat(btn.textContent) / 100;
+        btn.classList.toggle("active", Math.abs(btnVal - percent) < 0.001);
+      });
+      calculateInstallment();
+    }
+
+    function handleDownPercentSelect() {
+      const val = parseFloat(document.getElementById("calcDownPercent").value);
+      document.querySelectorAll(".preset-btn").forEach(btn => {
+        const btnVal = parseFloat(btn.textContent) / 100;
+        btn.classList.toggle("active", Math.abs(btnVal - val) < 0.001);
+      });
+      calculateInstallment();
+    }
+
+    function selectPeriod(months) {
+      const periodSelect = document.getElementById("calcPeriodMonths");
+      if (periodSelect) {
+        periodSelect.value = months;
+        calculateInstallment();
       }
     }
 
-    // Related Cars
+    function calculateInstallment() {
+      if (!currentCar) return;
+      const price = currentCar.price;
+      const downPercent = parseFloat(document.getElementById("calcDownPercent").value);
+      const periodMonths = parseInt(document.getElementById("calcPeriodMonths").value);
+      const interestRatePerYear = parseFloat(document.getElementById("calcInterestRate").value);
+      const isVat = document.getElementById("calcVatToggle") ? document.getElementById("calcVatToggle").checked : true;
+
+      const downPayment = Math.round(price * downPercent);
+      const loanAmount = price - downPayment;
+      const years = periodMonths / 12;
+
+      // Flat rate formula
+      const totalInterest = Math.round(loanAmount * interestRatePerYear * years);
+      const totalBeforeVat = loanAmount + totalInterest;
+      const monthlyBeforeVat = totalBeforeVat / periodMonths;
+
+      // Hire Purchase VAT 7%
+      const monthlyPayment = Math.round(isVat ? monthlyBeforeVat * 1.07 : monthlyBeforeVat);
+      const totalPayable = Math.round(isVat ? totalBeforeVat * 1.07 : totalBeforeVat);
+
+      // Save calculation state
+      currentCalcState = {
+        monthlyPayment,
+        downPayment,
+        loanAmount,
+        totalInterest,
+        totalPayable,
+        periodMonths,
+        downPercent,
+        interestRate: interestRatePerYear,
+        isVat
+      };
+
+      // Update Summary UI
+      const downAmountText = document.getElementById("calcDownAmountText");
+      if (downAmountText) downAmountText.textContent = `฿ ${downPayment.toLocaleString()}`;
+
+      const downVal = document.getElementById("calcDownPaymentVal");
+      if (downVal) downVal.textContent = `฿ ${downPayment.toLocaleString()}`;
+
+      const loanAmountEl = document.getElementById("calcLoanAmount");
+      if (loanAmountEl) loanAmountEl.textContent = `฿ ${loanAmount.toLocaleString()}`;
+
+      const totalInterestEl = document.getElementById("calcTotalInterest");
+      if (totalInterestEl) totalInterestEl.textContent = `฿ ${totalInterest.toLocaleString()}`;
+
+      const totalPayableEl = document.getElementById("calcTotalPayable");
+      if (totalPayableEl) totalPayableEl.textContent = `฿ ${totalPayable.toLocaleString()}`;
+
+      const resultLabel = document.getElementById("calcResultLabel");
+      if (resultLabel) {
+        resultLabel.textContent = isVat ? "ค่างวดผ่อนชำระโดยประมาณ (รวม VAT 7%)" : "ค่างวดผ่อนชำระโดยประมาณ (ก่อน VAT)";
+      }
+
+      const monthlyEl = document.getElementById("calcMonthlyPayment");
+      if (monthlyEl) monthlyEl.textContent = `฿ ${monthlyPayment.toLocaleString()} / เดือน`;
+
+      // Render Comparison Grid for all standard periods
+      renderPeriodComparison(price, downPayment, loanAmount, interestRatePerYear, isVat, periodMonths);
+    }
+
+    function renderPeriodComparison(price, downPayment, loanAmount, rate, isVat, activeMonths) {
+      const grid = document.getElementById("periodCompareGrid");
+      if (!grid) return;
+
+      const periods = [36, 48, 60, 72, 84];
+      grid.innerHTML = periods.map(m => {
+        const y = m / 12;
+        const interest = loanAmount * rate * y;
+        const total = loanAmount + interest;
+        const monthly = Math.round(isVat ? (total / m) * 1.07 : total / m);
+        const isActive = m === activeMonths;
+        return `
+          <div class="period-pill ${isActive ? 'active' : ''}" onclick="selectPeriod(${m})" title="เลือกผ่อน ${m} เดือน">
+            <span class="period-pill-months">${m} งวด (${y} ปี)</span>
+            <span class="period-pill-amount">฿ ${monthly.toLocaleString()}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function applyPlanToAppointment() {
+      if (!currentCar) return;
+      const vatText = currentCalcState.isVat ? "รวม VAT 7%" : "ก่อน VAT";
+      const planSummary = `สนใจแผนสินเชื่อ ${currentCar.brand} ${currentCar.name}: เงินดาวน์ ${(currentCalcState.downPercent * 100).toFixed(0)}% (฿ ${currentCalcState.downPayment.toLocaleString()}), ผ่อน ${currentCalcState.periodMonths} เดือน (~฿ ${currentCalcState.monthlyPayment.toLocaleString()}/ด. ${vatText})`;
+
+      const contactMsg = document.getElementById("contactMessageInput");
+      if (contactMsg) {
+        contactMsg.value = `สวัสดีครับ ผมต้องการสอบถามและปรึกษาสินเชื่อสำหรับ ${currentCar.name}\n${planSummary}`;
+      }
+
+      openModal("appointmentModal");
+      if (typeof showToast === 'function') {
+        showToast("ระบบดึงข้อมูลแผนสินเชื่อที่คุณเลือกเรียบร้อยแล้ว กรุณาระบุวันเวลานัดหมาย", "success", 4000);
+      }
+    }
+
+    // Related cars (same brand or same type)
     function renderRelatedCars() {
       const container = document.getElementById("relatedCarsContainer");
-      const related = CAR_DATABASE.filter(c => c.id !== currentCar.id).slice(0, 3);
+      if (!container || !currentCar) return;
+
       const wishlist = getWishlist();
+      const related = CAR_DATABASE
+        .filter(c => c.id !== currentCar.id && (c.brand === currentCar.brand || c.type === currentCar.type))
+        .slice(0, 3);
+
+      if (related.length === 0) {
+        document.querySelector(".related-cars-section").style.display = "none";
+        return;
+      }
 
       container.innerHTML = related.map(car => {
         const isFav = wishlist.includes(car.id);
@@ -600,7 +806,7 @@
               <button class="card-fav-btn ${isFav ? 'active' : ''}" 
                       data-wishlist-id="${car.id}"
                       onclick="toggleWishlist(${car.id}, event)">
-                <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart" ${isFav ? 'style="color:#ff4757;"' : ''}></i>
+                <i class="${isFav ? 'fa-solid fav-active' : 'fa-regular'} fa-heart"></i>
               </button>
             </div>
             <div class="car-info">
@@ -611,7 +817,7 @@
                 <span class="price-number">฿ ${car.priceDisplay}</span>
               </div>
               <div class="car-actions">
-                <a href="car_details.html?id=${car.id}" class="btn btn-outline btn-sm" style="flex:1;">
+                <a href="car_details.html?id=${car.id}" class="btn btn-outline btn-sm flex-1">
                   ดูรายละเอียด
                 </a>
               </div>
@@ -625,35 +831,41 @@
     function openModal(id) {
       const modal = document.getElementById(id);
       if (modal) {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+        modal.classList.add("is-flex");
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
       }
     }
 
     function closeModal(id) {
       const modal = document.getElementById(id);
       if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+        modal.classList.remove("is-flex");
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
       }
     }
 
     function handleAppointmentSubmit(e) {
       e.preventDefault();
-      closeModal('appointmentModal');
-      showToast("ส่งคำขอนัดหมายเรียบร้อยแล้ว ทีมงาน VIP Concierge จะติดต่อกลับเพื่อยืนยันเวลา", "success", 5000);
+      const name = document.getElementById("appUserName").value;
+      const date = document.getElementById("appDate").value;
+      const time = document.getElementById("appTime").value;
+
+      closeModal("appointmentModal");
+      showToast(`จองนัดหมายดูรถสำเร็จ! คุณ ${name} วันที่ ${date} (${time}) เจ้าหน้าที่จะติดต่อยืนยันอีกครั้ง`, "success", 5000);
     }
 
     function handleBookingSubmit(e) {
       e.preventDefault();
-      closeModal('bookingModal');
-      showToast("ระบบบันทึกการจองสิทธิ์เรียบร้อยแล้ว! เจ้าหน้าที่จะติดต่อเพื่อดำเนินการด้านเอกสารและใบเสร็จ", "success", 6000);
+      closeModal("bookingModal");
+      showToast("ระบบบันทึกคำขอจองสิทธิ์เรียบร้อยแล้ว! เจ้าหน้าที่การเงินจะติดต่อกลับเพื่อยืนยันการชำระเงินมัดจำ", "success", 6000);
     }
 
     function handleContactSubmit(e) {
       e.preventDefault();
-      closeModal('contactModal');
-      showToast("ส่งข้อความถึงผู้ขายเรียบร้อยแล้ว จะได้รับการตอบกลับโดยเร็วที่สุด", "success", 5000);
+      closeModal("contactModal");
+      showToast("ส่งข้อความถึงผู้ขายเรียบร้อยแล้ว! ขอบคุณที่สนใจรถยนต์ของเรา", "success", 4000);
     }
   </script>
 </body>

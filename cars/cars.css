@@ -1,0 +1,260 @@
+/* ===================================================================
+   SUPERCAR P - Cars Catalog & Showroom Stylesheet (Subfolder Version)
+   =================================================================== */
+
+@import url("../style.css");
+
+.header-sell-btn {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header-sell-btn {
+    display: inline-flex;
+  }
+}
+
+.section-header-center {
+  text-align: center;
+}
+
+.filter-controls-group {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-sort-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-sort-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.filter-sort-select {
+  width: auto;
+  padding: 8px 14px;
+}
+
+.filter-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.88rem;
+}
+
+.filter-summary-text {
+  color: var(--text-muted);
+}
+
+.car-count-highlight {
+  color: var(--color-gold-light);
+}
+
+.reset-filters-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: var(--transition-smooth);
+}
+
+.reset-filters-btn:hover {
+  color: var(--color-gold);
+}
+
+.no-results-panel {
+  display: none;
+  text-align: center;
+  padding: 50px 20px;
+  margin-top: 20px;
+}
+
+.no-results-icon {
+  font-size: 3rem;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+.no-results-title {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.no-results-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.modal-box-large {
+  max-width: 850px;
+}
+
+/* Quick Modal Content Styling */
+.quick-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+
+@media (max-width: 768px) {
+  .quick-modal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quick-modal-img-wrap {
+  background: #141822;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quick-modal-img {
+  max-width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
+}
+
+.quick-modal-title {
+  font-size: 1.6rem;
+  margin: 4px 0 10px;
+}
+
+.quick-modal-price {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-gold-light);
+  margin-bottom: 14px;
+}
+
+.quick-modal-desc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.quick-modal-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+}
+
+.quick-modal-spec-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.quick-modal-spec-label {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  display: block;
+}
+
+.quick-modal-spec-val {
+  font-weight: 700;
+  color: #fff;
+}
+
+.quick-modal-spec-gold {
+  font-weight: 700;
+  color: var(--color-gold);
+}
+
+.quick-modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.quick-modal-btn-grow {
+  flex: 1;
+}
+
+/* Footer Styling */
+.footer-brand-logo {
+  margin-bottom: 18px;
+}
+
+.footer-desc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.footer-contact-item {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+}
+
+.footer-contact-icon {
+  color: var(--color-gold);
+  width: 20px;
+}
+
+.fav-active {
+  color: #ff4757 !important;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+.is-flex {
+  display: flex !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.modal-car-title {
+  font-size: 1.8rem;
+  margin: 6px 0 10px;
+}
+
+.modal-car-price {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-gold-light);
+  margin-bottom: 14px;
+}
+
+.modal-car-desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.text-green {
+  color: #2ed573;
+}
+
+.modal-action-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.flex-1 {
+  flex: 1;
+}

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รายชื่อนักศึกษา & รายชื่อนักศึกษา | SUPERCAR P</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/team.css">
+</head>
+<body>
+
+  <!-- ================= 1. HEADER / NAVIGATION ================= -->
+  <header class="main-header" id="navbar">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+        <div class="logo-text">
+          <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+          <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">หน้าแรก</a>
+        <a href="cars.html" class="nav-link">คลังรถทั้งหมด</a>
+        <a href="sell.html" class="nav-link">ลงขายรถ</a>
+        <a href="contact.html" class="nav-link">ติดต่อเรา</a>
+        <a href="team.html" class="nav-link active">รายชื่อนักศึกษา</a>
+      </nav>
+
+      <!-- Header Tools -->
+      <div class="header-tools">
+        <a href="sell.html" class="btn btn-outline btn-sm header-sell-btn">
+          <i class="fa-solid fa-plus"></i>
+          <span>ลงขายรถ</span>
+        </a>
+
+        <a href="cars.html?view=wishlist" class="wishlist-btn" id="wishlistToggle" title="รถที่ถูกใจ (Wishlist)">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge" id="wishlistCount">0</span>
+        </a>
+
+        <!-- User Authentication State Button -->
+        <div id="navbarAuth"></div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 2. TEAM MEMBERS SECTION ================= -->
+  <main class="team-section">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header text-center team-header-center">
+        <span class="sub-heading">IT SEC1 TEAM</span>
+        <h1 class="main-heading">รายชื่อนักศึกษา</h1>
+        <div class="gold-divider"></div>
+      </div>
+
+      <!-- 7 Students Cards Grid -->
+      <div class="team-grid">
+        
+        <!-- Member Card 1 -->
+        <div class="team-card glass-panel">
+          <div class="team-photo-wrap">
+            <img src="pic/Patty.jpg" alt="แพ็ท ศรีเกตุ" class="team-photo-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80';">
+            <span class="team-badge-number">01</span>
+          </div>
+          <h2 class="team-member-name">แพ็ท ศรีเกตุ</h2>
+          <div class="team-id-badge">
+            <i class="fa-solid fa-id-card team-id-icon"></i>
+            <span>69122202011</span>
+          </div>
+          <p class="team-member-role">ทำหน้าจองรถ</p>
+        </div>
+
+        <!-- Member Card 2 -->
+        <div class="team-card glass-panel">
+          <div class="team-photo-wrap">
+            <img src="pic/Pat.jpg" alt="อธิราช อินทรประชา" class="team-photo-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80';">
+            <span class="team-badge-number">02</span>
+          </div>
+          <h2 class="team-member-name">อธิราช อินทรประชา</h2>
+          <div class="team-id-badge">
+            <i class="fa-solid fa-id-card team-id-icon"></i>
+            <span>69122202013</span>
+          </div>
+          <p class="team-member-role">ทำหน้าลงขายรถและหน้ารายชื่อนักศึกษา</p>
+        </div>
+
+        <!-- Member Card 3 -->
+        <div class="team-card glass-panel">
+          <div class="team-photo-wrap">
+            <img src="pic/Sin.jpg" alt="วศิน เที่ยงดี" class="team-photo-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80';">
+            <span class="team-badge-number">03</span>
+          </div>
+          <h2 class="team-member-name">วศิน เที่ยงดี</h2>
+          <div class="team-id-badge">
+            <i class="fa-solid fa-id-card team-id-icon"></i>
+            <span>69122202018</span>
+          </div>
+          <p class="team-member-role">ทำหน้ารายการถ</p>
+        </div>
+
+        <!-- Member Card 4 -->
+        <div class="team-card glass-panel">
+          <div class="team-photo-wrap">
+            <img src="pic/Toey.jpg" alt="สุรภา นุชนัดดา" class="team-photo-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80';">
+            <span class="team-badge-number">04</span>
+          </div>
+          <h2 class="team-member-name">สุรภา นุชนัดดา</h2>
+          <div class="team-id-badge">
+            <i class="fa-solid fa-id-card team-id-icon"></i>
+            <span>691222020031</span>
+          </div>
+          <p class="team-member-role">ทำหน้า Login&Register</p>
+        </div>
+
+        <!-- Member Card 5 -->
+        <div class="team-card glass-panel">
+          <div class="team-photo-wrap">
+            <img src="pic/Nat.jpg" alt="ณัฐภณ ศรีทอง" class="team-photo-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80';">
+            <span class="team-badge-number">05</span>
+          </div>
+          <h2 class="team-member-name">ณัฐภณ ศรีทอง</h2>
+          <div class="team-id-badge">
+            <i class="fa-solid fa-id-card team-id-icon"></i>
+            <span>69122202038</span>
+          </div>
+          <p class="team-member-role">ทำหน้ารายละเอียดรถ</p>
+        </div>
+
+        <!-- Member Card 6 -->
+        <div class="team-card glass-panel">
+          <div class="team-photo-wrap">
+            <img src="pic/Kan.jpg" alt="พีรพัฒน์ น้อยพันธ์" class="team-photo-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80';">
+            <span class="team-badge-number">06</span>
+          </div>
+          <h2 class="team-member-name">พีรพัฒน์ น้อยพันธ์</h2>
+          <div class="team-id-badge">
+            <i class="fa-solid fa-id-card team-id-icon"></i>
+            <span>69122202045</span>
+          </div>
+          <p class="team-member-role">ทำหน้าแรก</p>
+        </div>
+
+        <!-- Member Card 7 -->
+        <div class="team-card glass-panel">
+          <div class="team-photo-wrap">
+            <img src="pic/Tle.jpg" alt="ติณณภพ แก้วประไพ" class="team-photo-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80';">
+            <span class="team-badge-number">07</span>
+          </div>
+          <h2 class="team-member-name">ติณณภพ แก้วประไพ</h2>
+          <div class="team-id-badge">
+            <i class="fa-solid fa-id-card team-id-icon"></i>
+            <span>69122202050</span>
+          </div>
+          <p class="team-member-role">ทำหน้าติดต่อเรา</p>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= 3. FOOTER ================= -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo footer-brand-logo">
+            <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
+            <div class="logo-text">
+              <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
+              <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            ศูนย์รวมซื้อขายซูเปอร์คาร์และยนตรกรรมหรูระดับพรีเมียม
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">เมนูลัด</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="cars.html">คลังรถทั้งหมด</a></li>
+            <li><a href="sell.html">ลงขายรถ</a></li>
+            <li><a href="contact.html">ติดต่อเรา</a></li>
+            <li><a href="team.html">รายชื่อนักศึกษา</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">การศึกษา & โครงงาน</h4>
+          <ul class="footer-links">
+            <li><a href="team.html">รายชื่อนักศึกษา</a></li>
+            <li><a href="index.html">หน้าแรกเว็บไซต์</a></li>
+            <li><a href="contact.html">ช่องทางติดต่อ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">ติดต่อโชว์รูม</h4>
+          <p class="footer-contact-item">
+            <i class="fa-solid fa-phone footer-contact-icon"></i> 02-999-8888
+          </p>
+          <p class="footer-contact-item">
+            <i class="fa-solid fa-envelope footer-contact-icon"></i> contact@supercarp.com
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 SUPERCAR P. All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/cars-data.js"></script>
+</body>
+</html>

@@ -8,8 +8,9 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Unified Master Stylesheet -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/sell.css">
 </head>
 <body>
 
@@ -30,6 +31,7 @@
         <a href="cars.html" class="nav-link">คลังรถทั้งหมด</a>
         <a href="sell.html" class="nav-link active">ลงขายรถ</a>
         <a href="contact.html" class="nav-link">ติดต่อเรา</a>
+        <a href="team.html" class="nav-link">รายชื่อนักศึกษา</a>
       </nav>
 
       <!-- Header Tools -->
@@ -57,7 +59,7 @@
     <div class="container">
       
       <!-- Section Header -->
-      <div class="section-header text-center" style="text-align:center;">
+      <div class="section-header text-center section-header-center">
         <span class="sub-heading">PRESTIGE CONSIGNMENT PORTAL</span>
         <h1 class="main-heading">ลงประกาศขายรถของคุณ</h1>
         <p class="section-desc">เข้าถึงเครือข่ายผู้ซื้อและนักสะสมรถหรูชั้นนำทั่วประเทศ อัปโหลดข้อมูลและแสดงผลในโชว์รูมทันที</p>
@@ -67,9 +69,9 @@
       <div class="sell-layout">
         
         <!-- LEFT: SUBMISSION FORM -->
-        <div class="glass-panel" style="padding: 34px;">
-          <h2 style="font-size:1.4rem; color:#fff; margin-bottom:20px; display:flex; align-items:center; gap:10px;">
-            <i class="fa-solid fa-file-pen" style="color:var(--color-gold);"></i>
+        <div class="glass-panel sell-form-panel">
+          <h2 class="sell-form-title">
+            <i class="fa-solid fa-file-pen accent-gold-icon"></i>
             <span>ข้อมูลรถยนต์ที่ต้องการลงขาย</span>
           </h2>
 
@@ -171,7 +173,7 @@
               <label for="carImage">รูปรถยนต์ (URL หรือเลือกภาพมาตรฐาน)</label>
               <input type="text" id="carImage" class="custom-input" placeholder="ใส่ลิงก์ URL รูปภาพ เช่น https://images.unsplash.com/..." value="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=80" oninput="updateLivePreview()">
               
-              <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;">
+              <div class="preset-btn-group">
                 <button type="button" class="btn btn-outline btn-sm" onclick="setPresetImage('pic/F80.png')">รูป Ferrari F80</button>
                 <button type="button" class="btn btn-outline btn-sm" onclick="setPresetImage('pic/GT3-911.png')">รูป Porsche GT3</button>
                 <button type="button" class="btn btn-outline btn-sm" onclick="setPresetImage('pic/GTR-R35.png')">รูป Nissan GT-R</button>
@@ -184,9 +186,9 @@
               <textarea id="carDesc" class="custom-textarea" placeholder="ระบุประวัติรถ ออปชันพิเศษ การตรวจเช็กศูนย์ หรือเงื่อนไขเพิ่มเติม...">รถมือเดียว สภาพป้ายแดง ออปชันเต็มคาร์บอนเซรามิก ลิฟต์ยกหน้ารถ เบาะปรับไฟฟ้า 18 ทิศทาง พวงมาลัย Alcantara ไม่เคยทำสี วิ่งน้อย พร้อมส่งมอบทันที</textarea>
             </div>
 
-            <div style="padding-top:16px; border-top:1px solid rgba(255,255,255,0.08); margin-top:20px;">
-              <h3 style="font-size:1.1rem; color:#fff; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
-                <i class="fa-solid fa-user-check" style="color:var(--color-gold);"></i>
+            <div class="seller-info-section">
+              <h3 class="seller-info-title">
+                <i class="fa-solid fa-user-check accent-gold-icon"></i>
                 <span>ข้อมูลผู้ขาย / ติดต่อ</span>
               </h3>
 
@@ -202,7 +204,7 @@
               </div>
             </div>
 
-            <button type="submit" class="btn btn-gold btn-lg" style="width:100%; margin-top:18px;">
+            <button type="submit" class="btn btn-gold btn-lg btn-sell-submit">
               <i class="fa-solid fa-paper-plane"></i>
               <span>บันทึกและลงประกาศในโชว์รูมทันที</span>
             </button>
@@ -212,10 +214,10 @@
 
         <!-- RIGHT: LIVE PREVIEW CARD -->
         <div>
-          <div style="position:sticky; top:100px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-              <h3 style="font-size:1.2rem; color:#fff;">ตัวอย่างการแสดงผล (Live Preview)</h3>
-              <span style="font-size:0.75rem; color:var(--color-gold); background:rgba(212,175,55,0.1); padding:3px 10px; border-radius:12px; border:1px solid var(--border-gold);">
+          <div class="preview-sticky-wrap">
+            <div class="preview-header-row">
+              <h3 class="preview-header-title">ตัวอย่างการแสดงผล (Live Preview)</h3>
+              <span class="preview-realtime-badge">
                 อัปเดตแบบเรียลไทม์
               </span>
             </div>
@@ -263,10 +265,10 @@
                 </div>
 
                 <div class="car-actions">
-                  <button class="btn btn-outline btn-sm" disabled style="opacity:0.8;">
+                  <button class="btn btn-outline btn-sm btn-preview-disabled" disabled>
                     <i class="fa-solid fa-circle-info"></i> สเปกรถ
                   </button>
-                  <button class="btn btn-gold btn-sm" disabled style="opacity:0.8;">
+                  <button class="btn btn-gold btn-sm btn-preview-disabled" disabled>
                     <i class="fa-solid fa-phone"></i> สอบถามคันนี้
                   </button>
                 </div>
@@ -274,8 +276,8 @@
             </div>
 
             <!-- Guarantee Notice -->
-            <div class="glass-panel" style="padding:18px; margin-top:20px; font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
-              <i class="fa-solid fa-shield-check" style="color:#2ed573; margin-right:6px;"></i>
+            <div class="glass-panel guarantee-notice-panel">
+              <i class="fa-solid fa-shield-check shield-green-icon"></i>
               ทุกคันที่ลงประกาศผ่านระบบจะได้รับการบันทึกและแสดงผลทันทีในหน้าคลังรถยนต์ (Showroom) พร้อมระบบติดต่อและรับจองออนไลน์
             </div>
 
@@ -292,14 +294,14 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="brand-logo" style="margin-bottom:18px;">
+          <div class="brand-logo footer-brand-logo">
             <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
             <div class="logo-text">
               <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
               <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
             </div>
           </div>
-          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.7;">
+          <p class="footer-desc">
             ศูนย์รวมซื้อขายซูเปอร์คาร์และยนตรกรรมหรูระดับพรีเมียม
           </p>
         </div>
@@ -311,6 +313,7 @@
             <li><a href="cars.html">คลังรถทั้งหมด</a></li>
             <li><a href="sell.html">ลงขายรถ</a></li>
             <li><a href="contact.html">ติดต่อเรา</a></li>
+            <li><a href="team.html">รายชื่อนักศึกษา</a></li>
           </ul>
         </div>
 
@@ -325,11 +328,11 @@
 
         <div>
           <h4 class="footer-title">ติดต่อทีมรับซื้อ</h4>
-          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:8px;">
-            <i class="fa-solid fa-phone" style="color:var(--color-gold); width:20px;"></i> 02-999-8888 (ฝ่ายจัดซื้อ VIP)
+          <p class="footer-contact-item">
+            <i class="fa-solid fa-phone footer-icon-gold"></i> 02-999-8888 (ฝ่ายจัดซื้อ VIP)
           </p>
-          <p style="color:var(--text-muted); font-size:0.88rem;">
-            <i class="fa-solid fa-envelope" style="color:var(--color-gold); width:20px;"></i> purchase@supercarp.com
+          <p class="footer-contact-item">
+            <i class="fa-solid fa-envelope footer-icon-gold"></i> purchase@supercarp.com
           </p>
         </div>
       </div>

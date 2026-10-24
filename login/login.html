@@ -8,8 +8,9 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Unified Master Stylesheet -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="login.css">
 </head>
 <body>
 
@@ -29,6 +30,7 @@
         <a href="../cars.html" class="nav-link">คลังรถทั้งหมด</a>
         <a href="../sell.html" class="nav-link">ลงขายรถ</a>
         <a href="../contact.html" class="nav-link">ติดต่อเรา</a>
+        <a href="../team.html" class="nav-link">รายชื่อนักศึกษา</a>
       </nav>
 
       <div class="header-tools">
@@ -44,12 +46,12 @@
   <!-- Main Login Card -->
   <main class="auth-wrapper">
     <div class="auth-card glass-panel">
-      <div style="text-align:center; margin-bottom:24px;">
-        <span class="logo-mark" style="margin:0 auto 12px; width:52px; height:52px; font-size:1.6rem;">
+      <div class="auth-header">
+        <span class="logo-mark auth-logo-mark">
           <i class="fa-solid fa-crown"></i>
         </span>
-        <h1 style="font-size:1.6rem; margin-bottom:4px; color:#fff;">ยินดีต้อนรับสู่ SUPERCAR P</h1>
-        <p style="font-size:0.85rem; color:var(--text-muted);">เข้าสู่ระบบเพื่อจัดการรายการรถที่ถูกใจและนัดหมาย</p>
+        <h1 class="auth-title">ยินดีต้อนรับสู่ SUPERCAR P</h1>
+        <p class="auth-subtitle">เข้าสู่ระบบเพื่อจัดการรายการรถที่ถูกใจและนัดหมาย</p>
       </div>
 
       <div class="auth-tabs">
@@ -72,27 +74,27 @@
         </div>
 
         <div class="form-group">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-            <label for="loginPassword" style="margin:0;">รหัสผ่าน (Password)</label>
-            <a href="javascript:void(0)" onclick="handleForgotPassword()" style="font-size:0.8rem; color:var(--color-gold);">ลืมรหัสผ่าน?</a>
+          <div class="form-label-row">
+            <label for="loginPassword">รหัสผ่าน (Password)</label>
+            <a href="javascript:void(0)" onclick="handleForgotPassword()" class="forgot-link">ลืมรหัสผ่าน?</a>
           </div>
-          <div class="input-with-icon" style="position:relative;">
+          <div class="input-with-icon input-relative">
             <i class="fa-solid fa-lock"></i>
             <input type="password" id="loginPassword" class="custom-input" placeholder="••••••••" required value="12345678">
-            <button type="button" onclick="togglePasswordVisibility('loginPassword', this)" style="position:absolute; right:14px; background:none; border:none; color:var(--text-dim); cursor:pointer;">
+            <button type="button" onclick="togglePasswordVisibility('loginPassword', this)" class="toggle-password-btn">
               <i class="fa-regular fa-eye"></i>
             </button>
           </div>
         </div>
 
-        <button type="submit" class="btn btn-gold btn-lg" style="width:100%; margin-top:12px;">
+        <button type="submit" class="btn btn-gold btn-lg btn-auth-submit">
           <i class="fa-solid fa-arrow-right-to-bracket"></i>
           <span>เข้าสู่ระบบ</span>
         </button>
       </form>
 
       <!-- Sign Up -->
-      <form id="signUpForm" onsubmit="handleSignUpSubmit(event)" style="display:none;">
+      <form id="signUpForm" onsubmit="handleSignUpSubmit(event)" class="form-hidden">
         <div class="form-group">
           <label for="signupName">ชื่อ-นามสกุล</label>
           <div class="input-with-icon">
@@ -111,10 +113,10 @@
 
         <div class="form-group">
           <label for="signupPassword">รหัสผ่าน</label>
-          <div class="input-with-icon" style="position:relative;">
+          <div class="input-with-icon input-relative">
             <i class="fa-solid fa-lock"></i>
             <input type="password" id="signupPassword" class="custom-input" placeholder="กำหนดรหัสผ่าน" required minlength="6">
-            <button type="button" onclick="togglePasswordVisibility('signupPassword', this)" style="position:absolute; right:14px; background:none; border:none; color:var(--text-dim); cursor:pointer;">
+            <button type="button" onclick="togglePasswordVisibility('signupPassword', this)" class="toggle-password-btn">
               <i class="fa-regular fa-eye"></i>
             </button>
           </div>
@@ -122,13 +124,13 @@
 
         <div class="form-group">
           <label for="confirmPassword">ยืนยันรหัสผ่าน</label>
-          <div class="input-with-icon" style="position:relative;">
+          <div class="input-with-icon input-relative">
             <i class="fa-solid fa-shield-halved"></i>
             <input type="password" id="confirmPassword" class="custom-input" placeholder="กรอกรหัสผ่านอีกครั้ง" required minlength="6">
           </div>
         </div>
 
-        <button type="submit" class="btn btn-gold btn-lg" style="width:100%; margin-top:12px;">
+        <button type="submit" class="btn btn-gold btn-lg btn-auth-submit">
           <i class="fa-solid fa-user-check"></i>
           <span>สร้างบัญชีผู้ใช้ใหม่</span>
         </button>
@@ -137,7 +139,7 @@
   </main>
 
   <footer class="main-footer">
-    <div class="container" style="text-align:center; font-size:0.85rem; color:var(--text-dim);">
+    <div class="container footer-copy-text">
       © 2026 SUPERCAR P. All Rights Reserved.
     </div>
   </footer>
@@ -151,13 +153,17 @@
       const tabSignUpBtn = document.getElementById("tabSignUpBtn");
 
       if (tab === "signin") {
-        signInForm.style.display = "block";
-        signUpForm.style.display = "none";
+        signInForm.classList.remove("form-hidden");
+        signInForm.style.display = "";
+        signUpForm.classList.add("form-hidden");
+        signUpForm.style.display = "";
         tabSignInBtn.classList.add("active");
         tabSignUpBtn.classList.remove("active");
       } else {
-        signInForm.style.display = "none";
-        signUpForm.style.display = "block";
+        signInForm.classList.add("form-hidden");
+        signInForm.style.display = "";
+        signUpForm.classList.remove("form-hidden");
+        signUpForm.style.display = "";
         tabSignUpBtn.classList.add("active");
         tabSignInBtn.classList.remove("active");
       }

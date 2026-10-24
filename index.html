@@ -8,8 +8,9 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Unified Master Stylesheet -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
@@ -30,11 +31,12 @@
         <a href="cars.html" class="nav-link">คลังรถทั้งหมด</a>
         <a href="sell.html" class="nav-link">ลงขายรถ</a>
         <a href="contact.html" class="nav-link">ติดต่อเรา</a>
+        <a href="team.html" class="nav-link">รายชื่อนักศึกษา</a>
       </nav>
 
       <!-- Header Tools -->
       <div class="header-tools">
-        <a href="sell.html" class="btn btn-outline btn-sm" style="display:none; @media(min-width:768px){display:inline-flex;}">
+        <a href="sell.html" class="btn btn-outline btn-sm header-sell-btn">
           <i class="fa-solid fa-plus"></i>
           <span>ลงขายรถ</span>
         </a>
@@ -109,7 +111,7 @@
           </div>
           <div class="hero-float-card">
             <span class="hero-float-title">HIGHLIGHT OF THE MONTH</span>
-            <div style="font-weight:700; font-size:1.1rem; color:#fff; margin:2px 0;">Ferrari F80 Limited</div>
+            <div class="search-field-val">Ferrari F80 Limited</div>
             <div class="hero-float-price">฿ 135,000,000</div>
           </div>
         </div>
@@ -155,7 +157,7 @@
             </select>
           </div>
 
-          <button type="submit" class="btn btn-gold" style="white-space:nowrap; padding:13px 28px;">
+          <button type="submit" class="btn btn-gold search-submit-btn">
             <i class="fa-solid fa-sliders"></i>
             <span>ค้นหารถทันที</span>
           </button>
@@ -166,9 +168,9 @@
   </section>
 
   <!-- ================= 4. FEATURED EXOTIC COLLECTION ================= -->
-  <section class="showroom-section" style="padding-top: 10px;">
+  <section class="showroom-section featured-cars-section">
     <div class="container">
-      <div class="section-header text-center" style="text-align:center;">
+      <div class="section-header text-center section-header-center">
         <span class="sub-heading">CURATED SELECTION</span>
         <h2 class="main-heading">ซูเปอร์คาร์และยนตรกรรมแนะนำ</h2>
         <p class="section-desc">สัมผัสยนตรกรรมระดับมาสเตอร์พีซ สภาพยอดเยี่ยม พร้อมส่งมอบทันที</p>
@@ -180,7 +182,7 @@
         <!-- Rendered via JS -->
       </div>
 
-      <div style="text-align:center; margin-top:40px;">
+      <div class="view-all-cars-wrapper">
         <a href="cars.html" class="btn btn-outline btn-lg">
           <span>ดูรถยนต์ทั้งหมดในคลัง</span>
           <i class="fa-solid fa-arrow-right"></i>
@@ -190,19 +192,19 @@
   </section>
 
   <!-- ================= 5. SELL YOUR CAR PROMO BANNER ================= -->
-  <section style="padding: 70px 0; background: linear-gradient(180deg, rgba(14,18,26,0.6) 0%, rgba(10,12,16,0.95) 100%);">
+  <section class="consignment-section">
     <div class="container">
-      <div class="glass-panel" style="padding: 45px; border: 1.5px solid var(--border-gold); background: radial-gradient(circle at 80% 50%, rgba(212,175,55,0.1) 0%, rgba(18,22,31,0.95) 70%);">
-        <div style="display:grid; grid-template-columns: 1.3fr 1fr; gap:36px; align-items:center;">
+      <div class="glass-panel consignment-panel">
+        <div class="consignment-grid">
           <div>
             <span class="sub-heading">PRESTIGE CONSIGNMENT & BUY-BACK</span>
-            <h2 style="font-size:2.2rem; margin:10px 0 16px; line-height:1.2;">
+            <h2 class="consignment-title">
               ต้องการส่งต่อรถหรู หรือลงขายรถของคุณ?
             </h2>
-            <p style="color:var(--text-muted); font-size:1.02rem; line-height:1.7; margin-bottom:26px;">
+            <p class="consignment-desc">
               SUPERCAR P ให้บริการรับซื้อ รับฝากขาย และประเมินราคาซูเปอร์คาร์อย่างโปร่งใส ให้ราคาสูงที่สุดตามสภาพจริง ปิดการขายรวดเร็ว พร้อมสัญญาและบริการด้านเอกสารครบวงจร
             </p>
-            <div style="display:flex; gap:16px; flex-wrap:wrap;">
+            <div class="consignment-cta-group">
               <a href="sell.html" class="btn btn-gold">
                 <i class="fa-solid fa-car-on"></i>
                 <span>ลงประกาศขายรถของคุณ</span>
@@ -213,34 +215,34 @@
               </a>
             </div>
           </div>
-          <div style="display:flex; flex-direction:column; gap:16px;">
-            <div style="display:flex; gap:14px; align-items:center; background:rgba(255,255,255,0.03); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.06);">
-              <div style="width:42px; height:42px; border-radius:50%; background:var(--gold-gradient); color:#000; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;">
+          <div class="consignment-benefit-list">
+            <div class="consignment-benefit-item">
+              <div class="consignment-benefit-icon">
                 <i class="fa-solid fa-bolt"></i>
               </div>
               <div>
-                <h4 style="font-size:1rem; color:#fff;">ประเมินราคาไว ภายใน 1 ชั่วโมง</h4>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">ทราบราคาเบื้องต้นทันทีโดยทีมงานผู้เชี่ยวชาญเฉพาะทาง</p>
+                <h4 class="consignment-benefit-title">ประเมินราคาไว ภายใน 1 ชั่วโมง</h4>
+                <p class="consignment-benefit-desc">ทราบราคาเบื้องต้นทันทีโดยทีมงานผู้เชี่ยวชาญเฉพาะทาง</p>
               </div>
             </div>
 
-            <div style="display:flex; gap:14px; align-items:center; background:rgba(255,255,255,0.03); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.06);">
-              <div style="width:42px; height:42px; border-radius:50%; background:var(--gold-gradient); color:#000; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;">
+            <div class="consignment-benefit-item">
+              <div class="consignment-benefit-icon">
                 <i class="fa-solid fa-shield-halved"></i>
               </div>
               <div>
-                <h4 style="font-size:1rem; color:#fff;">การันตีเงินสด ปลอดภัย 100%</h4>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">จ่ายเงินสดทันทีหลังตรวจสภาพและโอนกรรมสิทธิ์ถูกต้อง</p>
+                <h4 class="consignment-benefit-title">การันตีเงินสด ปลอดภัย 100%</h4>
+                <p class="consignment-benefit-desc">จ่ายเงินสดทันทีหลังตรวจสภาพและโอนกรรมสิทธิ์ถูกต้อง</p>
               </div>
             </div>
 
-            <div style="display:flex; gap:14px; align-items:center; background:rgba(255,255,255,0.03); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.06);">
-              <div style="width:42px; height:42px; border-radius:50%; background:var(--gold-gradient); color:#000; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;">
+            <div class="consignment-benefit-item">
+              <div class="consignment-benefit-icon">
                 <i class="fa-solid fa-users"></i>
               </div>
               <div>
-                <h4 style="font-size:1rem; color:#fff;">เข้าถึงกลุ่มผู้ซื้อระดับ VVIP</h4>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">เครือข่ายนักสะสมและผู้หลงใหลยนตรกรรมทั่วประเทศ</p>
+                <h4 class="consignment-benefit-title">เข้าถึงกลุ่มผู้ซื้อระดับ VVIP</h4>
+                <p class="consignment-benefit-desc">เครือข่ายนักสะสมและผู้หลงใหลยนตรกรรมทั่วประเทศ</p>
               </div>
             </div>
           </div>
@@ -250,46 +252,46 @@
   </section>
 
   <!-- ================= 6. WHY CHOOSE SUPERCAR P ================= -->
-  <section style="padding: 70px 0;">
+  <section class="services-section">
     <div class="container">
-      <div class="section-header text-center" style="text-align:center;">
+      <div class="section-header text-center section-header-center">
         <span class="sub-heading">PRESTIGE STANDARDS</span>
         <h2 class="main-heading">ทำไมต้องเลือก SUPERCAR P</h2>
         <p class="section-desc">มาตรฐานการบริการที่เหนือระดับ มั่นใจได้ในทุกขั้นตอนการซื้อขาย</p>
         <div class="gold-divider"></div>
       </div>
 
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:24px; margin-top:40px;">
-        <div class="glass-panel" style="padding: 28px; text-align:center;">
-          <div style="width:60px; height:60px; border-radius:50%; background:rgba(212,175,55,0.1); border:1.5px solid var(--border-gold); margin:0 auto 18px; display:flex; align-items:center; justify-content:center; color:var(--color-gold); font-size:1.6rem;">
+      <div class="services-grid">
+        <div class="glass-panel service-card">
+          <div class="service-card-icon">
             <i class="fa-solid fa-award"></i>
           </div>
-          <h3 style="font-size:1.2rem; margin-bottom:10px;">การันตีคุณภาพ 100%</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">ไม่เคยชนหนัก ไม่เคยจมน้ำ ประวัติและเลขไมล์แท้ทุกคัน มีใบรับรอง Certificate ตรวจสอบได้</p>
+          <h3 class="service-card-title">การันตีคุณภาพ 100%</h3>
+          <p class="service-card-desc">ไม่เคยชนหนัก ไม่เคยจมน้ำ ประวัติและเลขไมล์แท้ทุกคัน มีใบรับรอง Certificate ตรวจสอบได้</p>
         </div>
 
-        <div class="glass-panel" style="padding: 28px; text-align:center;">
-          <div style="width:60px; height:60px; border-radius:50%; background:rgba(212,175,55,0.1); border:1.5px solid var(--border-gold); margin:0 auto 18px; display:flex; align-items:center; justify-content:center; color:var(--color-gold); font-size:1.6rem;">
+        <div class="glass-panel service-card">
+          <div class="service-card-icon">
             <i class="fa-solid fa-file-invoice-dollar"></i>
           </div>
-          <h3 style="font-size:1.2rem; margin-bottom:10px;">สินเชื่อดอกเบี้ยพิเศษ</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">ร่วมมือกับสถาบันการเงินชั้นนำ อนุมัติไว เงื่อนไขยืดหยุ่น ดาวน์ต่ำ ผ่อนได้สูงสุดถึง 84 เดือน</p>
+          <h3 class="service-card-title">สินเชื่อดอกเบี้ยพิเศษ</h3>
+          <p class="service-card-desc">ร่วมมือกับสถาบันการเงินชั้นนำ อนุมัติไว เงื่อนไขยืดหยุ่น ดาวน์ต่ำ ผ่อนได้สูงสุดถึง 84 เดือน</p>
         </div>
 
-        <div class="glass-panel" style="padding: 28px; text-align:center;">
-          <div style="width:60px; height:60px; border-radius:50%; background:rgba(212,175,55,0.1); border:1.5px solid var(--border-gold); margin:0 auto 18px; display:flex; align-items:center; justify-content:center; color:var(--color-gold); font-size:1.6rem;">
+        <div class="glass-panel service-card">
+          <div class="service-card-icon">
             <i class="fa-solid fa-truck-ramp-box"></i>
           </div>
-          <h3 style="font-size:1.2rem; margin-bottom:10px;">ส่งมอบรถระดับ White-Glove</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">บริการรถสไลด์ปิดทึบส่งมอบรถถึงหน้าประตูบ้านทั่วประเทศไทย ปลอดภัย ไร้รอยขีดข่วน</p>
+          <h3 class="service-card-title">ส่งมอบรถระดับ White-Glove</h3>
+          <p class="service-card-desc">บริการรถสไลด์ปิดทึบส่งมอบรถถึงหน้าประตูบ้านทั่วประเทศไทย ปลอดภัย ไร้รอยขีดข่วน</p>
         </div>
 
-        <div class="glass-panel" style="padding: 28px; text-align:center;">
-          <div style="width:60px; height:60px; border-radius:50%; background:rgba(212,175,55,0.1); border:1.5px solid var(--border-gold); margin:0 auto 18px; display:flex; align-items:center; justify-content:center; color:var(--color-gold); font-size:1.6rem;">
+        <div class="glass-panel service-card">
+          <div class="service-card-icon">
             <i class="fa-solid fa-headset"></i>
           </div>
-          <h3 style="font-size:1.2rem; margin-bottom:10px;">บริการหลังการขาย VIP</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">รับประกันเครื่องยนต์และเกียร์ 1 ปีเต็ม พร้อมบริการช่วยเหลือฉุกเฉินตลอด 24 ชั่วโมง</p>
+          <h3 class="service-card-title">บริการหลังการขาย VIP</h3>
+          <p class="service-card-desc">รับประกันเครื่องยนต์และเกียร์ 1 ปีเต็ม พร้อมบริการช่วยเหลือฉุกเฉินตลอด 24 ชั่วโมง</p>
         </div>
       </div>
     </div>
@@ -300,21 +302,21 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="brand-logo" style="margin-bottom:18px;">
+          <div class="brand-logo footer-brand-logo">
             <span class="logo-mark"><i class="fa-solid fa-crown"></i></span>
             <div class="logo-text">
               <span class="logo-title">SUPERCAR<span class="accent-gold">P</span></span>
               <span class="logo-sub">PRESTIGE AUTO GALLERY</span>
             </div>
           </div>
-          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.7; margin-bottom:20px;">
+          <p class="footer-desc">
             โชว์รูมและศูนย์รวมซื้อขายซูเปอร์คาร์ ไฮเปอร์คาร์ และยนตรกรรมระดับพรีเมียมอันดับหนึ่งของประเทศไทย มาตรฐานสากลระดับโลก
           </p>
-          <div style="display:flex; gap:12px;">
-            <a href="#" style="width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; color:var(--color-gold);"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" style="width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; color:var(--color-gold);"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" style="width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; color:var(--color-gold);"><i class="fa-brands fa-line"></i></a>
-            <a href="#" style="width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; color:var(--color-gold);"><i class="fa-brands fa-youtube"></i></a>
+          <div class="footer-social-links">
+            <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="footer-social-btn"><i class="fa-brands fa-line"></i></a>
+            <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
           </div>
         </div>
 
@@ -326,6 +328,7 @@
             <li><a href="sell.html">ลงขายรถของคุณ (Sell Car)</a></li>
             <li><a href="contact.html">เกี่ยวกับเรา & ติดต่อเรา (Contact)</a></li>
             <li><a href="login.html">เข้าสู่ระบบ / สมัครสมาชิก (Account)</a></li>
+            <li><a href="team.html">รายชื่อนักศึกษา (Students)</a></li>
           </ul>
         </div>
 
@@ -342,20 +345,20 @@
 
         <div>
           <h4 class="footer-title">ติดต่อโชว์รูม</h4>
-          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:8px;">
-            <i class="fa-solid fa-location-dot" style="color:var(--color-gold); width:20px;"></i>
+          <p class="footer-contact-item">
+            <i class="fa-solid fa-location-dot footer-contact-icon"></i>
             ถนนประดิษฐ์มนูธรรม แขวงคลองจั่น เขตบางกะปิ กรุงเทพฯ
           </p>
-          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:8px;">
-            <i class="fa-solid fa-phone" style="color:var(--color-gold); width:20px;"></i>
+          <p class="footer-contact-item">
+            <i class="fa-solid fa-phone footer-contact-icon"></i>
             02-999-8888, 08X-XXX-XXXX
           </p>
-          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:8px;">
-            <i class="fa-solid fa-envelope" style="color:var(--color-gold); width:20px;"></i>
+          <p class="footer-contact-item">
+            <i class="fa-solid fa-envelope footer-contact-icon"></i>
             contact@supercarp.com
           </p>
-          <p style="color:var(--text-muted); font-size:0.88rem;">
-            <i class="fa-solid fa-clock" style="color:var(--color-gold); width:20px;"></i>
+          <p class="footer-contact-item">
+            <i class="fa-solid fa-clock footer-contact-icon"></i>
             เปิดทุกวัน: 09:00 - 19:00 น.
           </p>
         </div>
@@ -363,9 +366,9 @@
 
       <div class="footer-bottom">
         <div>© 2026 SUPERCAR P. สงวนลิขสิทธิ์ทุกประการ (All Rights Reserved)</div>
-        <div style="display:flex; gap:20px;">
-          <a href="#" style="color:var(--text-dim);">นโยบายความเป็นส่วนตัว</a>
-          <a href="#" style="color:var(--text-dim);">ข้อกำหนดและเงื่อนไข</a>
+        <div class="footer-extra-links">
+          <a href="#" class="footer-extra-link">นโยบายความเป็นส่วนตัว</a>
+          <a href="#" class="footer-extra-link">ข้อกำหนดและเงื่อนไข</a>
         </div>
       </div>
     </div>
@@ -399,7 +402,7 @@
                       data-wishlist-id="${car.id}"
                       onclick="toggleWishlist(${car.id}, event)" 
                       title="ถูกใจ">
-                <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart" ${isFav ? 'style="color:#ff4757;"' : ''}></i>
+                <i class="${isFav ? 'fa-solid fav-active' : 'fa-regular'} fa-heart"></i>
               </button>
             </div>
 
